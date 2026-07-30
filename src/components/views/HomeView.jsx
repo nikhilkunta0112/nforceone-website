@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -85,6 +85,44 @@ const homeCoreSolutions = [
   }
 ];
 
+// Hero Slider: slide 1 copy is the existing home.md hero copy;
+// slides 2-3 summarize Quality Engineering/Software Development and AI/Cloud/Data solutions.
+const heroSlides = [
+  {
+    id: 'scale-at-speed',
+    eyebrow: 'NFORCEONE – SCALE AT SPEED',
+    titleLead: 'Transforming Technology with',
+    titleHighlight: 'Lightning Speed',
+    titleTail: 'and Exceptional Quality',
+    subtitle: "We're on a mission to revolutionize businesses through transformative technology solutions.",
+    image: '/images/hero_command_center.jpg',
+    primaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' },
+    secondaryCta: { label: 'Explore Services', tab: 'services' }
+  },
+  {
+    id: 'quality-engineering',
+    eyebrow: 'NFORCEONE – QUALITY ENGINEERING',
+    titleLead: 'Engineering',
+    titleHighlight: 'Defect-Free Software',
+    titleTail: 'at Enterprise Scale',
+    subtitle: 'Manual and automated QA, functional and regression testing, and custom web, mobile, and enterprise application development — built to ship reliably, fast.',
+    image: '/images/qa_dashboard.jpg',
+    primaryCta: { label: 'Explore Quality Engineering', tab: 'services' },
+    secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
+  },
+  {
+    id: 'ai-cloud-data',
+    eyebrow: 'NFORCEONE – AI, CLOUD & DATA',
+    titleLead: 'Powering Innovation with',
+    titleHighlight: 'AI, Cloud & Data',
+    titleTail: 'Engineering',
+    subtitle: 'Generative AI, LLM integration, DevOps automation, and secure cloud infrastructure across AWS, Azure, and GCP — engineered to scale with your business.',
+    image: '/images/cloud_devops.jpg',
+    primaryCta: { label: 'Explore AI & Cloud Solutions', tab: 'services' },
+    secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
+  }
+];
+
 // Value Pillars from home.md
 const valuePillars = [
   {
@@ -143,63 +181,111 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
   const [activeIndustryTab, setActiveIndustryTab] = useState('fintech');
   const indData = industriesList.find(i => i.id === activeIndustryTab) || industriesList[0];
 
+  const [activeSlide, setActiveSlide] = useState(0);
+  const slide = heroSlides[activeSlide];
+  const goToSlide = (idx) => setActiveSlide((idx + heroSlides.length) % heroSlides.length);
+
+  // Auto-scroll the hero slider every 3s, looping continuously.
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <main className="flex-1 bg-white text-neutral-900">
 
-      {/* 1. HERO SECTION: Exact Text from home.md */}
+      {/* 1. HERO SECTION: image slider (3 slides) with overlay copy + prev/next controls */}
       <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-neutral-950 text-white border-b border-zinc-800 py-20 lg:py-28">
-        <div className="absolute inset-0 opacity-40">
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/85 to-transparent z-10"></div>
-          <div 
-            className="w-full h-full bg-cover bg-center" 
-            style={{ backgroundImage: `url('/images/hero_command_center.jpg')` }}
-          ></div>
+
+        {/* Slide backgrounds (crossfade, shown at full brightness) */}
+        <div className="absolute inset-0">
+          {heroSlides.map((s, idx) => (
+            <div
+              key={s.id}
+              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] ease-in-out ${idx === activeSlide ? 'opacity-100' : 'opacity-0'}`}
+              style={{ backgroundImage: `url('${s.image}')` }}
+              aria-hidden="true"
+            ></div>
+          ))}
         </div>
 
         <div className="relative z-20 max-w-[1280px] mx-auto px-6 w-full grid grid-cols-12 gap-8 items-center">
           <div className="col-span-12 lg:col-span-8 flex flex-col items-start space-y-6">
-            
+
             <div className="flex items-center gap-3">
               <span className="w-12 h-[2px] bg-red-600"></span>
-              <span className="font-bold text-xs text-red-500 tracking-[0.2em] uppercase">
-                NFORCEONE – SCALE AT SPEED
+              <span className="font-bold text-xs text-red-500 tracking-[0.2em] uppercase drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                {slide.eyebrow}
               </span>
             </div>
 
-            {/* Title from home.md */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.1] max-w-4xl">
-              Transforming Technology with <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-400 to-white/70">Lightning Speed</span> and Exceptional Quality
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.1] max-w-4xl drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">
+              {slide.titleLead}{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-400 to-white/70">{slide.titleHighlight}</span>{' '}
+              {slide.titleTail}
             </h1>
 
-            {/* Subtitle from home.md */}
-            <p className="text-zinc-300 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl">
-              We're on a mission to revolutionize businesses through transformative technology solutions.
+            <p className="text-zinc-100 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]">
+              {slide.subtitle}
             </p>
 
-            {/* CTAs from home.md */}
             <div className="pt-2 flex flex-wrap gap-4">
-              <button 
-                onClick={() => { setCurrentTab('contact'); window.scrollTo(0, 0); }}
+              <button
+                onClick={() => { setCurrentTab(slide.primaryCta.tab); window.scrollTo(0, 0); }}
                 className="group relative px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-widest rounded shadow-[0_10px_20px_rgba(175,16,26,0.3)] transition-all hover:-translate-y-1"
               >
-                Schedule a Free Consultation
+                {slide.primaryCta.label}
               </button>
 
-              <button 
-                onClick={() => { setCurrentTab('services'); window.scrollTo(0, 0); }}
+              <button
+                onClick={() => { setCurrentTab(slide.secondaryCta.tab); window.scrollTo(0, 0); }}
                 className="px-8 py-4 border-2 border-zinc-400 text-zinc-200 hover:bg-white hover:text-black font-bold text-xs uppercase tracking-widest rounded transition-all"
               >
-                Explore Services
+                {slide.secondaryCta.label}
               </button>
             </div>
 
           </div>
         </div>
 
-        <div className="absolute right-10 bottom-12 hidden lg:block z-20">
-          <span className="[writing-mode:vertical-rl] font-bold text-xs text-zinc-600 tracking-[0.5em] uppercase">
+        <div className="absolute right-6 top-20 hidden lg:flex z-20 px-2 py-4 bg-black/55 backdrop-blur-sm rounded">
+          <span className="[writing-mode:vertical-rl] font-bold text-xs text-white tracking-[0.5em] uppercase">
             NFORCEONE / GLOBAL OPERATIONS
           </span>
+        </div>
+
+        {/* Slider controls: prev/next + dot indicators */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-between px-4 sm:px-10">
+          <button
+            onClick={() => goToSlide(activeSlide - 1)}
+            aria-label="Previous slide"
+            className="flex items-center gap-2 px-4 sm:px-5 py-4 text-xs font-bold uppercase tracking-widest text-zinc-100 hover:text-white transition-colors drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
+          >
+            <span aria-hidden="true">&#8592;</span>
+            <span className="hidden sm:inline">Previous</span>
+          </button>
+
+          <div className="flex items-center gap-2 pb-4">
+            {heroSlides.map((s, idx) => (
+              <button
+                key={s.id}
+                onClick={() => goToSlide(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                className={`h-1.5 rounded-full transition-all shadow-[0_1px_4px_rgba(0,0,0,0.9)] ${idx === activeSlide ? 'w-8 bg-red-600' : 'w-1.5 bg-white/70 hover:bg-white'}`}
+              ></button>
+            ))}
+          </div>
+
+          <button
+            onClick={() => goToSlide(activeSlide + 1)}
+            aria-label="Next slide"
+            className="flex items-center gap-2 px-4 sm:px-5 py-4 text-xs font-bold uppercase tracking-widest text-zinc-100 hover:text-white transition-colors drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
+          >
+            <span className="hidden sm:inline">Next</span>
+            <span aria-hidden="true">&#8594;</span>
+          </button>
         </div>
       </section>
 
