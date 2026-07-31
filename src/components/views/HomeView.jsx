@@ -32,56 +32,64 @@ const homeCoreSolutions = [
     title: 'Quality Engineering',
     summary: 'Comprehensive manual, automated, functional, regression, mobile, API, and cloud testing to ensure software reliability and defect-free delivery.',
     icon: ShieldCheck,
-    tag: 'QA & AUTOMATION'
+    tag: 'QA & AUTOMATION',
+    image: '/images/qa_dashboard.jpg'
   },
   {
     id: 'software-development',
     title: 'Software Development',
     summary: 'Custom web, mobile, microservices, and enterprise application development tailored to your business roadmap.',
     icon: Code,
-    tag: 'ENGINEERING'
+    tag: 'ENGINEERING',
+    image: '/images/innovative_technology.jpg'
   },
   {
     id: 'artificial-intelligence',
     title: 'Artificial Intelligence',
     summary: 'Generative AI, LLM integration, conversational chatbots, computer vision, and predictive analytics to drive intelligent automation.',
     icon: Bot,
-    tag: 'EMERGING TECH'
+    tag: 'EMERGING TECH',
+    image: '/images/ai_innovation.jpg'
   },
   {
     id: 'pega-development',
     title: 'Pega Development',
     summary: 'Enterprise BPM and CRM automation with certified Pega architects to streamline complex business workflows.',
     icon: Workflow,
-    tag: 'ENTERPRISE BPM'
+    tag: 'ENTERPRISE BPM',
+    image: '/images/pega_automation.jpg'
   },
   {
     id: 'pega-testing',
     title: 'Pega Testing',
     summary: 'End-to-end functional, performance, and regression testing for Pega applications using industry best practices.',
     icon: CheckCircle2,
-    tag: 'PEGA QA'
+    tag: 'PEGA QA',
+    image: '/images/team_collaboration.jpg'
   },
   {
     id: 'devops',
     title: 'DevOps & Cloud Infrastructure',
     summary: 'Automation, CI/CD pipelines, containerization, IaC, and security compliance across AWS, Azure, and GCP.',
     icon: Terminal,
-    tag: 'CLOUD & DEVOPS'
+    tag: 'CLOUD & DEVOPS',
+    image: '/images/cloud_devops.jpg'
   },
   {
     id: 'database-management',
     title: 'Database Management',
     summary: 'Database architecture, migration, performance tuning, and 24/7 administration for high-availability systems.',
     icon: Database,
-    tag: 'DATA INFRASTRUCTURE'
+    tag: 'DATA INFRASTRUCTURE',
+    image: '/images/scalability.jpg'
   },
   {
     id: 'data-analytics',
     title: 'Data Analytics',
     summary: 'Advanced data pipelines, business intelligence dashboards, and big data engineering for actionable insights.',
     icon: BarChart3,
-    tag: 'ANALYTICS'
+    tag: 'ANALYTICS',
+    image: '/images/cost_effectiveness.jpg'
   }
 ];
 
