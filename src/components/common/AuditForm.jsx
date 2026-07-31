@@ -44,59 +44,59 @@ export default function AuditForm() {
     <form onSubmit={handleFormSubmit} className="space-y-5">
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-xs font-bold text-neutral-700 mb-1.5">First Name *</label>
+          <label className="block text-xs font-bold text-zinc-300 mb-1.5">First Name *</label>
           <input 
             type="text" 
             required 
             placeholder="John"
             value={formData.firstName}
             onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-red-600"
+            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
           />
         </div>
         <div>
-          <label className="block text-xs font-bold text-neutral-700 mb-1.5">Last Name *</label>
+          <label className="block text-xs font-bold text-zinc-300 mb-1.5">Last Name *</label>
           <input 
             type="text" 
             required 
             placeholder="Doe"
             value={formData.lastName}
             onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-red-600"
+            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
           />
         </div>
       </div>
 
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-xs font-bold text-neutral-700 mb-1.5">Company Email *</label>
+          <label className="block text-xs font-bold text-zinc-300 mb-1.5">Company Email *</label>
           <input 
             type="email" 
             required 
             placeholder="john@company.com"
             value={formData.email}
             onChange={(e) => setFormData({...formData, email: e.target.value})}
-            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-red-600"
+            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
           />
         </div>
         <div>
-          <label className="block text-xs font-bold text-neutral-700 mb-1.5">Phone Number</label>
+          <label className="block text-xs font-bold text-zinc-300 mb-1.5">Phone Number</label>
           <input 
             type="tel" 
             placeholder="+1 (555) 000-0000"
             value={formData.phone}
             onChange={(e) => setFormData({...formData, phone: e.target.value})}
-            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-red-600"
+            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-xs font-bold text-neutral-700 mb-1.5">Primary Service Needed</label>
+        <label className="block text-xs font-bold text-zinc-300 mb-1.5">Primary Service Needed</label>
         <select 
           value={formData.service}
           onChange={(e) => setFormData({...formData, service: e.target.value})}
-          className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-red-600"
+          className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
         >
           <option value="Quality Assurance">Quality Assurance & Test Automation</option>
           <option value="Custom Software">Custom Software Engineering</option>
@@ -108,14 +108,14 @@ export default function AuditForm() {
       </div>
 
       <div>
-        <label className="block text-xs font-bold text-neutral-700 mb-1.5">Project Details / Requirements *</label>
+        <label className="block text-xs font-bold text-zinc-300 mb-1.5">Project Details / Requirements *</label>
         <textarea 
           required 
           rows={4}
           placeholder="Tell us about your project, current tech stack, or QA challenges..."
           value={formData.message}
           onChange={(e) => setFormData({...formData, message: e.target.value})}
-          className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-red-600 resize-none"
+          className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600 resize-none"
         ></textarea>
       </div>
 

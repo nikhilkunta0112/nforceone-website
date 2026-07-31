@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
-const AUTO_PLAY_DURATION = 5000;
+const AUTO_PLAY_DURATION = 2000;
 
 function cn(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -12,8 +12,15 @@ export default function CoreSolutionsCarousel({ items, onSelect }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
+  // Refs mirror the latest state so the autoplay interval (which is not
+  // recreated on every slide change) never acts on a stale closure.
+  const activeRef = useRef(active);
+  const isTransitioningRef = useRef(isTransitioning);
+  useEffect(() => { activeRef.current = active; }, [active]);
+  useEffect(() => { isTransitioningRef.current = isTransitioning; }, [isTransitioning]);
+
   const handleChange = (index) => {
-    if (index === active || isTransitioning) return;
+    if (index === activeRef.current || isTransitioningRef.current) return;
     setIsTransitioning(true);
     setTimeout(() => {
       setActive(index);
@@ -21,17 +28,17 @@ export default function CoreSolutionsCarousel({ items, onSelect }) {
     }, 300);
   };
 
-  const handlePrev = () => handleChange(active === 0 ? items.length - 1 : active - 1);
-  const handleNext = () => handleChange(active === items.length - 1 ? 0 : active + 1);
+  const handlePrev = () => handleChange(activeRef.current === 0 ? items.length - 1 : activeRef.current - 1);
+  const handleNext = () => handleChange(activeRef.current === items.length - 1 ? 0 : activeRef.current + 1);
 
-  // Restarts the 5s window every time the active slide (or pause state) changes,
-  // so autoplay always waits a full interval after the last manual interaction.
+  // Interval is created once per pause/length change (not per slide), ticking
+  // steadily every AUTO_PLAY_DURATION; refs above keep handleNext non-stale.
   useEffect(() => {
     if (isPaused) return undefined;
     const interval = setInterval(handleNext, AUTO_PLAY_DURATION);
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active, isPaused, items.length]);
+  }, [isPaused, items.length]);
 
   const current = items[active];
   const CurrentIcon = current.icon;
@@ -92,8 +99,8 @@ export default function CoreSolutionsCarousel({ items, onSelect }) {
             </div>
           </div>
 
-          {/* Image card - small square, crossfades with the active solution */}
-          <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden border border-neutral-200 bg-neutral-100 shadow-sm shrink-0">
+          {/* Image card - large landscape, crossfades with the active solution */}
+          <div className="relative w-full sm:w-72 md:w-96 aspect-[3/2] rounded-2xl overflow-hidden border border-neutral-200 bg-neutral-100 shadow-sm shrink-0">
             {items.map((item, index) => (
               <img
                 key={item.id ?? index}

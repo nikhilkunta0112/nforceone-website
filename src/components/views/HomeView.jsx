@@ -41,7 +41,7 @@ const homeCoreSolutions = [
     summary: 'Custom web, mobile, microservices, and enterprise application development tailored to your business roadmap.',
     icon: Code,
     tag: 'ENGINEERING',
-    image: '/images/innovative_technology.jpg'
+    image: '/images/SoftwareDevelopment.png'
   },
   {
     id: 'artificial-intelligence',
@@ -81,7 +81,7 @@ const homeCoreSolutions = [
     summary: 'Database architecture, migration, performance tuning, and 24/7 administration for high-availability systems.',
     icon: Database,
     tag: 'DATA INFRASTRUCTURE',
-    image: '/images/scalability.jpg'
+    image: '/images/databasemanagement.png'
   },
   {
     id: 'data-analytics',
@@ -89,7 +89,7 @@ const homeCoreSolutions = [
     summary: 'Advanced data pipelines, business intelligence dashboards, and big data engineering for actionable insights.',
     icon: BarChart3,
     tag: 'ANALYTICS',
-    image: '/images/cost_effectiveness.jpg'
+    image: '/images/DataAnalytics.png'
   }
 ];
 
@@ -98,7 +98,6 @@ const homeCoreSolutions = [
 const heroSlides = [
   {
     id: 'scale-at-speed',
-    eyebrow: 'NFORCEONE – SCALE AT SPEED',
     titleLead: 'Transforming Technology with',
     titleHighlight: 'Lightning Speed',
     titleTail: 'and Exceptional Quality',
@@ -109,7 +108,6 @@ const heroSlides = [
   },
   {
     id: 'quality-engineering',
-    eyebrow: 'NFORCEONE – QUALITY ENGINEERING',
     titleLead: 'Engineering',
     titleHighlight: 'Defect-Free Software',
     titleTail: 'at Enterprise Scale',
@@ -120,7 +118,6 @@ const heroSlides = [
   },
   {
     id: 'ai-cloud-data',
-    eyebrow: 'NFORCEONE – AI, CLOUD & DATA',
     titleLead: 'Powering Innovation with',
     titleHighlight: 'AI, Cloud & Data',
     titleTail: 'Engineering',
@@ -159,7 +156,7 @@ const valuePillars = [
     title: 'Scalability',
     description: 'Our solutions are scalable and can grow with your business, ensuring that you get the most value out of your investment.',
     icon: Layers,
-    image: '/images/scalability.jpg'
+    image: '/images/Scalability.png'
   }
 ];
 
@@ -219,19 +216,23 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
           ))}
         </div>
 
+        {/* Scrim: darkens the text/controls zones regardless of the underlying photo,
+            so copy stays legible even over light or busy imagery. */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background:
+              'linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.05) 85%), linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 30%)',
+          }}
+          aria-hidden="true"
+        ></div>
+
         <div className="relative z-20 max-w-[1280px] mx-auto px-6 w-full grid grid-cols-12 gap-8 items-center">
           <div className="col-span-12 lg:col-span-8 flex flex-col items-start space-y-6">
 
-            <div className="flex items-center gap-3">
-              <span className="w-12 h-[2px] bg-red-600"></span>
-              <span className="font-bold text-xs text-red-500 tracking-[0.2em] uppercase drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
-                {slide.eyebrow}
-              </span>
-            </div>
-
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.1] max-w-4xl drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">
               {slide.titleLead}{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-400 to-white/70">{slide.titleHighlight}</span>{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-400 to-white drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">{slide.titleHighlight}</span>{' '}
               {slide.titleTail}
             </h1>
 
