@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -24,107 +25,107 @@ import { industriesList } from '../../data/industriesData';
 import AuditForm from '../common/AuditForm';
 import ServicesCarousel from '../common/ServicesCarousel';
 import CoreSolutionsCarousel from '../common/CoreSolutionsCarousel';
-
-// Core Solutions from home.md
+import CaseStudiesSection from '../common/CaseStudiesSection';
+import ServicesTileGrid from '../common/ServicesTileGrid';
+// Industry Solutions for Carousel
 const homeCoreSolutions = [
   {
-    id: 'quality-engineering',
-    title: 'Quality Engineering',
-    summary: 'Comprehensive manual, automated, functional, regression, mobile, API, and cloud testing to ensure software reliability and defect-free delivery.',
+    id: 'fintech',
+    title: 'Banking, Finance & FinTech',
+    summary: 'In today’s digital-first economy, the banking and financial services sector must deliver seamless customer experiences, ensure robust security, and adapt to evolving regulations. NForceOne supports banks, fintechs, and financial institutions with intelligent, compliant, and scalable technology solutions.',
     icon: ShieldCheck,
-    tag: 'QA & AUTOMATION',
-    image: '/images/qa_dashboard.jpg'
+    tag: 'FINANCIAL SERVICES',
+    image: '/images/indian_bank.jpg'
   },
   {
-    id: 'software-development',
-    title: 'Software Development',
-    summary: 'Custom web, mobile, microservices, and enterprise application development tailored to your business roadmap.',
+    id: 'healthcare',
+    title: 'Healthcare & Telemedicine',
+    summary: 'HIPAA-compliant software development, medical IoT testing, EHR integration, and telehealth app engineering for modern healthcare providers. We ensure your healthcare applications are fully secure and compliant.',
     icon: Code,
-    tag: 'ENGINEERING',
-    image: '/images/SoftwareDevelopment.png'
+    tag: 'HEALTHCARE QA',
+    image: '/images/indian_hospital.jpg'
   },
   {
-    id: 'artificial-intelligence',
-    title: 'Artificial Intelligence',
-    summary: 'Generative AI, LLM integration, conversational chatbots, computer vision, and predictive analytics to drive intelligent automation.',
+    id: 'isv',
+    title: 'ISV & SaaS Software Vendors',
+    summary: 'Helping software vendors build scalable, secure, and high-performing applications through modern DevOps, testing, and AI integrations. We act as an engineering accelerator to scale your SaaS products.',
     icon: Bot,
-    tag: 'EMERGING TECH',
-    image: '/images/ai_innovation.jpg'
+    tag: 'PRODUCT ENGINEERING',
+    image: '/images/indian_saas_office.jpg'
   },
   {
-    id: 'pega-development',
-    title: 'Pega Development',
-    summary: 'Enterprise BPM and CRM automation with certified Pega architects to streamline complex business workflows.',
+    id: 'retail',
+    title: 'Retail & eCommerce',
+    summary: 'Supporting omni-channel retailers and digital-first brands with scalable, secure, and intelligent solutions that drive conversions and loyalty. From click to doorstep, we deliver frictionless commerce.',
     icon: Workflow,
-    tag: 'ENTERPRISE BPM',
-    image: '/images/pega_automation.jpg'
+    tag: 'COMMERCE SOLUTIONS',
+    image: '/images/indian_retail_store.jpg'
   },
   {
-    id: 'pega-testing',
-    title: 'Pega Testing',
-    summary: 'End-to-end functional, performance, and regression testing for Pega applications using industry best practices.',
+    id: 'telecom',
+    title: 'Telecommunications',
+    summary: 'Helping telecom providers modernize their infrastructure, automate customer service, and derive intelligence from network data — enhancing service reliability, reducing churn, and driving subscriber satisfaction.',
     icon: CheckCircle2,
-    tag: 'PEGA QA',
-    image: '/images/team_collaboration.jpg'
+    tag: 'TELECOM SOLUTIONS',
+    image: '/images/indian_telecom_infrastructure.jpg'
   },
   {
-    id: 'devops',
-    title: 'DevOps & Cloud Infrastructure',
-    summary: 'Automation, CI/CD pipelines, containerization, IaC, and security compliance across AWS, Azure, and GCP.',
+    id: 'automotive',
+    title: 'Automotive & Connected Mobility',
+    summary: 'Enabling automotive OEMs, suppliers, and mobility providers to embrace smart manufacturing, connected telematics, and digital twins, delivering exceptional vehicle software intelligence and safety.',
     icon: Terminal,
-    tag: 'CLOUD & DEVOPS',
-    image: '/images/cloud_devops.jpg'
+    tag: 'CONNECTED MOBILITY',
+    image: '/images/indian_automotive_factory.jpg'
   },
   {
-    id: 'database-management',
-    title: 'Database Management',
-    summary: 'Database architecture, migration, performance tuning, and 24/7 administration for high-availability systems.',
+    id: 'manufacturing',
+    title: 'Manufacturing',
+    summary: 'Modernizing IT systems, optimizing supply chains, and unlocking real-time Industry 4.0 shop floor visibility. We help manufacturing firms design industrial IoT monitoring and simulation models.',
     icon: Database,
-    tag: 'DATA INFRASTRUCTURE',
-    image: '/images/databasemanagement.png'
+    tag: 'SMART FACTORY',
+    image: '/images/indian_manufacturing_plant.jpg'
   },
   {
-    id: 'data-analytics',
-    title: 'Data Analytics',
-    summary: 'Advanced data pipelines, business intelligence dashboards, and big data engineering for actionable insights.',
+    id: 'energy-utilities',
+    title: 'Energy & Utilities',
+    summary: 'Modernizing utility grid reliability, sustainable energy trading, smart metering, and ESG carbon footprint tracking. We help utilities build intelligent forecasting and grid platforms.',
     icon: BarChart3,
-    tag: 'ANALYTICS',
-    image: '/images/DataAnalytics.png'
+    tag: 'SUSTAINABILITY GRID',
+    image: '/images/indian_solar_energy.jpg'
   }
 ];
 
-// Hero Slider: slide 1 copy is the existing home.md hero copy;
-// slides 2-3 summarize Quality Engineering/Software Development and AI/Cloud/Data solutions.
+// Hero Slider: Variations of TestingXperts hero section designed for Indian enterprises
 const heroSlides = [
   {
-    id: 'scale-at-speed',
-    titleLead: 'Transforming Technology with',
-    titleHighlight: 'Lightning Speed',
-    titleTail: 'and Exceptional Quality',
-    subtitle: "We're on a mission to revolutionize businesses through transformative technology solutions.",
-    image: '/images/hero_command_center.jpg',
-    primaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' },
-    secondaryCta: { label: 'Explore Services', tab: 'services' }
+    id: 'custom-software',
+    titleLead: 'Engineering High-Performance',
+    titleHighlight: 'Custom Software',
+    titleTail: 'for Modern Enterprises',
+    subtitle: 'We design, build, and deploy custom web, mobile, and cloud-native software solutions tailored to your unique workflows.',
+    image: '/images/indian_office_collaboration.jpg',
+    primaryCta: { label: 'Explore Our Services', tab: 'services' },
+    secondaryCta: { label: 'Schedule a Consultation', tab: 'contact' }
   },
   {
-    id: 'quality-engineering',
-    titleLead: 'Engineering',
-    titleHighlight: 'Defect-Free Software',
-    titleTail: 'at Enterprise Scale',
-    subtitle: 'Manual and automated QA, functional and regression testing, and custom web, mobile, and enterprise application development — built to ship reliably, fast.',
-    image: '/images/qa_dashboard.jpg',
+    id: 'ai-quality-engineering',
+    titleLead: 'AI-Led Quality Engineering for',
+    titleHighlight: 'Enterprise Confidence',
+    titleTail: 'at Scale',
+    subtitle: 'Quality is no longer a final checkpoint. We engineer continuous quality across systems, data pipelines, and automated workflows.',
+    image: '/images/indian_software_testing.jpg',
     primaryCta: { label: 'Explore Quality Engineering', tab: 'services' },
-    secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
+    secondaryCta: { label: 'Schedule a Consultation', tab: 'contact' }
   },
   {
-    id: 'ai-cloud-data',
-    titleLead: 'Powering Innovation with',
-    titleHighlight: 'AI, Cloud & Data',
-    titleTail: 'Engineering',
-    subtitle: 'Generative AI, LLM integration, DevOps automation, and secure cloud infrastructure across AWS, Azure, and GCP — engineered to scale with your business.',
-    image: '/images/cloud_devops.jpg',
-    primaryCta: { label: 'Explore AI & Cloud Solutions', tab: 'services' },
-    secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
+    id: 'certified-pega',
+    titleLead: 'Accelerating Workflows with',
+    titleHighlight: 'Certified Pega',
+    titleTail: 'Enterprise Systems',
+    subtitle: 'Streamline enterprise workflows with certified Pega architects, CRM integrations, and dedicated QA testing.',
+    image: '/images/indian_tech_team.jpg',
+    primaryCta: { label: 'Explore Pega Solutions', tab: 'services' },
+    secondaryCta: { label: 'Schedule a Consultation', tab: 'contact' }
   }
 ];
 
@@ -135,28 +136,28 @@ const valuePillars = [
     title: 'Cost-effectiveness',
     description: 'We offer affordable IT solutions that help you reduce costs and improve your bottom line.',
     icon: TrendingUp,
-    image: '/images/cost_effectiveness.jpg'
+    image: '/images/DataAnalytics.png'
   },
   {
     id: '02',
     title: 'Innovative Technology',
     description: 'We stay up-to-date with the latest technology trends and offer innovative solutions that help you stay ahead of the competition.',
     icon: Cpu,
-    image: '/images/innovative_technology.jpg'
+    image: '/images/SoftwareDevelopment.png'
   },
   {
     id: '03',
     title: 'Industry Expertise',
     description: 'We specialize in serving specific industries, such as healthcare, finance, telecom, or manufacturing, and offer tailored solutions that meet your unique needs.',
     icon: Award,
-    image: '/images/industry_expertise.jpg'
+    image: '/images/cloud_devops.jpg'
   },
   {
     id: '04',
     title: 'Scalability',
     description: 'Our solutions are scalable and can grow with your business, ensuring that you get the most value out of your investment.',
     icon: Layers,
-    image: '/images/Scalability.png'
+    image: '/images/databasemanagement.png'
   }
 ];
 
@@ -182,9 +183,125 @@ const customerReviews = [
   }
 ];
 
+
+// Lightweight, high-performance canvas background rendering horizontal speed trails (matching the streaks in NForceOne logo, adapted for light mode)
+function NForceLogoBackground() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let animationFrameId;
+
+    const resizeCanvas = () => {
+      if (!canvas || !canvas.parentElement) return;
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+    };
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Speed trails definition (matching the horizontal red streaks in the logo)
+    const trails = [];
+    const count = 30;
+
+    for (let i = 0; i < count; i++) {
+      trails.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        length: Math.random() * 200 + 80,
+        speed: Math.random() * 2.2 + 0.8,
+        thickness: Math.random() * 2.0 + 0.8,
+        alpha: Math.random() * 0.40 + 0.15,
+        color: Math.random() > 0.4 ? 'rgba(230, 0, 0, ' : 'rgba(63, 63, 70, '
+      });
+    }
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < count; i++) {
+        const t = trails[i];
+        
+        ctx.beginPath();
+        ctx.moveTo(t.x, t.y);
+        ctx.lineTo(t.x + t.length, t.y);
+        ctx.strokeStyle = `${t.color}${t.alpha})`;
+        ctx.lineWidth = t.thickness;
+        ctx.stroke();
+
+        t.x += t.speed;
+
+        if (t.x > canvas.width) {
+          t.x = -t.length;
+          t.y = Math.random() * canvas.height;
+          t.speed = Math.random() * 2.2 + 0.8;
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full pointer-events-none opacity-90 z-0"
+    />
+  );
+}
+
+// Modern, high-end visual showcase rendering plain localized images in a frame inspired by the reference design, adapted for light cream backgrounds
+function HeroVisualShowcase({ activeSlide }) {
+  const images = [
+    '/images/indian_office_collaboration.jpg',
+    '/images/indian_software_testing.jpg',
+    '/images/indian_tech_team.jpg'
+  ];
+
+  return (
+    <div className="relative w-full aspect-[4/3] sm:aspect-[16/12] max-w-[500px] mx-auto select-none group">
+      {/* Brand Red Glow behind the frame */}
+      <div className="absolute -inset-6 bg-red-600/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+
+      {/* Reference Image Style Frame: Large Outer Container with Translucent Border and Padding (Light Mode optimized) */}
+      <div className="relative w-full h-full p-6 sm:p-8 rounded-[2.5rem] border border-black/[0.05] bg-black/[0.01] backdrop-blur-xl shadow-2xl flex flex-col justify-stretch transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-red-600/10 hover:bg-black/[0.02]">
+        
+        {/* Inner Image Container */}
+        <div className="relative w-full h-full rounded-2xl overflow-hidden border border-black/[0.08] bg-white flex items-stretch shadow-md">
+          <AnimatePresence>
+            <motion.div
+              key={activeSlide}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <img
+                src={images[activeSlide]}
+                alt="NForceOne Showcase"
+                className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-103"
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Subtle reflection overlay */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.1] to-transparent pointer-events-none mix-blend-overlay z-10" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function HomeView({ setCurrentTab, navigateToService, navigateToIndustry }) {
-  const [activeIndustryTab, setActiveIndustryTab] = useState('fintech');
-  const indData = industriesList.find(i => i.id === activeIndustryTab) || industriesList[0];
 
   const [activeSlide, setActiveSlide] = useState(0);
   const slide = heroSlides[activeSlide];
@@ -201,76 +318,69 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
   return (
     <main className="flex-1 bg-white text-neutral-900">
 
-      {/* 1. HERO SECTION: image slider (3 slides) with overlay copy + prev/next controls */}
-      <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-neutral-950 text-white border-b border-zinc-800 py-20 lg:py-28">
+      {/* 1. HERO SECTION: split layout with left copy + right interactive visual showcase */}
+      <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-[#F4EFE6] text-neutral-900 border-b border-neutral-200/60 py-20 lg:py-24">
+        
+        {/* Background Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293703_1px,transparent_1px),linear-gradient(to_bottom,#1f293703_1px,transparent_1px)] bg-[size:4rem_4rem] z-10" />
+        
+        {/* Customized NForce logo-matching speed trails background animation (running safely in background layer) */}
+        <NForceLogoBackground />
 
-        {/* Slide backgrounds (crossfade, shown at full brightness) */}
-        <div className="absolute inset-0">
-          {heroSlides.map((s, idx) => (
-            <div
-              key={s.id}
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] ease-in-out ${idx === activeSlide ? 'opacity-100' : 'opacity-0'}`}
-              style={{ backgroundImage: `url('${s.image}')` }}
-              aria-hidden="true"
-            ></div>
-          ))}
+        {/* Ambient Brand Red Glows */}
+        <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+          <div className="absolute right-0 top-1/4 w-[500px] h-[500px] bg-red-600/[0.03] rounded-full blur-[130px] hidden lg:block" />
+          <div className="absolute left-[-10%] top-[-10%] w-[400px] h-[400px] bg-red-600/[0.015] rounded-full blur-[110px]" />
         </div>
 
-        {/* Scrim: darkens the text/controls zones regardless of the underlying photo,
-            so copy stays legible even over light or busy imagery. */}
-        <div
-          className="absolute inset-0 z-10"
-          style={{
-            background:
-              'linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.05) 85%), linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 30%)',
-          }}
-          aria-hidden="true"
-        ></div>
+        <div className="relative z-20 max-w-[1280px] mx-auto px-6 w-full grid grid-cols-12 gap-12 items-center">
+          
+          {/* Left Column: Headline, Subtitle, and CTAs (text/header part kept as is) */}
+          <div className="col-span-12 lg:col-span-7 flex flex-col items-start justify-center space-y-6 min-h-[320px] lg:min-h-[380px]">
 
-        <div className="relative z-20 max-w-[1280px] mx-auto px-6 w-full grid grid-cols-12 gap-8 items-center">
-          <div className="col-span-12 lg:col-span-8 flex flex-col items-start space-y-6">
-
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.1] max-w-4xl drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">
+            <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-black tracking-tight text-neutral-900 leading-[1.1] max-w-4xl">
               {slide.titleLead}{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-400 to-white drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">{slide.titleHighlight}</span>{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-red-500 to-neutral-800">{slide.titleHighlight}</span>{' '}
               {slide.titleTail}
             </h1>
 
-            <p className="text-zinc-100 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]">
+            <p className="text-neutral-600 text-base font-normal leading-relaxed max-w-2xl">
               {slide.subtitle}
             </p>
 
             <div className="pt-2 flex flex-wrap gap-4">
               <button
                 onClick={() => { setCurrentTab(slide.primaryCta.tab); window.scrollTo(0, 0); }}
-                className="group relative px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-widest rounded shadow-[0_10px_20px_rgba(175,16,26,0.3)] transition-all hover:-translate-y-1"
+                className="group relative px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-widest rounded-full shadow-[0_8px_30px_rgba(230,0,0,0.18)] transition-all hover:-translate-y-1 active:scale-95"
               >
                 {slide.primaryCta.label}
               </button>
 
               <button
                 onClick={() => { setCurrentTab(slide.secondaryCta.tab); window.scrollTo(0, 0); }}
-                className="px-8 py-4 border-2 border-zinc-400 text-zinc-200 hover:bg-white hover:text-black font-bold text-xs uppercase tracking-widest rounded transition-all"
+                className="px-8 py-4 border border-neutral-300 text-neutral-800 hover:bg-neutral-900 hover:text-white font-bold text-xs uppercase tracking-widest rounded-full transition-all hover:-translate-y-1 active:scale-95 bg-white/40"
               >
                 {slide.secondaryCta.label}
               </button>
             </div>
 
           </div>
+
+          {/* Right Column: Redesigned Images/Dashboard Showcase */}
+          <div className="col-span-12 lg:col-span-5 w-full relative z-30 flex items-center justify-center">
+            <HeroVisualShowcase activeSlide={activeSlide} />
+          </div>
+
         </div>
 
-        <div className="absolute right-6 top-20 hidden lg:flex z-20 px-2 py-4 bg-black/55 backdrop-blur-sm rounded">
-          <span className="[writing-mode:vertical-rl] font-bold text-xs text-white tracking-[0.5em] uppercase">
-            NFORCEONE / GLOBAL OPERATIONS
-          </span>
-        </div>
+
 
         {/* Slider controls: prev/next + dot indicators */}
         <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-between px-4 sm:px-10">
           <button
             onClick={() => goToSlide(activeSlide - 1)}
             aria-label="Previous slide"
-            className="flex items-center gap-2 px-4 sm:px-5 py-4 text-xs font-bold uppercase tracking-widest text-zinc-100 hover:text-white transition-colors drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
+            className="flex items-center gap-2 px-4 sm:px-5 py-4 text-xs font-bold uppercase tracking-widest text-neutral-500 hover:text-neutral-900 transition-colors"
           >
             <span aria-hidden="true">&#8592;</span>
             <span className="hidden sm:inline">Previous</span>
@@ -282,7 +392,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
                 key={s.id}
                 onClick={() => goToSlide(idx)}
                 aria-label={`Go to slide ${idx + 1}`}
-                className={`h-1.5 rounded-full transition-all shadow-[0_1px_4px_rgba(0,0,0,0.9)] ${idx === activeSlide ? 'w-8 bg-red-600' : 'w-1.5 bg-white/70 hover:bg-white'}`}
+                className={`h-1.5 rounded-full transition-all shadow-sm ${idx === activeSlide ? 'w-8 bg-red-600' : 'w-1.5 bg-neutral-300 hover:bg-neutral-600'}`}
               ></button>
             ))}
           </div>
@@ -290,7 +400,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
           <button
             onClick={() => goToSlide(activeSlide + 1)}
             aria-label="Next slide"
-            className="flex items-center gap-2 px-4 sm:px-5 py-4 text-xs font-bold uppercase tracking-widest text-zinc-100 hover:text-white transition-colors drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
+            className="flex items-center gap-2 px-4 sm:px-5 py-4 text-xs font-bold uppercase tracking-widest text-neutral-500 hover:text-neutral-900 transition-colors"
           >
             <span className="hidden sm:inline">Next</span>
             <span aria-hidden="true">&#8594;</span>
@@ -299,7 +409,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
       </section>
 
       {/* 2. METRIC BAR: Impact & Proven Enterprise Numbers from home.md */}
-      <section className="bg-red-700 py-12 text-white border-b border-red-800">
+      <section className="bg-red-700 pt-12 pb-6 text-white border-b border-red-800">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             
@@ -335,144 +445,51 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
       />
 
       {/* 5. CORE SOLUTIONS: Asymmetric Bento Grid (from home.md) */}
-      <section className="py-24 bg-neutral-50 border-b border-neutral-200">
-        <div className="max-w-[1280px] mx-auto px-6 space-y-12">
+      <section className="pt-12 pb-24 bg-[#DACAA4] border-b border-black/[0.04] relative overflow-hidden">
+        {/* Subtle full-width background blueprint grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000003_1px,transparent_1px),linear-gradient(to_bottom,#00000003_1px,transparent_1px)] bg-[size:30px_30px]" />
+        
+        <div className="max-w-[1280px] mx-auto px-6 space-y-10 relative z-10">
           
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
             <div>
-              <span className="text-xs font-bold text-red-600 uppercase tracking-[0.2em]">HOW WE DO</span>
+              <span className="block text-xs font-bold text-neutral-500 tracking-[0.2em] uppercase">
+                INDUSTRIES WE SERVE
+              </span>
               <h2 className="text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight mt-2">
-                Core Solutions
+                Industry Solutions
               </h2>
             </div>
             <button 
-              onClick={() => { setCurrentTab('services'); window.scrollTo(0, 0); }}
-              className="text-xs font-bold text-neutral-800 border-b-2 border-red-600 pb-1 hover:text-red-600 transition-colors uppercase tracking-wider flex items-center gap-1"
+              onClick={() => { setCurrentTab('industries'); window.scrollTo(0, 0); }}
+              className="text-xs font-bold text-neutral-800 border-b border-neutral-400 pb-1 hover:text-red-700 hover:border-red-700 transition-colors uppercase tracking-wider flex items-center gap-1.5 focus-visible:outline-none"
             >
-              <span>VIEW ALL SOLUTIONS</span>
-              <ChevronRight className="w-4 h-4 text-red-600" />
+              <span>VIEW ALL INDUSTRIES</span>
+              <svg width="12" height="12" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5">
+                <path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path>
+              </svg>
             </button>
           </div>
 
           <CoreSolutionsCarousel
             items={homeCoreSolutions}
-            onSelect={() => { setCurrentTab('services'); window.scrollTo(0, 0); }}
+            onSelect={(id) => {
+              const indData = industriesList.find(i => i.id === id);
+              if (indData) navigateToIndustry(indData);
+            }}
           />
 
         </div>
       </section>
 
       {/* 6. FEATURED CASE STUDY & CLIENT ROI: from home.md */}
-      <section className="py-24 bg-white border-b border-neutral-200">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="bg-neutral-950 text-white rounded-2xl p-10 border border-zinc-800 grid md:grid-cols-12 gap-8 items-center shadow-xl">
-            <div className="md:col-span-7 space-y-4">
-              <span className="text-xs font-bold text-red-500 uppercase tracking-[0.2em]">FEATURED CASE STUDY & CLIENT ROI</span>
-              <h3 className="text-2xl lg:text-3xl font-extrabold text-white">Leading Healthcare & Telehealth Provider</h3>
-              
-              <div className="space-y-3 text-sm text-zinc-300">
-                <p><strong className="text-red-400">Challenge:</strong> Legacy manual testing bottlenecks delaying bi-weekly feature rollouts and causing regression defects.</p>
-                <p><strong className="text-red-400">NForceOne Solution:</strong> Implemented automated CI/CD test pipelines using Playwright and containerized staging environments.</p>
-              </div>
+      <CaseStudiesSection />
 
-              <div className="pt-2 flex items-center gap-6">
-                <div>
-                  <div className="text-3xl font-black text-red-500">68%</div>
-                  <div className="text-xs text-zinc-400">Faster Release Cycles</div>
-                </div>
-                <div className="border-l border-zinc-800 pl-6">
-                  <div className="text-3xl font-black text-white">0</div>
-                  <div className="text-xs text-zinc-400">P1 Production Defects Across 12 Sprints</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="md:col-span-5 rounded-xl overflow-hidden border border-zinc-800">
-              <img 
-                src="/images/hero_command_center.jpg" 
-                alt="Case Study Healthcare QA" 
-                className="w-full h-64 object-cover" 
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. INDUSTRIES WE SERVE: Powering Innovation Across Every Industry (from home.md) */}
-      <section className="py-24 bg-neutral-50 border-b border-neutral-200">
-        <div className="max-w-[1280px] mx-auto px-6 space-y-12">
-          
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-            <div>
-              <div className="text-xs font-bold text-red-600 uppercase tracking-[0.2em]">INDUSTRIES WE SERVE</div>
-              <h2 className="text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight mt-2">
-                Powering Innovation Across Every Industry
-              </h2>
-              <p className="text-neutral-600 text-sm max-w-2xl mt-2">
-                Our IT services empower organizations—startups, enterprises, and government bodies—to modernize infrastructure, enhance digital resilience, and scale innovation with confidence.
-              </p>
-            </div>
-            <button 
-              onClick={() => { setCurrentTab('industries'); window.scrollTo(0, 0); }}
-              className="text-xs font-bold text-neutral-800 border-b-2 border-red-600 pb-1 hover:text-red-600 transition-colors uppercase tracking-wider"
-            >
-              VIEW ALL INDUSTRIES
-            </button>
-          </div>
-
-          <div className="flex flex-wrap gap-2 border-b border-neutral-200 pb-4">
-            {industriesList.map((ind) => (
-              <button
-                key={ind.id}
-                onClick={() => setActiveIndustryTab(ind.id)}
-                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-                  activeIndustryTab === ind.id 
-                    ? 'bg-red-600 text-white shadow-md' 
-                    : 'bg-white text-neutral-700 hover:text-red-600 border border-neutral-200 hover:bg-neutral-100'
-                }`}
-              >
-                {ind.name}
-              </button>
-            ))}
-          </div>
-
-          <div className="bg-white border border-neutral-200 rounded-xl p-8 shadow-sm grid md:grid-cols-12 gap-8 items-center">
-            <div className="md:col-span-7 space-y-4">
-              <span className="text-xs font-bold text-red-600 uppercase tracking-widest">Industry Highlight</span>
-              <h3 className="text-2xl font-bold text-neutral-900">{indData.name}</h3>
-              <p className="text-neutral-600 text-sm leading-relaxed">{indData.summary}</p>
-              
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                {(indData.solutions || []).map((h, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-xs font-semibold text-neutral-800">
-                    <CheckCircle2 className="w-4 h-4 text-red-600 shrink-0" />
-                    <span>{h}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-4">
-                <button 
-                  onClick={() => navigateToIndustry(indData)}
-                  className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-widest px-6 py-3 rounded flex items-center gap-2 transition-colors shadow-md"
-                >
-                  <span>Explore {indData.name} Solutions</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-
-            <div className="md:col-span-5 rounded-xl overflow-hidden border border-neutral-200 shadow-md">
-              <img 
-                src={indData.image} 
-                alt={indData.name} 
-                className="w-full h-72 object-cover" 
-              />
-            </div>
-          </div>
-
-        </div>
-      </section>
+      {/* 7. SERVICES WE OFFER: Transforming Software Quality & Digital Engineering (Accenture Tile Grid Layout) */}
+      <ServicesTileGrid 
+        navigateToService={navigateToService}
+        setCurrentTab={setCurrentTab}
+      />
 
       {/* 8. WHAT OUR CUSTOMERS SAY: Reviews from home.md */}
       <section className="py-24 bg-white border-b border-neutral-200">
