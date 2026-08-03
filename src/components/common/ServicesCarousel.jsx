@@ -1,180 +1,266 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, ArrowRight, Pause, Play } from 'lucide-react';
 
-const AUTO_PLAY_DURATION = 5000;
+const AUTO_PLAY_MS = 3000;
 
 function cn(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-// 1. Cost Effectiveness SVG: Isometric chart and saving indicators
-function CostEffectivenessSVG() {
+// Registration-mark corners shared by every illustration, tying them to one
+// blueprint/schematic system rather than four unrelated scenes.
+function FrameCorners({ stroke }) {
+  const s = 13;
   return (
-    <div className="w-full h-full bg-gradient-to-br from-neutral-50 to-[#FAF6F0] flex items-center justify-center p-8 select-none relative">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000004_1px,transparent_1px),linear-gradient(to_bottom,#00000004_1px,transparent_1px)] bg-[size:20px_20px]" />
-      <svg className="w-full h-full max-h-[220px]" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke={stroke} strokeWidth="1.5" fill="none" strokeLinecap="round">
+      <path d={`M12 ${12 + s} V12 H${12 + s}`} />
+      <path d={`M${300 - 12 - s} 12 H${300 - 12} V${12 + s}`} />
+      <path d={`M12 ${200 - 12 - s} V${200 - 12} H${12 + s}`} />
+      <path d={`M${300 - 12 - s} ${200 - 12} H${300 - 12} V${200 - 12 - s}`} />
+    </g>
+  );
+}
+
+function DiagramTag({ label, color }) {
+  return (
+    <text x="20" y="188" fontSize="8" fontFamily="ui-monospace, 'Space Mono', monospace" letterSpacing="0.15em" fill={color}>
+      {label}
+    </text>
+  );
+}
+
+// 1. Cost-effectiveness: a value-vs-cost crossing chart on an engineering grid.
+function CostEffectivenessSVG({ reducedMotion }) {
+  const bars = [
+    { x: 44, h: 28, tone: 0 },
+    { x: 84, h: 46, tone: 0 },
+    { x: 124, h: 34, tone: 0 },
+    { x: 164, h: 62, tone: 1 },
+    { x: 204, h: 50, tone: 1 },
+    { x: 244, h: 78, tone: 1 },
+  ];
+  return (
+    <div className="w-full h-full bg-gradient-to-br from-neutral-50 to-[#FAF6F0] flex items-center justify-center p-5 select-none relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:18px_18px]" />
+      <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-[#E60000]/10 blur-3xl" />
+      <svg className="w-full h-full" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <FrameCorners stroke="#00000022" />
+        <DiagramTag label="FIG.01 — COST/VALUE" color="#00000055" />
+
+        {bars.map((b, i) => (
+          <motion.rect
+            key={b.x}
+            x={b.x}
+            width="24"
+            rx="2"
+            fill={b.tone ? '#E60000' : '#3F3F46'}
+            fillOpacity={b.tone ? 0.16 : 0.12}
+            stroke={b.tone ? '#E60000' : '#3F3F46'}
+            strokeOpacity={b.tone ? 0.5 : 0.25}
+            strokeWidth="1"
+            initial={reducedMotion ? false : { height: 0, y: 168 }}
+            animate={{ height: b.h, y: 168 - b.h }}
+            transition={{ duration: 0.7, delay: reducedMotion ? 0 : i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+          />
+        ))}
+
+        <path d="M30 55 L270 150" stroke="#3F3F46" strokeOpacity="0.25" strokeWidth="1.5" strokeDasharray="4 4" />
+
         <motion.path
-          d="M 50 150 L 120 120 L 190 140 L 260 70"
+          d="M30 168 L90 128 L140 140 L190 88 L230 96 L270 40"
           stroke="#E60000"
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
-          initial={{ pathLength: 0 }}
+          className="drop-shadow-[0_2px_8px_rgba(230,0,0,0.35)]"
+          initial={reducedMotion ? false : { pathLength: 0 }}
           animate={{ pathLength: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="drop-shadow-[0_2px_8px_rgba(230,0,0,0.3)]"
+          transition={{ duration: 1.4, ease: 'easeOut' }}
         />
-        <line x1="50" y1="150" x2="50" y2="40" stroke="#000000" strokeOpacity="0.05" strokeDasharray="3 3" />
-        <line x1="120" y1="150" x2="120" y2="40" stroke="#000000" strokeOpacity="0.05" strokeDasharray="3 3" />
-        <line x1="190" y1="150" x2="190" y2="40" stroke="#000000" strokeOpacity="0.05" strokeDasharray="3 3" />
-        <line x1="260" y1="150" x2="260" y2="40" stroke="#000000" strokeOpacity="0.05" strokeDasharray="3 3" />
-        <motion.circle cx="50" cy="150" r="5" fill="#3F3F46" animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }} />
-        <motion.circle cx="120" cy="120" r="5" fill="#3F3F46" animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2, delay: 0.5 }} />
-        <motion.circle cx="190" cy="140" r="5" fill="#3F3F46" animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2, delay: 1 }} />
-        <motion.circle cx="260" cy="70" r="7" fill="#E60000" className="drop-shadow-[0_2px_6px_rgba(230,0,0,0.4)]" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 2, delay: 1.5 }} />
-        <rect x="35" y="155" width="30" height="5" rx="2" fill="#3F3F46" fillOpacity="0.2" />
-        <rect x="105" y="125" width="30" height="35" rx="2" fill="#3F3F46" fillOpacity="0.2" />
-        <rect x="175" y="145" width="30" height="15" rx="2" fill="#3F3F46" fillOpacity="0.2" />
-        <motion.rect 
-          x="245" 
-          y="75" 
-          width="30" 
-          height="85" 
-          rx="2" 
-          fill="#E60000" 
-          fillOpacity="0.1" 
-          stroke="#E60000"
-          strokeWidth="1.5"
-          initial={{ height: 0, y: 160 }}
-          animate={{ height: 85, y: 75 }}
-          transition={{ duration: 1, delay: 0.5 }}
+        {[[30, 168], [90, 128], [140, 140], [190, 88], [230, 96]].map(([x, y]) => (
+          <circle key={x} cx={x} cy={y} r="3.5" fill="#171717" />
+        ))}
+        <motion.circle
+          cx="270"
+          cy="40"
+          r="6"
+          fill="#E60000"
+          className="drop-shadow-[0_2px_6px_rgba(230,0,0,0.5)]"
+          animate={reducedMotion ? {} : { scale: [1, 1.25, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
         />
       </svg>
     </div>
   );
 }
 
-// 2. Innovative Technology SVG: Rotating orbits and quantum AI nodes
-function InnovativeTechSVG() {
+// 2. Innovative Technology: layered orbital core — the section's dark, high-drama beat.
+function InnovativeTechSVG({ reducedMotion }) {
+  const nodes = [
+    [150, 25], [223, 47], [255, 100], [223, 153],
+    [150, 175], [77, 153], [45, 100], [77, 47],
+  ];
+  const particles = [
+    [30, 20], [270, 30], [20, 170], [280, 165], [55, 65], [245, 135], [40, 120], [260, 55], [150, 15], [150, 185],
+  ];
   return (
-    <div className="w-full h-full bg-gradient-to-br from-neutral-900 to-[#0A0505] flex items-center justify-center p-8 select-none relative">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:25px_25px]" />
-      <svg className="w-full h-full max-h-[220px]" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <motion.circle 
-          cx="150" 
-          cy="100" 
-          r="25" 
-          fill="url(#coreGlow)" 
-          animate={{ r: [23, 27, 23], opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        />
+    <div className="w-full h-full bg-gradient-to-br from-neutral-900 via-[#140606] to-[#0A0505] flex items-center justify-center p-5 select-none relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:22px_22px]" />
+      <svg className="w-full h-full" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <FrameCorners stroke="#ffffff22" />
+        <DiagramTag label="FIG.02 — CORE MESH" color="#ffffff40" />
+
+        {particles.map(([x, y]) => (
+          <circle key={`${x}-${y}`} cx={x} cy={y} r="1.2" fill="#FFFFFF" fillOpacity="0.35" />
+        ))}
+
         <defs>
           <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#FF3333" />
-            <stop offset="100%" stopColor="#E60000" />
+            <stop offset="0%" stopColor="#FF4444" />
+            <stop offset="100%" stopColor="#B00000" />
           </radialGradient>
         </defs>
-        <motion.ellipse 
-          cx="150" cy="100" rx="75" ry="30" 
-          stroke="#E60000" strokeWidth="1.5" strokeOpacity="0.4"
-          animate={{ rotate: 360 }}
-          style={{ originX: "150px", originY: "100px" }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.ellipse 
-          cx="150" cy="100" rx="90" ry="20" 
-          stroke="#FFFFFF" strokeWidth="1" strokeOpacity="0.2"
-          animate={{ rotate: -360 }}
-          style={{ originX: "150px", originY: "100px" }}
-          transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.g animate={{ rotate: 45 }} style={{ originX: "150px", originY: "100px" }}>
-          <line x1="150" y1="100" x2="80" y2="50" stroke="#E60000" strokeWidth="1" strokeOpacity="0.3" />
-          <line x1="150" y1="100" x2="220" y2="150" stroke="#E60000" strokeWidth="1" strokeOpacity="0.3" />
-          <circle cx="80" cy="50" r="4" fill="#E60000" />
-          <circle cx="220" cy="150" r="4" fill="#E60000" />
-        </motion.g>
-        <motion.g animate={{ rotate: -60 }} style={{ originX: "150px", originY: "100px" }}>
-          <line x1="150" y1="100" x2="90" y2="140" stroke="#FFFFFF" strokeWidth="1" strokeOpacity="0.2" />
-          <line x1="150" y1="100" x2="210" y2="60" stroke="#FFFFFF" strokeWidth="1" strokeOpacity="0.2" />
-          <circle cx="90" cy="140" r="3" fill="#FFFFFF" fillOpacity="0.7" />
-          <circle cx="210" cy="60" r="3" fill="#FFFFFF" fillOpacity="0.7" />
-        </motion.g>
+
+        <motion.ellipse cx="150" cy="100" rx="95" ry="34" stroke="#DACAA4" strokeWidth="1" strokeOpacity="0.35"
+          animate={reducedMotion ? {} : { rotate: -360 }} style={{ originX: '150px', originY: '100px' }}
+          transition={{ duration: 22, repeat: Infinity, ease: 'linear' }} />
+        <motion.ellipse cx="150" cy="100" rx="78" ry="28" stroke="#E60000" strokeWidth="1.5" strokeOpacity="0.45"
+          animate={reducedMotion ? {} : { rotate: 360 }} style={{ originX: '150px', originY: '100px' }}
+          transition={{ duration: 14, repeat: Infinity, ease: 'linear' }} />
+        <motion.ellipse cx="150" cy="100" rx="55" ry="55" stroke="#FFFFFF" strokeWidth="1" strokeOpacity="0.15"
+          animate={reducedMotion ? {} : { rotate: -360 }} style={{ originX: '150px', originY: '100px' }}
+          transition={{ duration: 30, repeat: Infinity, ease: 'linear' }} />
+
+        {nodes.map(([x, y], i) => (
+          <g key={`${x}-${y}`}>
+            <line x1="150" y1="100" x2={x} y2={y} stroke="#E60000" strokeWidth="1" strokeOpacity="0.25" />
+            <motion.circle cx={x} cy={y} r={i % 2 ? 3 : 4} fill={i % 2 ? '#DACAA4' : '#FFFFFF'} fillOpacity="0.85"
+              animate={reducedMotion ? {} : { opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.2 }} />
+          </g>
+        ))}
+
+        <motion.circle cx="150" cy="100" r="26" fill="url(#coreGlow)"
+          initial={{ r: 26, opacity: 0.85 }}
+          animate={reducedMotion ? {} : { r: [24, 29, 24], opacity: [0.85, 1, 0.85] }}
+          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} />
+        <circle cx="150" cy="100" r="8" fill="#FFF" fillOpacity="0.9" />
       </svg>
     </div>
   );
 }
 
-// 3. Industry Expertise SVG: Connected workflow circles
-function IndustryExpertiseSVG() {
+// 3. Industry Expertise: hub-and-spoke network with cross-links between verticals.
+function IndustryExpertiseSVG({ reducedMotion }) {
+  const outer = [
+    { x: 150, y: 34, glyph: 'plus' },
+    { x: 238, y: 82, glyph: 'bars' },
+    { x: 210, y: 168, glyph: 'dot' },
+    { x: 90, y: 168, glyph: 'dot' },
+    { x: 62, y: 82, glyph: 'signal' },
+  ];
   return (
-    <div className="w-full h-full bg-gradient-to-br from-neutral-50 to-[#FAF6F0] flex items-center justify-center p-8 select-none relative">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000003_1px,transparent_1px),linear-gradient(to_bottom,#00000003_1px,transparent_1px)] bg-[size:15px_15px]" />
-      <svg className="w-full h-full max-h-[220px]" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="150,50 90,140 210,140" stroke="#3F3F46" strokeWidth="1.5" strokeOpacity="0.1" strokeDasharray="4 4" />
-        <motion.circle 
-          cx="150" cy="110" r="28" 
-          stroke="#E60000" strokeWidth="2" strokeDasharray="6 4"
-          animate={{ rotate: 360 }}
-          style={{ originX: "150px", originY: "110px" }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-        />
-        <circle cx="150" cy="110" r="6" fill="#E60000" />
-        <circle cx="150" cy="50" r="18" fill="#FFFFFF" stroke="#3F3F46" strokeWidth="1.5" />
-        <path d="M145,50 H155 M150,45 V55" stroke="#E60000" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="90" cy="140" r="18" fill="#FFFFFF" stroke="#3F3F46" strokeWidth="1.5" />
-        <circle cx="90" cy="140" r="4" fill="#3F3F46" />
-        <circle cx="210" cy="140" r="18" fill="#FFFFFF" stroke="#3F3F46" strokeWidth="1.5" />
-        <path d="M205,140 H215" stroke="#3F3F46" strokeWidth="2" strokeLinecap="round" />
+    <div className="w-full h-full bg-gradient-to-br from-neutral-50 to-[#FAF6F0] flex items-center justify-center p-5 select-none relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:16px_16px]" />
+      <svg className="w-full h-full" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <FrameCorners stroke="#00000018" />
+        <DiagramTag label="FIG.03 — VERTICAL NET" color="#00000050" />
+
+        <polygon points="150,34 238,82 210,168 90,168 62,82" stroke="#3F3F46" strokeOpacity="0.12" strokeWidth="1.5" strokeDasharray="3 4" />
+
+        {outer.map((n, i) => {
+          const next = outer[(i + 1) % outer.length];
+          return <line key={`x-${n.x}`} x1={n.x} y1={n.y} x2={next.x} y2={next.y} stroke="#3F3F46" strokeOpacity="0.08" strokeWidth="1" />;
+        })}
+        {outer.map((n) => (
+          <line key={`s-${n.x}`} x1="150" y1="102" x2={n.x} y2={n.y} stroke="#E60000" strokeOpacity="0.3" strokeWidth="1.25" />
+        ))}
+
+        <motion.circle cx="150" cy="102" r="30" stroke="#E60000" strokeWidth="2" strokeDasharray="6 5"
+          animate={reducedMotion ? {} : { rotate: 360 }} style={{ originX: '150px', originY: '102px' }}
+          transition={{ duration: 16, repeat: Infinity, ease: 'linear' }} />
+        <circle cx="150" cy="102" r="7" fill="#E60000" />
+
+        {outer.map((n) => (
+          <g key={`node-${n.x}`}>
+            <circle cx={n.x} cy={n.y} r="17" fill="#FFFFFF" stroke="#3F3F46" strokeOpacity="0.25" strokeWidth="1.5" />
+            {n.glyph === 'plus' && <path d={`M${n.x - 5} ${n.y} H${n.x + 5} M${n.x} ${n.y - 5} V${n.y + 5}`} stroke="#E60000" strokeWidth="2" strokeLinecap="round" />}
+            {n.glyph === 'bars' && (
+              <g stroke="#3F3F46" strokeWidth="2" strokeLinecap="round">
+                <line x1={n.x - 5} y1={n.y + 4} x2={n.x - 5} y2={n.y - 2} />
+                <line x1={n.x} y1={n.y + 4} x2={n.x} y2={n.y - 6} />
+                <line x1={n.x + 5} y1={n.y + 4} x2={n.x + 5} y2={n.y + 1} />
+              </g>
+            )}
+            {n.glyph === 'signal' && (
+              <g stroke="#3F3F46" strokeWidth="1.75" fill="none" strokeLinecap="round">
+                <path d={`M${n.x - 6} ${n.y + 5} a 8 8 0 0 1 12 0`} />
+                <path d={`M${n.x - 3} ${n.y + 5} a 4 4 0 0 1 6 0`} />
+                <circle cx={n.x} cy={n.y + 5} r="1.4" fill="#3F3F46" />
+              </g>
+            )}
+            {n.glyph === 'dot' && <circle cx={n.x} cy={n.y} r="3.5" fill="#3F3F46" fillOpacity="0.5" />}
+          </g>
+        ))}
       </svg>
     </div>
   );
 }
 
-// 4. Scalability SVG: Vertical isometric database node stack
-function ScalabilitySVG() {
+// 4. Scalability: stacked isometric platforms rising off a grounded floor grid.
+function ScalabilitySVG({ reducedMotion }) {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-neutral-50 to-[#FAF6F0] flex items-center justify-center p-8 select-none relative">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000004_1px,transparent_1px),linear-gradient(to_bottom,#00000004_1px,transparent_1px)] bg-[size:20px_20px]" />
-      <svg className="w-full h-full max-h-[220px]" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g opacity="0.3">
-          <path d="M150,140 L210,110 L150,80 L90,110 Z" fill="#3F3F46" />
-          <path d="M90,110 L90,125 L150,155 L150,140 Z" fill="#27272A" />
-          <path d="M150,140 L150,155 L210,125 L210,110 Z" fill="#52525B" />
+    <div className="w-full h-full bg-gradient-to-br from-neutral-50 to-[#FAF6F0] flex items-center justify-center p-5 select-none relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:18px_18px]" />
+      <svg className="w-full h-full" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <FrameCorners stroke="#00000022" />
+        <DiagramTag label="FIG.04 — SCALE STACK" color="#00000055" />
+
+        <g stroke="#3F3F46" strokeOpacity="0.1" strokeWidth="1">
+          <path d="M150,182 L220,142 L150,102 L80,142 Z" />
+          <path d="M150,172 L210,138 L150,104 L90,138 Z" />
         </g>
-        <g opacity="0.6">
-          <path d="M150,105 L210,75 L150,45 L90,75 Z" fill="#3F3F46" />
-          <path d="M90,75 L90,90 L150,120 L150,105 Z" fill="#27272A" />
-          <path d="M150,105 L150,120 L210,90 L210,75 Z" fill="#52525B" />
+
+        <g opacity="0.28">
+          <path d="M150,158 L210,124 L150,90 L90,124 Z" fill="#3F3F46" />
+          <path d="M90,124 L90,136 L150,170 L150,158 Z" fill="#27272A" />
+          <path d="M150,158 L150,170 L210,136 L210,124 Z" fill="#52525B" />
         </g>
-        <g>
-          <path d="M150,70 L210,40 L150,10 L90,40 Z" fill="#E60000" fillOpacity="0.2" stroke="#E60000" strokeWidth="1.5" />
-          <path d="M90,40 L90,55 L150,85 L150,70 Z" fill="#E60000" fillOpacity="0.4" stroke="#E60000" strokeWidth="1.5" />
-          <path d="M150,70 L150,85 L210,55 L210,40 Z" fill="#E60000" fillOpacity="0.6" stroke="#E60000" strokeWidth="1.5" />
+        <g opacity="0.5">
+          <path d="M150,122 L210,88 L150,54 L90,88 Z" fill="#3F3F46" />
+          <path d="M90,88 L90,100 L150,134 L150,122 Z" fill="#27272A" />
+          <path d="M150,122 L150,134 L210,100 L210,88 Z" fill="#52525B" />
         </g>
-        <motion.line 
-          x1="150" y1="140" x2="150" y2="10" 
-          stroke="#E60000" strokeWidth="2.5" strokeDasharray="8 6"
-          animate={{ strokeDashOffset: -50 }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+        <g opacity="0.75">
+          <path d="M150,86 L210,52 L150,18 L90,52 Z" fill="#E60000" fillOpacity="0.18" stroke="#E60000" strokeWidth="1.25" />
+          <path d="M90,52 L90,64 L150,98 L150,86 Z" fill="#E60000" fillOpacity="0.32" stroke="#E60000" strokeWidth="1.25" />
+          <path d="M150,86 L150,98 L210,64 L210,52 Z" fill="#E60000" fillOpacity="0.5" stroke="#E60000" strokeWidth="1.25" />
+        </g>
+
+        <motion.line x1="150" y1="158" x2="150" y2="18" stroke="#E60000" strokeWidth="2.5" strokeDasharray="7 6"
           className="drop-shadow-[0_0_8px_rgba(230,0,0,0.5)]"
-        />
+          animate={reducedMotion ? {} : { strokeDashOffset: -52 }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'linear' }} />
+        <motion.circle cx="150" cy="158" r="4" fill="#FFFFFF" className="drop-shadow-[0_0_6px_rgba(230,0,0,0.6)]"
+          initial={{ cy: 158 }}
+          animate={reducedMotion ? { cy: 18 } : { cy: [158, 18] }}
+          transition={reducedMotion ? {} : { duration: 1.8, repeat: Infinity, ease: 'linear' }} />
       </svg>
     </div>
   );
 }
 
-const renderIllustration = (itemId) => {
+const renderIllustration = (itemId, reducedMotion) => {
   switch (itemId) {
     case '01':
-      return <CostEffectivenessSVG />;
+      return <CostEffectivenessSVG reducedMotion={reducedMotion} />;
     case '02':
-      return <InnovativeTechSVG />;
+      return <InnovativeTechSVG reducedMotion={reducedMotion} />;
     case '03':
-      return <IndustryExpertiseSVG />;
+      return <IndustryExpertiseSVG reducedMotion={reducedMotion} />;
     case '04':
-      return <ScalabilitySVG />;
+      return <ScalabilitySVG reducedMotion={reducedMotion} />;
     default:
       return null;
   }
@@ -182,89 +268,86 @@ const renderIllustration = (itemId) => {
 
 export default function ServicesCarousel({ eyebrow, title, items }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const prefersReducedMotion = useReducedMotion();
+  const [isManuallyPaused, setIsManuallyPaused] = useState(() => Boolean(prefersReducedMotion));
+
+  const isPaused = isHovering || isFocused || isManuallyPaused;
 
   const handleNext = useCallback(() => {
-    setDirection(1);
     setActiveIndex((prev) => (prev + 1) % items.length);
+  }, [items.length]);
+
+  const handlePrev = useCallback(() => {
+    setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
   }, [items.length]);
 
   const handleTabClick = (index) => {
     if (index === activeIndex) return;
-    setDirection(index > activeIndex ? 1 : -1);
     setActiveIndex(index);
   };
 
   useEffect(() => {
     if (isPaused) return undefined;
-    const interval = setInterval(handleNext, 3000);
+    const interval = setInterval(handleNext, AUTO_PLAY_MS);
     return () => clearInterval(interval);
   }, [isPaused, handleNext]);
 
-  // Preload every slide's image up front so switching never waits on a fetch/decode.
-  useEffect(() => {
-    items.forEach((item) => {
-      const img = new Image();
-      img.src = item.image;
-    });
-  }, [items]);
-
-  const variants = prefersReducedMotion
-    ? {
-        enter: { opacity: 0 },
-        center: { zIndex: 1, opacity: 1 },
-        exit: { zIndex: 0, opacity: 0 },
-      }
-    : {
-        enter: (dir) => ({ y: dir > 0 ? '-100%' : '100%', opacity: 0 }),
-        center: { zIndex: 1, y: 0, opacity: 1 },
-        exit: (dir) => ({ zIndex: 0, y: dir > 0 ? '100%' : '-100%', opacity: 0 }),
-      };
+  const listId = `services-tablist-${eyebrow ?? 'default'}`;
 
   return (
-    <section 
+    <section
       className="pt-20 pb-10 bg-[#DACAA4] border-b border-black/[0.04]"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) setIsFocused(false);
+      }}
     >
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
-          {/* Left: Heading + Tab List (tighter padding & spacing, "minute gaps") */}
+          {/* Left: Heading + Tab List */}
           <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1">
             <div className="space-y-2 mb-6">
-              <span className="text-xs font-bold text-red-700 uppercase tracking-[0.25em]">{eyebrow}</span>
+              <span className="text-xs font-bold text-red-700 uppercase tracking-[0.2em]">{eyebrow}</span>
               <h2 className="text-3xl lg:text-4xl font-black text-neutral-950 tracking-tight leading-tight">{title}</h2>
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div
+              role="tablist"
+              aria-label={eyebrow ? `${eyebrow}: ${title}` : title}
+              className="flex flex-col gap-2"
+              onKeyDown={(e) => {
+                if (e.key === 'ArrowRight') { e.preventDefault(); handleTabClick((activeIndex + 1) % items.length); }
+                if (e.key === 'ArrowLeft') { e.preventDefault(); handleTabClick((activeIndex - 1 + items.length) % items.length); }
+              }}
+            >
               {items.map((item, index) => {
                 const isActive = activeIndex === index;
                 const IconComp = item.icon;
+                const tabId = `${listId}-tab-${item.id ?? index}`;
+                const panelId = `${listId}-panel-${item.id ?? index}`;
                 return (
                   <button
                     key={item.id ?? item.title}
+                    type="button"
+                    role="tab"
+                    id={tabId}
+                    aria-selected={isActive}
+                    aria-controls={panelId}
+                    tabIndex={isActive ? 0 : -1}
                     onClick={() => handleTabClick(index)}
-                    aria-current={isActive}
                     className={cn(
                       'group relative flex items-start gap-4 p-4 text-left transition-all duration-300 rounded-xl border',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2',
-                      isActive 
-                        ? 'bg-white border-white/60 shadow-[0_8px_30px_rgba(0,0,0,0.04)] text-neutral-950' 
-                        : 'bg-white/35 border-white/20 text-neutral-750 hover:text-neutral-950 hover:bg-white/50 hover:border-white/35'
+                      isActive
+                        ? 'bg-white border-white/60 shadow-[0_8px_30px_rgba(0,0,0,0.04)] text-neutral-950'
+                        : 'bg-white/35 border-white/20 text-neutral-700 hover:text-neutral-950 hover:bg-white/50 hover:border-white/35'
                     )}
                   >
-                    {/* Active Accent Left Border Indicator */}
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeTabIndicator"
-                        className="absolute left-0 top-3 bottom-3 w-[3px] bg-red-600 rounded-full"
-                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                      />
-                    )}
-
                     {IconComp && (
                       <div
                         className={cn(
@@ -287,13 +370,33 @@ export default function ServicesCarousel({ eyebrow, title, items }) {
                             transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
                             className="overflow-hidden"
                           >
-                            <p className="text-neutral-600 text-sm leading-relaxed max-w-sm pt-1">
+                            <p className="text-neutral-600 text-sm leading-relaxed max-w-sm pt-1 min-h-[5rem]">
                               {item.description}
                             </p>
                           </motion.div>
                         )}
                       </AnimatePresence>
                     </div>
+
+                    {/* Autoplay progress meter for the active tab (replaces a static accent border) */}
+                    {isActive && (
+                      <div
+                        className={cn(
+                          'absolute bottom-1.5 left-4 right-4 h-[2px] rounded-full bg-black/[0.08] overflow-hidden transition-opacity duration-300',
+                          isPaused ? 'opacity-0' : 'opacity-100'
+                        )}
+                      >
+                        {!isPaused && (
+                          <motion.div
+                            key={activeIndex}
+                            className="h-full bg-red-600 rounded-full"
+                            initial={{ width: '0%' }}
+                            animate={{ width: '100%' }}
+                            transition={{ duration: AUTO_PLAY_MS / 1000, ease: 'linear' }}
+                          />
+                        )}
+                      </div>
+                    )}
                   </button>
                 );
               })}
@@ -302,80 +405,69 @@ export default function ServicesCarousel({ eyebrow, title, items }) {
 
           {/* Right: 3D Stacked Deck Gallery (Accenture-inspired physical card shuffler) */}
           <div className="lg:col-span-7 flex flex-col justify-center order-1 lg:order-2 py-4">
-            <div
-              className="relative w-full aspect-[4/3] sm:aspect-[16/10] max-w-[600px] mx-auto group/showcase"
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-            >
-              {/* Outer frame matching design styling */}
-              <div className="relative w-full h-full p-4 sm:p-6 rounded-[2rem] border border-white/30 bg-white/10 backdrop-blur-xl shadow-xl flex flex-col justify-stretch transition-all duration-500">
-                
-                {/* Core Pile Container */}
+            <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] max-w-[600px] mx-auto group/showcase">
+              {/* Outer glass frame — single elevation source (border only, no stacked shadow) */}
+              <div className="relative w-full h-full p-4 sm:p-5 rounded-2xl border border-white/40 bg-white/10 backdrop-blur-xl flex flex-col justify-stretch">
+
                 <div className="relative w-full h-full">
-                  
                   {items.map((item, index) => {
                     const isActive = activeIndex === index;
-                    
-                    // Determine index offset relative to activeIndex
                     const indexOffset = index - activeIndex;
-                    
-                    // Style attributes for physical stacked card shuffler
-                    // Active card sits flat, inactive cards stack underneath with offsets and slight rotation
-                    let rotateDeg = indexOffset * -3; 
+                    const panelId = `${listId}-panel-${item.id ?? index}`;
+                    const tabId = `${listId}-tab-${item.id ?? index}`;
+
+                    let rotateDeg = indexOffset * -3;
                     let yTranslate = indexOffset * 12;
                     let xTranslate = indexOffset * 10;
-                    let zIndex = items.length - Math.abs(indexOffset);
+                    const zIndex = isActive ? items.length + 5 : items.length - Math.abs(indexOffset);
                     let opacityVal = isActive ? 1 : 0.4 - Math.abs(indexOffset) * 0.1;
-                    
+
                     if (isActive) {
                       rotateDeg = 0;
                       yTranslate = 0;
                       xTranslate = 0;
-                      zIndex = items.length + 5;
                       opacityVal = 1;
                     }
+
+                    const animateProps = prefersReducedMotion
+                      ? { rotate: 0, x: 0, y: 0, scale: 1, opacity: isActive ? 1 : 0 }
+                      : { rotate: rotateDeg, x: xTranslate, y: yTranslate, scale: isActive ? 1 : 0.95, opacity: opacityVal };
 
                     return (
                       <motion.div
                         key={item.id ?? item.title}
+                        role="tabpanel"
+                        id={panelId}
+                        aria-labelledby={tabId}
+                        aria-hidden={!isActive}
                         className={cn(
-                          "absolute inset-0 w-full h-full rounded-xl overflow-hidden shadow-lg border border-black/[0.08] bg-white cursor-pointer origin-bottom-right flex flex-col items-stretch",
-                          isActive ? "ring-2 ring-red-600/20" : ""
+                          'absolute inset-0 w-full h-full rounded-xl overflow-hidden shadow-lg border border-black/[0.08] bg-white cursor-pointer origin-bottom-right flex flex-col items-stretch',
+                          isActive ? 'ring-2 ring-red-600/20' : ''
                         )}
                         style={{ zIndex }}
-                        animate={{
-                          rotate: rotateDeg,
-                          x: xTranslate,
-                          y: yTranslate,
-                          scale: isActive ? 1 : 0.95,
-                          opacity: opacityVal
-                        }}
-                        transition={{
-                          type: 'spring',
-                          stiffness: 220,
-                          damping: 24
-                        }}
+                        animate={animateProps}
+                        transition={{ type: 'spring', stiffness: 220, damping: 24 }}
                         onClick={() => handleTabClick(index)}
                       >
-                        {item.id === '01' ? (
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-full object-cover select-none"
-                          />
-                        ) : (
-                          renderIllustration(item.id)
-                        )}
-
+                        {renderIllustration(item.id, prefersReducedMotion)}
                       </motion.div>
                     );
                   })}
-
                 </div>
 
-                {/* Float Controls (Bottom Left for visual balance with stack origin bottom right) */}
+                {/* Float Controls */}
                 <div className="absolute bottom-6 left-6 flex gap-2 z-30">
                   <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); setIsManuallyPaused((p) => !p); }}
+                    aria-label={isManuallyPaused ? 'Resume automatic rotation' : 'Pause automatic rotation'}
+                    aria-pressed={isManuallyPaused}
+                    className="w-9 h-9 rounded-full bg-white/95 backdrop-blur-sm border border-black/[0.06] flex items-center justify-center text-neutral-900 shadow-md hover:bg-white hover:scale-105 transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600"
+                  >
+                    {isManuallyPaused ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
+                  </button>
+                  <button
+                    type="button"
                     onClick={(e) => { e.stopPropagation(); handlePrev(); }}
                     className="w-9 h-9 rounded-full bg-white/95 backdrop-blur-sm border border-black/[0.06] flex items-center justify-center text-neutral-900 shadow-md hover:bg-white hover:scale-105 transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600"
                     aria-label="Previous service"
@@ -383,6 +475,7 @@ export default function ServicesCarousel({ eyebrow, title, items }) {
                     <ArrowLeft className="w-4 h-4" />
                   </button>
                   <button
+                    type="button"
                     onClick={(e) => { e.stopPropagation(); handleNext(); }}
                     className="w-9 h-9 rounded-full bg-white/95 backdrop-blur-sm border border-black/[0.06] flex items-center justify-center text-neutral-900 shadow-md hover:bg-white hover:scale-105 transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600"
                     aria-label="Next service"

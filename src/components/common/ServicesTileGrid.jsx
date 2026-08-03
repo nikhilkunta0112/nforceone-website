@@ -1,9 +1,8 @@
 import React from 'react';
 import { servicesList, allSubservicesList } from '../../data/servicesData';
+import FlipCard from './FlipCard';
 
-function cn(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+const qaFeatures = ['Manual Testing', 'Automation Testing', 'AI Testing', 'Consulting & Outsourcing'];
 
 const primaryServices = [
   {
@@ -11,7 +10,6 @@ const primaryServices = [
     eyebrow: 'FULL-CYCLE QA',
     title: 'Quality Assurance',
     image: '/images/indian_software_testing.jpg',
-    accentColor: 'from-[#2D0B0B] via-[#120404] to-black',
     summary: 'We deliver comprehensive testing and QA services that ensure software reliability, performance, and security, helping businesses achieve flawless user experiences and faster time-to-market.'
   },
   {
@@ -19,7 +17,6 @@ const primaryServices = [
     eyebrow: 'ENGINEERING',
     title: 'Software Development',
     image: '/images/indian_dev.jpg',
-    accentColor: 'from-[#0B1A2D] via-[#050D18] to-black',
     summary: 'We build custom software solutions tailored to your business needs, delivering scalable, secure, and high-performing applications that drive growth and innovation.'
   },
   {
@@ -27,7 +24,6 @@ const primaryServices = [
     eyebrow: 'EMERGING TECH',
     title: 'Artificial Intelligence',
     image: '/images/service_ai.jpg',
-    accentColor: 'from-[#1B0B2D] via-[#0F051A] to-black',
     summary: 'We design and deploy AI-powered solutions that automate processes, unlock data-driven insights, and enhance decision-making across industries.'
   },
   {
@@ -35,7 +31,6 @@ const primaryServices = [
     eyebrow: 'ENTERPRISE BPM',
     title: 'Pega Development',
     image: '/images/indian_pega_dev.jpg',
-    accentColor: 'from-[#2D230B] via-[#181205] to-black',
     summary: 'Our PEGA-certified experts design, build, and optimize enterprise-grade BPM and CRM solutions, streamlining workflows and driving operational efficiency with intelligent automation.'
   },
   {
@@ -43,7 +38,6 @@ const primaryServices = [
     eyebrow: 'ENTERPRISE QA',
     title: 'Pega Testing',
     image: '/images/indian_pega_qa.jpg',
-    accentColor: 'from-[#2D0B0B] via-[#120404] to-black',
     summary: 'We ensure flawless PEGA applications with end-to-end functional, regression, and performance testing, delivering reliable, high-quality solutions that align with business goals.'
   },
   {
@@ -51,7 +45,6 @@ const primaryServices = [
     eyebrow: 'INFRASTRUCTURE',
     title: 'Devops',
     image: '/images/indian_devops.jpg',
-    accentColor: 'from-[#0B1A2D] via-[#050D18] to-black',
     summary: 'We help businesses adopt modern DevOps practices, transforming software delivery into a fast, repeatable, and reliable process.'
   },
   {
@@ -59,7 +52,6 @@ const primaryServices = [
     eyebrow: 'DATA ARCHITECTURE',
     title: 'Database Management',
     image: '/images/indian_db.jpg',
-    accentColor: 'from-[#0B2D1B] via-[#05180D] to-black',
     summary: 'With years of experience across SQL and NoSQL ecosystems, our database experts design, implement, and maintain high-performing, scalable, and secure database environments for businesses of all sizes.'
   },
   {
@@ -67,7 +59,6 @@ const primaryServices = [
     eyebrow: 'ANALYTICS',
     title: 'Data Analytics',
     image: '/images/indian_analytics.jpg',
-    accentColor: 'from-[#2D230B] via-[#181205] to-black',
     summary: 'Smarter decisions start with clearer data. Our advanced analytics frameworks transform information into action, empowering every level of your organization — from rapid dashboards to predictive modeling pipelines.'
   },
   {
@@ -75,7 +66,6 @@ const primaryServices = [
     eyebrow: 'BIG DATA',
     title: 'Big Data',
     image: '/images/indian_big_data.jpg',
-    accentColor: 'from-[#0B2D1B] via-[#05180D] to-black',
     summary: 'We architect and manage robust big data ecosystems that capture, process, and analyze massive datasets, empowering businesses with actionable insights and smarter decision-making.'
   },
   {
@@ -83,7 +73,6 @@ const primaryServices = [
     eyebrow: 'MOBILE & WEB',
     title: 'Digital App Development',
     image: '/images/indian_digital_app.jpg',
-    accentColor: 'from-[#2D0B24] via-[#180513] to-black',
     summary: 'We design and develop intuitive, high-performing web and mobile applications that deliver seamless user experiences and accelerate digital transformation for businesses of all sizes.'
   },
   {
@@ -91,7 +80,6 @@ const primaryServices = [
     eyebrow: 'RPA AUTOMATION',
     title: 'Intelligent RPA',
     image: '/images/indian_rpa.jpg',
-    accentColor: 'from-[#2D0B24] via-[#180513] to-black',
     summary: 'We implement AI-powered robotic process automation that streamlines repetitive tasks, boosts accuracy, and enhances productivity across your enterprise operations.'
   },
   {
@@ -99,7 +87,6 @@ const primaryServices = [
     eyebrow: 'IT GOVERNANCE',
     title: 'Management Services',
     image: '/images/indian_tech_team.jpg',
-    accentColor: 'from-[#1B0B2D] via-[#0F051A] to-black',
     summary: 'We provide end-to-end IT management, ensuring secure, reliable, and optimized operations that enable businesses to focus on growth while we handle the complexity.'
   }
 ];
@@ -115,6 +102,9 @@ export default function ServicesTileGrid({ navigateToService, setCurrentTab }) {
       if (subData) navigateToService(subData);
     }
   };
+
+  const featuresFor = (id) =>
+    id === 'qa' ? qaFeatures : allSubservicesList.find((s) => s.id === id)?.features ?? [];
 
   return (
     <section className="py-24 bg-[#D5C29D] text-neutral-900 border-b border-black/[0.04] relative overflow-hidden select-none">
@@ -144,53 +134,17 @@ export default function ServicesTileGrid({ navigateToService, setCurrentTab }) {
 
         {/* 3x4 Accenture Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {primaryServices.map((card) => {
-            return (
-              <div
-                key={card.id}
-                onClick={() => handleCardClick(card.id)}
-                className="w-full h-[424px] flex flex-col justify-between p-7 relative overflow-hidden rounded-sm border border-zinc-900 bg-[#0A0A0A] text-white group cursor-pointer transition-all duration-[550ms] ease-[cubic-bezier(0.85,0,0,1)] hover:scale-[1.03] hover:shadow-2xl hover:shadow-neutral-950/10 hover:bg-white hover:border-black/10"
-              >
-                {/* 1. Header Metadata & Content */}
-                <div className="relative z-10 flex flex-col">
-                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-red-500 group-hover:text-red-600 transition-colors duration-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] group-hover:drop-shadow-none">
-                    {card.eyebrow}
-                  </span>
-                  <h3 className="text-[20px] font-black leading-tight tracking-tight mt-3 text-white group-hover:text-neutral-950 transition-colors duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] group-hover:drop-shadow-none">
-                    {card.title}
-                  </h3>
-                  
-                  {/* Short Description: Fades & expands in height on card hover */}
-                  <p className="mt-4 text-xs sm:text-sm leading-relaxed text-zinc-300 group-hover:text-neutral-600 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-[180px] transition-all duration-[550ms] ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden">
-                    {card.summary}
-                  </p>
-                </div>
-
-                {/* 2. Visual Content Background */}
-                <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-black">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-[700ms] ease-out pointer-events-none"
-                  />
-                  
-                  {/* White overlay turns the image to white/washes it out on card hover */}
-                  <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-95 transition-opacity duration-500 pointer-events-none" />
-                </div>
-                
-                {/* Decorative Red neon accent lines inside card bottom */}
-                <div className="mt-auto h-[20px] w-full relative z-10 flex items-end">
-                  <div className="w-full h-[2px] bg-gradient-to-r from-red-600/50 to-transparent group-hover:from-red-500 transition-colors duration-500" />
-                </div>
-
-                {/* 3. Action Click Overlay Button */}
-                <button
-                  className="absolute inset-0 w-full h-full cursor-pointer z-20 outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-sm"
-                  aria-label={`${card.eyebrow}: ${card.title}. Click to expand solutions.`}
-                />
-              </div>
-            );
-          })}
+          {primaryServices.map((card) => (
+            <FlipCard
+              key={card.id}
+              eyebrow={card.eyebrow}
+              title={card.title}
+              image={card.image}
+              description={card.summary}
+              features={featuresFor(card.id)}
+              onSelect={() => handleCardClick(card.id)}
+            />
+          ))}
         </div>
 
       </div>

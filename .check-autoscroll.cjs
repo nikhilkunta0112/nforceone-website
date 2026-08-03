@@ -8,7 +8,7 @@ const { chromium } = require('playwright');
   page.on('pageerror', (e) => errors.push(e.message));
 
   await page.goto('http://localhost:3000/', { waitUntil: 'networkidle' });
-  const heading = page.getByText('Core Solutions', { exact: true });
+  const heading = page.getByRole('heading', { name: 'Industry Solutions' });
   await heading.waitFor({ state: 'visible', timeout: 15000 });
   await heading.scrollIntoViewIfNeeded();
 

@@ -135,29 +135,25 @@ const valuePillars = [
     id: '01',
     title: 'Cost-effectiveness',
     description: 'We offer affordable IT solutions that help you reduce costs and improve your bottom line.',
-    icon: TrendingUp,
-    image: '/images/DataAnalytics.png'
+    icon: TrendingUp
   },
   {
     id: '02',
     title: 'Innovative Technology',
     description: 'We stay up-to-date with the latest technology trends and offer innovative solutions that help you stay ahead of the competition.',
-    icon: Cpu,
-    image: '/images/SoftwareDevelopment.png'
+    icon: Cpu
   },
   {
     id: '03',
     title: 'Industry Expertise',
     description: 'We specialize in serving specific industries, such as healthcare, finance, telecom, or manufacturing, and offer tailored solutions that meet your unique needs.',
-    icon: Award,
-    image: '/images/cloud_devops.jpg'
+    icon: Award
   },
   {
     id: '04',
     title: 'Scalability',
     description: 'Our solutions are scalable and can grow with your business, ensuring that you get the most value out of your investment.',
-    icon: Layers,
-    image: '/images/databasemanagement.png'
+    icon: Layers
   }
 ];
 

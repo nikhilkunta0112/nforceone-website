@@ -108,7 +108,7 @@ function CardLogoBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none opacity-85 z-0"
+      className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.85] z-0"
     />
   );
 }
@@ -155,7 +155,7 @@ export default function CaseStudiesSection() {
         </div>
 
         {/* Dynamic Card Container (Dusk Red to Black Card) */}
-        <div className="w-full bg-gradient-to-br from-[#2D0B0B] via-[#120404] to-black border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl shadow-black/40 relative overflow-hidden min-h-[480px] md:min-h-[420px] flex flex-col justify-between">
+        <div className="w-full bg-white border border-black/10 rounded-2xl p-8 md:p-12 shadow-2xl shadow-black/10 relative overflow-hidden min-h-[480px] md:min-h-[420px] flex flex-col justify-between">
           {/* Animated horizontal speed trails backdrop */}
           <CardLogoBackground />
 
@@ -174,17 +174,17 @@ export default function CaseStudiesSection() {
                 <span className="text-[10px] font-bold text-red-500 tracking-[0.2em] uppercase">
                   CLIENT ROI SUMMARY
                 </span>
-                <h3 className="text-2xl lg:text-3xl font-extrabold text-white tracking-tight leading-tight">
+                <h3 className="text-2xl lg:text-3xl font-extrabold text-neutral-900 tracking-tight leading-tight">
                   {current.title}
                 </h3>
-                
-                <div className="space-y-3 text-sm text-zinc-300">
+
+                <div className="space-y-3 text-sm text-neutral-600">
                   <p>
-                    <strong className="text-red-400 font-bold">Challenge: </strong> 
+                    <strong className="text-red-600 font-bold">Challenge: </strong>
                     {current.challenge}
                   </p>
                   <p>
-                    <strong className="text-red-400 font-bold">NForceOne Solution: </strong> 
+                    <strong className="text-red-600 font-bold">NForceOne Solution: </strong>
                     {current.solution}
                   </p>
                 </div>
@@ -192,14 +192,14 @@ export default function CaseStudiesSection() {
                 {/* Metrics Blocks */}
                 <div className="pt-4 flex flex-wrap items-center gap-6">
                   {current.metrics.map((metric, mi) => (
-                    <div 
-                      key={mi} 
-                      className={mi > 0 ? "border-l border-white/10 pl-6" : ""}
+                    <div
+                      key={mi}
+                      className={mi > 0 ? "border-l border-black/10 pl-6" : ""}
                     >
-                      <div className="text-3xl lg:text-4xl font-black text-red-500 tabular-nums">
+                      <div className="text-3xl lg:text-4xl font-black text-red-600 tabular-nums">
                         {metric.value}
                       </div>
-                      <div className="text-xs text-zinc-400 mt-1 max-w-[200px] leading-snug">
+                      <div className="text-xs text-neutral-500 mt-1 max-w-[200px] leading-snug">
                         {metric.label}
                       </div>
                     </div>
@@ -208,7 +208,7 @@ export default function CaseStudiesSection() {
               </div>
 
               {/* Right Column: High-End Mockup Image */}
-              <div className="md:col-span-5 rounded-xl overflow-hidden border border-white/10 aspect-[4/3] bg-black/20 shrink-0 relative flex items-stretch">
+              <div className="md:col-span-5 rounded-xl overflow-hidden border border-black/10 aspect-[4/3] bg-neutral-100 shrink-0 relative flex items-stretch">
                 <img 
                   src={current.image} 
                   alt={current.title} 
