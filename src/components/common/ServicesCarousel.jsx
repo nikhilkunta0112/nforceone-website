@@ -30,222 +30,85 @@ function DiagramTag({ label, color }) {
   );
 }
 
-// 1. Cost-effectiveness: a value-vs-cost crossing chart on an engineering grid.
-function CostEffectivenessSVG({ reducedMotion }) {
-  const bars = [
-    { x: 44, h: 28, tone: 0 },
-    { x: 84, h: 46, tone: 0 },
-    { x: 124, h: 34, tone: 0 },
-    { x: 164, h: 62, tone: 1 },
-    { x: 204, h: 50, tone: 1 },
-    { x: 244, h: 78, tone: 1 },
-  ];
+// 1. Cost-effectiveness: real photo (calculator + cost/value reports), kept inside
+// the same engineering-diagram frame as the other tabs for visual consistency.
+function CostEffectivenessSVG() {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-neutral-50 to-[#FAF6F0] flex items-center justify-center p-5 select-none relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:18px_18px]" />
-      <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-[#E60000]/10 blur-3xl" />
-      <svg className="w-full h-full" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <FrameCorners stroke="#00000022" />
-        <DiagramTag label="FIG.01 — COST/VALUE" color="#00000055" />
+    <div className="w-full h-full relative overflow-hidden select-none">
+      <img
+        src="/images/cost_effectiveness.jpg"
+        alt="Accountant reviewing cost and value reports with a calculator"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/40" />
+      <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-[#E60000]/20 blur-3xl" />
 
-        {bars.map((b, i) => (
-          <motion.rect
-            key={b.x}
-            x={b.x}
-            width="24"
-            rx="2"
-            fill={b.tone ? '#E60000' : '#3F3F46'}
-            fillOpacity={b.tone ? 0.16 : 0.12}
-            stroke={b.tone ? '#E60000' : '#3F3F46'}
-            strokeOpacity={b.tone ? 0.5 : 0.25}
-            strokeWidth="1"
-            initial={reducedMotion ? false : { height: 0, y: 168 }}
-            animate={{ height: b.h, y: 168 - b.h }}
-            transition={{ duration: 0.7, delay: reducedMotion ? 0 : i * 0.06, ease: [0.16, 1, 0.3, 1] }}
-          />
-        ))}
-
-        <path d="M30 55 L270 150" stroke="#3F3F46" strokeOpacity="0.25" strokeWidth="1.5" strokeDasharray="4 4" />
-
-        <motion.path
-          d="M30 168 L90 128 L140 140 L190 88 L230 96 L270 40"
-          stroke="#E60000"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="drop-shadow-[0_2px_8px_rgba(230,0,0,0.35)]"
-          initial={reducedMotion ? false : { pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 1.4, ease: 'easeOut' }}
-        />
-        {[[30, 168], [90, 128], [140, 140], [190, 88], [230, 96]].map(([x, y]) => (
-          <circle key={x} cx={x} cy={y} r="3.5" fill="#171717" />
-        ))}
-        <motion.circle
-          cx="270"
-          cy="40"
-          r="6"
-          fill="#E60000"
-          className="drop-shadow-[0_2px_6px_rgba(230,0,0,0.5)]"
-          animate={reducedMotion ? {} : { scale: [1, 1.25, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <FrameCorners stroke="#ffffff55" />
+        <DiagramTag label="FIG.01 — COST/VALUE" color="#ffffffaa" />
       </svg>
     </div>
   );
 }
 
-// 2. Innovative Technology: layered orbital core — the section's dark, high-drama beat.
-function InnovativeTechSVG({ reducedMotion }) {
-  const nodes = [
-    [150, 25], [223, 47], [255, 100], [223, 153],
-    [150, 175], [77, 153], [45, 100], [77, 47],
-  ];
-  const particles = [
-    [30, 20], [270, 30], [20, 170], [280, 165], [55, 65], [245, 135], [40, 120], [260, 55], [150, 15], [150, 185],
-  ];
+// 2. Innovative Technology: real photo (AI/ML engineer at a multi-monitor workstation),
+// kept inside the same engineering-diagram frame as the other tabs for visual consistency.
+function InnovativeTechSVG() {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-neutral-900 via-[#140606] to-[#0A0505] flex items-center justify-center p-5 select-none relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:22px_22px]" />
-      <svg className="w-full h-full" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <FrameCorners stroke="#ffffff22" />
-        <DiagramTag label="FIG.02 — CORE MESH" color="#ffffff40" />
+    <div className="w-full h-full relative overflow-hidden select-none">
+      <img
+        src="/images/innovative_technology.jpg"
+        alt="Engineer reviewing neural network training metrics across dual monitors"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/40" />
+      <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-[#E60000]/20 blur-3xl" />
 
-        {particles.map(([x, y]) => (
-          <circle key={`${x}-${y}`} cx={x} cy={y} r="1.2" fill="#FFFFFF" fillOpacity="0.35" />
-        ))}
-
-        <defs>
-          <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#FF4444" />
-            <stop offset="100%" stopColor="#B00000" />
-          </radialGradient>
-        </defs>
-
-        <motion.ellipse cx="150" cy="100" rx="95" ry="34" stroke="#DACAA4" strokeWidth="1" strokeOpacity="0.35"
-          animate={reducedMotion ? {} : { rotate: -360 }} style={{ originX: '150px', originY: '100px' }}
-          transition={{ duration: 22, repeat: Infinity, ease: 'linear' }} />
-        <motion.ellipse cx="150" cy="100" rx="78" ry="28" stroke="#E60000" strokeWidth="1.5" strokeOpacity="0.45"
-          animate={reducedMotion ? {} : { rotate: 360 }} style={{ originX: '150px', originY: '100px' }}
-          transition={{ duration: 14, repeat: Infinity, ease: 'linear' }} />
-        <motion.ellipse cx="150" cy="100" rx="55" ry="55" stroke="#FFFFFF" strokeWidth="1" strokeOpacity="0.15"
-          animate={reducedMotion ? {} : { rotate: -360 }} style={{ originX: '150px', originY: '100px' }}
-          transition={{ duration: 30, repeat: Infinity, ease: 'linear' }} />
-
-        {nodes.map(([x, y], i) => (
-          <g key={`${x}-${y}`}>
-            <line x1="150" y1="100" x2={x} y2={y} stroke="#E60000" strokeWidth="1" strokeOpacity="0.25" />
-            <motion.circle cx={x} cy={y} r={i % 2 ? 3 : 4} fill={i % 2 ? '#DACAA4' : '#FFFFFF'} fillOpacity="0.85"
-              animate={reducedMotion ? {} : { opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.2 }} />
-          </g>
-        ))}
-
-        <motion.circle cx="150" cy="100" r="26" fill="url(#coreGlow)"
-          initial={{ r: 26, opacity: 0.85 }}
-          animate={reducedMotion ? {} : { r: [24, 29, 24], opacity: [0.85, 1, 0.85] }}
-          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} />
-        <circle cx="150" cy="100" r="8" fill="#FFF" fillOpacity="0.9" />
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <FrameCorners stroke="#ffffff55" />
+        <DiagramTag label="FIG.02 — CORE MESH" color="#ffffffaa" />
       </svg>
     </div>
   );
 }
 
-// 3. Industry Expertise: hub-and-spoke network with cross-links between verticals.
-function IndustryExpertiseSVG({ reducedMotion }) {
-  const outer = [
-    { x: 150, y: 34, glyph: 'plus' },
-    { x: 238, y: 82, glyph: 'bars' },
-    { x: 210, y: 168, glyph: 'dot' },
-    { x: 90, y: 168, glyph: 'dot' },
-    { x: 62, y: 82, glyph: 'signal' },
-  ];
+// 3. Industry Expertise: real photo (consultants mapping client strategy and tech
+// architecture on a whiteboard), kept inside the shared engineering-diagram frame.
+function IndustryExpertiseSVG() {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-neutral-50 to-[#FAF6F0] flex items-center justify-center p-5 select-none relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:16px_16px]" />
-      <svg className="w-full h-full" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <FrameCorners stroke="#00000018" />
-        <DiagramTag label="FIG.03 — VERTICAL NET" color="#00000050" />
+    <div className="w-full h-full relative overflow-hidden select-none">
+      <img
+        src="/images/industry_expertise.jpg"
+        alt="Consultants mapping client strategy and technical architecture on a whiteboard"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/40" />
+      <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-[#E60000]/20 blur-3xl" />
 
-        <polygon points="150,34 238,82 210,168 90,168 62,82" stroke="#3F3F46" strokeOpacity="0.12" strokeWidth="1.5" strokeDasharray="3 4" />
-
-        {outer.map((n, i) => {
-          const next = outer[(i + 1) % outer.length];
-          return <line key={`x-${n.x}`} x1={n.x} y1={n.y} x2={next.x} y2={next.y} stroke="#3F3F46" strokeOpacity="0.08" strokeWidth="1" />;
-        })}
-        {outer.map((n) => (
-          <line key={`s-${n.x}`} x1="150" y1="102" x2={n.x} y2={n.y} stroke="#E60000" strokeOpacity="0.3" strokeWidth="1.25" />
-        ))}
-
-        <motion.circle cx="150" cy="102" r="30" stroke="#E60000" strokeWidth="2" strokeDasharray="6 5"
-          animate={reducedMotion ? {} : { rotate: 360 }} style={{ originX: '150px', originY: '102px' }}
-          transition={{ duration: 16, repeat: Infinity, ease: 'linear' }} />
-        <circle cx="150" cy="102" r="7" fill="#E60000" />
-
-        {outer.map((n) => (
-          <g key={`node-${n.x}`}>
-            <circle cx={n.x} cy={n.y} r="17" fill="#FFFFFF" stroke="#3F3F46" strokeOpacity="0.25" strokeWidth="1.5" />
-            {n.glyph === 'plus' && <path d={`M${n.x - 5} ${n.y} H${n.x + 5} M${n.x} ${n.y - 5} V${n.y + 5}`} stroke="#E60000" strokeWidth="2" strokeLinecap="round" />}
-            {n.glyph === 'bars' && (
-              <g stroke="#3F3F46" strokeWidth="2" strokeLinecap="round">
-                <line x1={n.x - 5} y1={n.y + 4} x2={n.x - 5} y2={n.y - 2} />
-                <line x1={n.x} y1={n.y + 4} x2={n.x} y2={n.y - 6} />
-                <line x1={n.x + 5} y1={n.y + 4} x2={n.x + 5} y2={n.y + 1} />
-              </g>
-            )}
-            {n.glyph === 'signal' && (
-              <g stroke="#3F3F46" strokeWidth="1.75" fill="none" strokeLinecap="round">
-                <path d={`M${n.x - 6} ${n.y + 5} a 8 8 0 0 1 12 0`} />
-                <path d={`M${n.x - 3} ${n.y + 5} a 4 4 0 0 1 6 0`} />
-                <circle cx={n.x} cy={n.y + 5} r="1.4" fill="#3F3F46" />
-              </g>
-            )}
-            {n.glyph === 'dot' && <circle cx={n.x} cy={n.y} r="3.5" fill="#3F3F46" fillOpacity="0.5" />}
-          </g>
-        ))}
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <FrameCorners stroke="#ffffff55" />
+        <DiagramTag label="FIG.03 — VERTICAL NET" color="#ffffffaa" />
       </svg>
     </div>
   );
 }
 
-// 4. Scalability: stacked isometric platforms rising off a grounded floor grid.
-function ScalabilitySVG({ reducedMotion }) {
+// 4. Scalability: real photo (ascending stacked blocks forming a growth staircase),
+// kept inside the shared engineering-diagram frame.
+function ScalabilitySVG() {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-neutral-50 to-[#FAF6F0] flex items-center justify-center p-5 select-none relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:18px_18px]" />
-      <svg className="w-full h-full" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <FrameCorners stroke="#00000022" />
-        <DiagramTag label="FIG.04 — SCALE STACK" color="#00000055" />
+    <div className="w-full h-full relative overflow-hidden select-none">
+      <img
+        src="/images/scalability.jpg"
+        alt="Ascending stacked red blocks forming a growth staircase, symbolizing scaling upward"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/40" />
+      <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-[#E60000]/20 blur-3xl" />
 
-        <g stroke="#3F3F46" strokeOpacity="0.1" strokeWidth="1">
-          <path d="M150,182 L220,142 L150,102 L80,142 Z" />
-          <path d="M150,172 L210,138 L150,104 L90,138 Z" />
-        </g>
-
-        <g opacity="0.28">
-          <path d="M150,158 L210,124 L150,90 L90,124 Z" fill="#3F3F46" />
-          <path d="M90,124 L90,136 L150,170 L150,158 Z" fill="#27272A" />
-          <path d="M150,158 L150,170 L210,136 L210,124 Z" fill="#52525B" />
-        </g>
-        <g opacity="0.5">
-          <path d="M150,122 L210,88 L150,54 L90,88 Z" fill="#3F3F46" />
-          <path d="M90,88 L90,100 L150,134 L150,122 Z" fill="#27272A" />
-          <path d="M150,122 L150,134 L210,100 L210,88 Z" fill="#52525B" />
-        </g>
-        <g opacity="0.75">
-          <path d="M150,86 L210,52 L150,18 L90,52 Z" fill="#E60000" fillOpacity="0.18" stroke="#E60000" strokeWidth="1.25" />
-          <path d="M90,52 L90,64 L150,98 L150,86 Z" fill="#E60000" fillOpacity="0.32" stroke="#E60000" strokeWidth="1.25" />
-          <path d="M150,86 L150,98 L210,64 L210,52 Z" fill="#E60000" fillOpacity="0.5" stroke="#E60000" strokeWidth="1.25" />
-        </g>
-
-        <motion.line x1="150" y1="158" x2="150" y2="18" stroke="#E60000" strokeWidth="2.5" strokeDasharray="7 6"
-          className="drop-shadow-[0_0_8px_rgba(230,0,0,0.5)]"
-          animate={reducedMotion ? {} : { strokeDashOffset: -52 }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'linear' }} />
-        <motion.circle cx="150" cy="158" r="4" fill="#FFFFFF" className="drop-shadow-[0_0_6px_rgba(230,0,0,0.6)]"
-          initial={{ cy: 158 }}
-          animate={reducedMotion ? { cy: 18 } : { cy: [158, 18] }}
-          transition={reducedMotion ? {} : { duration: 1.8, repeat: Infinity, ease: 'linear' }} />
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <FrameCorners stroke="#ffffff55" />
+        <DiagramTag label="FIG.04 — SCALE STACK" color="#ffffffaa" />
       </svg>
     </div>
   );
