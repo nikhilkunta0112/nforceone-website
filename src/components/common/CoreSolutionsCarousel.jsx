@@ -6,16 +6,6 @@ function cn(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-// Backgrounds stay near-opaque so the label reads at consistent contrast over any photo,
-// not just the darker ones — a translucent pill loses the text against bright imagery.
-const getTagColor = (tag) => {
-  const t = tag ? tag.toLowerCase() : '';
-  if (t.includes('qa') || t.includes('test')) return 'bg-[#3D1216]/95 text-[#FF9BA3] border-[#FF858F]/25';
-  if (t.includes('eng') || t.includes('dev')) return 'bg-[#12233D]/95 text-[#9ACEFF] border-[#85C4FF]/25';
-  if (t.includes('cloud') || t.includes('infra') || t.includes('bpm')) return 'bg-[#12331A]/95 text-[#9CFFB8] border-[#85FFA9]/25';
-  return 'bg-[#3D2F12]/95 text-[#FFE79C] border-[#FFE785]/25';
-};
-
 // Canvas background for the card rendering glowing horizontal speed trails (matching logo trails)
 function CardLogoBackground({ reducedMotion }) {
   const canvasRef = useRef(null);
@@ -174,8 +164,6 @@ export default function CoreSolutionsCarousel({ items, onSelect, ariaLabel = 'Fe
   }, [isPaused, handleNext]);
 
   const current = items[active];
-  const tagClasses = getTagColor(current.tag);
-  const TagIcon = current.icon;
 
   return (
     <div
@@ -238,18 +226,6 @@ export default function CoreSolutionsCarousel({ items, onSelect, ariaLabel = 'Fe
 
         {/* Right: Large Image Card / Component (Pure hardware-accelerated CSS translation to prevent stuttering) */}
         <div className="w-full lg:w-[480px] aspect-[16/10] rounded-xl border border-black/10 bg-neutral-100 shadow-sm shrink-0 overflow-hidden select-none relative z-10">
-          {TagIcon && (
-            <div
-              className={cn(
-                'absolute top-4 left-4 z-30 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border backdrop-blur-sm pointer-events-none transition-colors duration-300',
-                tagClasses
-              )}
-            >
-              <TagIcon className="w-3 h-3" aria-hidden="true" />
-              <span className="text-[10px] font-bold uppercase tracking-wider">{current.tag}</span>
-            </div>
-          )}
-
           {items.map((item, index) => {
             const ActiveComponent = item.component;
             const offsetClass = getOffsetClass(index, active, items.length, prefersReducedMotion);

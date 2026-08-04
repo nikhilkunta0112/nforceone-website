@@ -120,7 +120,7 @@ export default function ServicesTileGrid({ navigateToService, setCurrentTab }) {
             <h2 className="text-3xl lg:text-4xl font-black text-neutral-950 tracking-tight leading-none">
               Transforming Software Quality & Digital Engineering
             </h2>
-            <p className="text-neutral-755 text-sm max-w-2xl leading-relaxed">
+            <p className="text-neutral-700 text-sm max-w-2xl leading-relaxed">
               NForceOne is a global software services firm delivering next-gen Quality Assurance, custom software development, DevOps, and Pega solutions. Scale at Speed.
             </p>
           </div>
