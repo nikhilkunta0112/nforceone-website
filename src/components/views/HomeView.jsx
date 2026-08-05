@@ -102,7 +102,7 @@ const heroSlides = [
     titleHighlight: 'Lightning Speed',
     titleTail: 'and Exceptional Quality',
     subtitle: "We're on a mission to revolutionize businesses through transformative technology solutions.",
-    image: '/images/hero_command_center.jpg',
+    image: '/images/hero_ai_professional.png',
     primaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' },
     secondaryCta: { label: 'Explore Services', tab: 'services' }
   },
@@ -112,7 +112,7 @@ const heroSlides = [
     titleHighlight: 'Defect-Free Software',
     titleTail: 'at Enterprise Scale',
     subtitle: 'Manual and automated QA, functional and regression testing, and custom web, mobile, and enterprise application development — built to ship reliably, fast.',
-    image: '/images/qa_dashboard.jpg',
+    image: '/images/hero_quality_engineering.png',
     primaryCta: { label: 'Explore Quality Engineering', tab: 'services' },
     secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
   },
@@ -122,7 +122,7 @@ const heroSlides = [
     titleHighlight: 'AI, Cloud & Data',
     titleTail: 'Engineering',
     subtitle: 'Generative AI, LLM integration, DevOps automation, and secure cloud infrastructure across AWS, Azure, and GCP — engineered to scale with your business.',
-    image: '/images/cloud_devops.jpg',
+    image: '/images/hero_ai_cloud_data.png',
     primaryCta: { label: 'Explore AI & Cloud Solutions', tab: 'services' },
     secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
   }
@@ -210,7 +210,9 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
             <div
               key={s.id}
               className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] ease-in-out ${idx === activeSlide ? 'opacity-100' : 'opacity-0'}`}
-              style={{ backgroundImage: `url('${s.image}')` }}
+              style={{
+                backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.72) 35%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.15) 85%), url('${s.image}')`,
+              }}
               aria-hidden="true"
             ></div>
           ))}
@@ -227,10 +229,10 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
           aria-hidden="true"
         ></div>
 
-        <div className="relative z-20 max-w-[1280px] mx-auto px-6 w-full grid grid-cols-12 gap-8 items-center">
-          <div className="col-span-12 lg:col-span-8 flex flex-col items-start space-y-6">
+        <div className="relative z-20 max-w-[1600px] mx-auto px-6 lg:px-12 w-full grid grid-cols-12 gap-8 items-center">
+          <div className="col-span-12 lg:col-span-6 flex flex-col items-start space-y-6">
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.1] max-w-4xl drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">
+            <h1 className="text-4xl sm:text-6xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] max-w-xl drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">
               {slide.titleLead}{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-400 to-white drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">{slide.titleHighlight}</span>{' '}
               {slide.titleTail}
@@ -257,12 +259,6 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
             </div>
 
           </div>
-        </div>
-
-        <div className="absolute right-6 top-20 hidden lg:flex z-20 px-2 py-4 bg-black/55 backdrop-blur-sm rounded">
-          <span className="[writing-mode:vertical-rl] font-bold text-xs text-white tracking-[0.5em] uppercase">
-            NFORCEONE / GLOBAL OPERATIONS
-          </span>
         </div>
 
         {/* Slider controls: prev/next + dot indicators */}
