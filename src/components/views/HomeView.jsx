@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  ShieldCheck, 
-  Workflow, 
-  Users, 
-  Mail, 
+import {
+  ArrowRight,
+  CheckCircle2,
+  ShieldCheck,
+  Workflow,
+  Users,
+  Mail,
   Globe,
   ChevronRight,
   Star,
@@ -108,20 +108,20 @@ const heroSlides = [
   },
   {
     id: 'quality-engineering',
-    titleLead: 'Engineering',
-    titleHighlight: 'Defect-Free Software',
+    titleLead: 'Powering Innovation with AI',
+    titleHighlight: 'Automation & Software Testing',
     titleTail: 'at Enterprise Scale',
-    subtitle: 'Manual and automated QA, functional and regression testing, and custom web, mobile, and enterprise application development — built to ship reliably, fast.',
+    subtitle: 'Manual and automated QA, functional and regression testing, and custom web, mobile, and enterprise application development built to ship reliably, fast.',
     image: '/images/hero_quality_engineering.png',
     primaryCta: { label: 'Explore Quality Engineering', tab: 'services' },
     secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
   },
   {
     id: 'ai-cloud-data',
-    titleLead: 'Powering Innovation with',
-    titleHighlight: 'AI, Cloud & Data',
-    titleTail: 'Engineering',
-    subtitle: 'Generative AI, LLM integration, DevOps automation, and secure cloud infrastructure across AWS, Azure, and GCP — engineered to scale with your business.',
+    titleLead: 'Accelerating Success with',
+    titleHighlight: 'AI & Software',
+    titleTail: 'Development',
+    subtitle: 'Custom application development, microservices architecture, API integration, and modern full-stack solutions, engineered to scale with your business.',
     image: '/images/hero_ai_cloud_data.png',
     primaryCta: { label: 'Explore AI & Cloud Solutions', tab: 'services' },
     secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
@@ -298,7 +298,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
       <section className="bg-red-700 py-12 text-white border-b border-red-800">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            
+
             <div className="flex flex-col border-l-2 border-white/30 pl-6 space-y-1">
               <span className="text-3xl sm:text-4xl font-black text-white tracking-tight">100+</span>
               <span className="text-xs font-bold text-red-100 uppercase tracking-wider">Enterprise Engagements Delivered</span>
@@ -333,7 +333,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
       {/* 5. CORE SOLUTIONS: Asymmetric Bento Grid (from home.md) */}
       <section className="py-24 bg-neutral-50 border-b border-neutral-200">
         <div className="max-w-[1280px] mx-auto px-6 space-y-12">
-          
+
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
             <div>
               <span className="text-xs font-bold text-red-600 uppercase tracking-[0.2em]">HOW WE DO</span>
@@ -341,7 +341,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
                 Core Solutions
               </h2>
             </div>
-            <button 
+            <button
               onClick={() => { setCurrentTab('services'); window.scrollTo(0, 0); }}
               className="text-xs font-bold text-neutral-800 border-b-2 border-red-600 pb-1 hover:text-red-600 transition-colors uppercase tracking-wider flex items-center gap-1"
             >
@@ -365,7 +365,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
             <div className="md:col-span-7 space-y-4">
               <span className="text-xs font-bold text-red-500 uppercase tracking-[0.2em]">FEATURED CASE STUDY & CLIENT ROI</span>
               <h3 className="text-2xl lg:text-3xl font-extrabold text-white">Leading Healthcare & Telehealth Provider</h3>
-              
+
               <div className="space-y-3 text-sm text-zinc-300">
                 <p><strong className="text-red-400">Challenge:</strong> Legacy manual testing bottlenecks delaying bi-weekly feature rollouts and causing regression defects.</p>
                 <p><strong className="text-red-400">NForceOne Solution:</strong> Implemented automated CI/CD test pipelines using Playwright and containerized staging environments.</p>
@@ -384,10 +384,10 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
             </div>
 
             <div className="md:col-span-5 rounded-xl overflow-hidden border border-zinc-800">
-              <img 
-                src="/images/hero_command_center.jpg" 
-                alt="Case Study Healthcare QA" 
-                className="w-full h-64 object-cover" 
+              <img
+                src="/images/hero_command_center.jpg"
+                alt="Case Study Healthcare QA"
+                className="w-full h-64 object-cover"
               />
             </div>
           </div>
@@ -397,7 +397,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
       {/* 7. INDUSTRIES WE SERVE: Powering Innovation Across Every Industry (from home.md) */}
       <section className="py-24 bg-neutral-50 border-b border-neutral-200">
         <div className="max-w-[1280px] mx-auto px-6 space-y-12">
-          
+
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
             <div>
               <div className="text-xs font-bold text-red-600 uppercase tracking-[0.2em]">INDUSTRIES WE SERVE</div>
@@ -408,7 +408,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
                 Our IT services empower organizations—startups, enterprises, and government bodies—to modernize infrastructure, enhance digital resilience, and scale innovation with confidence.
               </p>
             </div>
-            <button 
+            <button
               onClick={() => { setCurrentTab('industries'); window.scrollTo(0, 0); }}
               className="text-xs font-bold text-neutral-800 border-b-2 border-red-600 pb-1 hover:text-red-600 transition-colors uppercase tracking-wider"
             >
@@ -421,11 +421,10 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
               <button
                 key={ind.id}
                 onClick={() => setActiveIndustryTab(ind.id)}
-                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
-                  activeIndustryTab === ind.id 
-                    ? 'bg-red-600 text-white shadow-md' 
-                    : 'bg-white text-neutral-700 hover:text-red-600 border border-neutral-200 hover:bg-neutral-100'
-                }`}
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeIndustryTab === ind.id
+                  ? 'bg-red-600 text-white shadow-md'
+                  : 'bg-white text-neutral-700 hover:text-red-600 border border-neutral-200 hover:bg-neutral-100'
+                  }`}
               >
                 {ind.name}
               </button>
@@ -437,7 +436,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
               <span className="text-xs font-bold text-red-600 uppercase tracking-widest">Industry Highlight</span>
               <h3 className="text-2xl font-bold text-neutral-900">{indData.name}</h3>
               <p className="text-neutral-600 text-sm leading-relaxed">{indData.summary}</p>
-              
+
               <div className="grid grid-cols-2 gap-3 pt-2">
                 {(indData.solutions || []).map((h, idx) => (
                   <div key={idx} className="flex items-center gap-2 text-xs font-semibold text-neutral-800">
@@ -448,7 +447,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
               </div>
 
               <div className="pt-4">
-                <button 
+                <button
                   onClick={() => navigateToIndustry(indData)}
                   className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-widest px-6 py-3 rounded flex items-center gap-2 transition-colors shadow-md"
                 >
@@ -459,10 +458,10 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
             </div>
 
             <div className="md:col-span-5 rounded-xl overflow-hidden border border-neutral-200 shadow-md">
-              <img 
-                src={indData.image} 
-                alt={indData.name} 
-                className="w-full h-72 object-cover" 
+              <img
+                src={indData.image}
+                alt={indData.name}
+                className="w-full h-72 object-cover"
               />
             </div>
           </div>
@@ -473,7 +472,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
       {/* 8. WHAT OUR CUSTOMERS SAY: Reviews from home.md */}
       <section className="py-24 bg-white border-b border-neutral-200">
         <div className="max-w-[1280px] mx-auto px-6 space-y-12">
-          
+
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold text-red-600 uppercase tracking-[0.2em]">WHAT OUR CUSTOMERS SAY</span>
             <h2 className="text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight">
@@ -509,7 +508,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
       <section className="py-24 bg-neutral-950 text-white">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-10 grid lg:grid-cols-12 gap-12 items-center shadow-2xl">
-            
+
             <div className="lg:col-span-6 space-y-6">
               <span className="text-xs font-bold text-red-500 uppercase tracking-[0.2em]">CONTACT US</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
