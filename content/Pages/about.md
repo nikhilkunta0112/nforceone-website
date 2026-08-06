@@ -24,7 +24,7 @@ We helped Intripid build a scalable multi-agent AI system that automated complex
 
 #### 2025 Consolidated Communication - E2E QA
 
-At NForce, we deliver consolidated communication and streamlined quality assurance across all stages of the software lifecycle—successfully managing and executing dozens of parallel projects with precision, consistency, and enterprise-grade accountability.
+At NForce, we deliver consolidated communication and streamlined quality assurance across all stages of the software lifecycle, successfully managing and executing dozens of parallel projects with precision, consistency, and enterprise-grade accountability.
 
 # Why US
 
@@ -36,7 +36,7 @@ Our Core Values
 
 #### Growth
 
-We embrace continuous learning and development—personally and professionally. By fostering an environment where people thrive, we help every team member unlock their full potential.
+We embrace continuous learning and development, personally and professionally. By fostering an environment where people thrive, we help every team member unlock their full potential.
 
 #### Responsibilty
 

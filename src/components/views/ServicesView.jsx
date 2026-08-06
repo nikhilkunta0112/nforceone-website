@@ -10,7 +10,7 @@ export default function ServicesView({ navigateToService }) {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="text-xs font-extrabold text-red-600 uppercase tracking-widest">Services & Solutions</div>
           <h1 className="text-4xl font-extrabold text-neutral-900">Comprehensive Technology Services for Enterprise Growth</h1>
-          <p className="text-neutral-600 text-base">NForceOne is your trusted partner for IT management, data security, and cloud technology — with one goal in mind: to transform the way your business works in order to save you time and money.</p>
+          <p className="text-neutral-600 text-base">NForceOne is your trusted partner for IT management, data security, and cloud technology, with one goal in mind: to transform the way your business works in order to save you time and money.</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

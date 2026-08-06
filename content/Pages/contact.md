@@ -16,7 +16,7 @@ Email us:
 
 ## Our Locations
 
-We have offices in **Texas (Associate Brand Office)** and **Hyderabad, India** — we’d love to connect or host you if you’re nearby. Not local? No problem — our team is equipped to support your business from anywhere in the world.
+We have offices in **Texas (Associate Brand Office)** and **Hyderabad, India**, we’d love to connect or host you if you’re nearby. Not local? No problem, our team is equipped to support your business from anywhere in the world.
 
 ##### Connect With Our Solutions Expert
 

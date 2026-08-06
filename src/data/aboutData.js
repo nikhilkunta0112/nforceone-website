@@ -32,7 +32,7 @@ export const aboutData = {
     {
       name: 'Growth',
       icon: 'TrendingUp',
-      description: 'We embrace continuous learning and development—personally and professionally—fostering an environment where every team member unlocks their full potential.'
+      description: 'We embrace continuous learning and development (personally and professionally), fostering an environment where every team member unlocks their full potential.'
     },
     {
       name: 'Responsibility',

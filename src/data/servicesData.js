@@ -26,13 +26,13 @@ export const servicesCategories = [
   {
     category: 'Services By Platform',
     subservices: [
-      { id: 'pos-testing', name: 'POS Testing', summary: 'In retail and hospitality, every transaction matters — our POS testing ensures system stability, seamless integration, and secure user experiences across terminals and channels.' },
-      { id: 'payment-testing', name: 'Payment Testing', summary: 'One payment glitch can mean lost sales and broken trust — our testing keeps e-commerce and in-app transactions smooth, secure, and reliable across every gateway and channel.' },
-      { id: 'iot-testing', name: 'IoT Testing', summary: 'IoT systems are intricate by nature, where hardware, software, and data meet — our end-to-end testing uncovers hidden flaws early across devices, networks, and platforms.' },
-      { id: 'mobile-app-testing', name: 'Mobile App Testing', summary: 'Modern users demand speed, security, and seamless compatibility — our end-to-end mobile testing safeguards your app from bugs and delivers flawless global performance.' },
-      { id: 'mobile-and-device-testing', name: 'Mobile & Device Testing', summary: 'Mobile ecosystems are fragmented across devices, OS versions, networks, and hardware — we deliver comprehensive testing covering manual, automation, network validation, and distributed testing at scale.' },
-      { id: 'web-app-testing', name: 'Web App Testing', summary: 'Delivering a fast, secure, and intuitive web experience is no longer optional — even small issues can cost you traffic, reputation, and revenue.' },
-      { id: 'cloud-testing', name: 'Cloud Testing', summary: 'Cloud apps demand peak performance, airtight security, and scalable reliability — our testing simulates real-world conditions to validate resilience and meet SLAs.' }
+      { id: 'pos-testing', name: 'POS Testing', summary: 'In retail and hospitality, every transaction matters. Our POS testing ensures system stability, seamless integration, and secure user experiences across terminals and channels.' },
+      { id: 'payment-testing', name: 'Payment Testing', summary: 'One payment glitch can mean lost sales and broken trust. Our testing keeps e-commerce and in-app transactions smooth, secure, and reliable across every gateway and channel.' },
+      { id: 'iot-testing', name: 'IoT Testing', summary: 'IoT systems are intricate by nature, where hardware, software, and data meet. Our end-to-end testing uncovers hidden flaws early across devices, networks, and platforms.' },
+      { id: 'mobile-app-testing', name: 'Mobile App Testing', summary: 'Modern users demand speed, security, and seamless compatibility. Our end-to-end mobile testing safeguards your app from bugs and delivers flawless global performance.' },
+      { id: 'mobile-and-device-testing', name: 'Mobile & Device Testing', summary: 'Mobile ecosystems are fragmented across devices, OS versions, networks, and hardware. We deliver comprehensive testing covering manual, automation, network validation, and distributed testing at scale.' },
+      { id: 'web-app-testing', name: 'Web App Testing', summary: 'Delivering a fast, secure, and intuitive web experience is no longer optional. Even small issues can cost you traffic, reputation, and revenue.' },
+      { id: 'cloud-testing', name: 'Cloud Testing', summary: 'Cloud apps demand peak performance, airtight security, and scalable reliability. Our testing simulates real-world conditions to validate resilience and meet SLAs.' }
     ]
   },
   {
@@ -49,7 +49,7 @@ export const servicesCategories = [
     category: 'Data & Management',
     subservices: [
       { id: 'database-management', name: 'Database Management', summary: 'With years of experience across SQL and NoSQL ecosystems, our database experts design, implement, and maintain high-performing, scalable, and secure database environments for businesses of all sizes.' },
-      { id: 'data-analytics', name: 'Data Analytics', summary: 'Smarter decisions start with clearer data. Our advanced analytics frameworks transform information into action, empowering every level of your organization — from rapid dashboards to predictive modeling pipelines.' },
+      { id: 'data-analytics', name: 'Data Analytics', summary: 'Smarter decisions start with clearer data. Our advanced analytics frameworks transform information into action, empowering every level of your organization, from rapid dashboards to predictive modeling pipelines.' },
       { id: 'big-data', name: 'Big Data', summary: 'We architect and manage robust big data ecosystems that capture, process, and analyze massive datasets, empowering businesses with actionable insights and smarter decision-making.' },
       { id: 'digital-app-development', name: 'Digital App Development', summary: 'We design and develop intuitive, high-performing web and mobile applications that deliver seamless user experiences and accelerate digital transformation for businesses of all sizes.' },
       { id: 'intelligent-rpa', name: 'Intelligent RPA', summary: 'We implement AI-powered robotic process automation that streamlines repetitive tasks, boosts accuracy, and enhances productivity across your enterprise operations.' },
@@ -206,7 +206,7 @@ export const servicesList = [
     title: 'Testing By Type & Methodology',
     category: 'QA Disciplines',
     image: '/images/hero_command_center.jpg',
-    summary: 'From heuristic UX evaluation to load, functional, regression, and cross-browser compatibility testing — validating every dimension of how your software performs, scales, and feels to real users.',
+    summary: 'From heuristic UX evaluation to load, functional, regression, and cross-browser compatibility testing, validating every dimension of how your software performs, scales, and feels to real users.',
     features: ['UX & Accessibility Testing', 'Load & Stress Benchmarking', 'Functional & Logic QA', 'Regression Automation'],
     subservices: ['UX Testing', 'Performance Testing', 'Functional Testing', 'Regression Testing', 'Integration Testing', 'Compatibility Testing']
   },
@@ -215,7 +215,7 @@ export const servicesList = [
     title: 'Testing By Platform & Devices',
     category: 'Platform QA',
     image: '/images/cloud_devops.jpg',
-    summary: 'Specialized QA for POS terminals, payment gateways, IoT devices, mobile apps, web applications, and cloud platforms — so every channel your customers touch works exactly as intended.',
+    summary: 'Specialized QA for POS terminals, payment gateways, IoT devices, mobile apps, web applications, and cloud platforms, so every channel your customers touch works exactly as intended.',
     features: ['POS & Payment Gateways', 'IoT Sensor Protocol QA', 'Real Mobile Device Matrix', 'Cloud Resilience Testing'],
     subservices: ['POS Testing', 'Payment Testing', 'IoT Testing', 'Mobile App Testing', 'Web App Testing', 'Cloud Testing']
   },
@@ -224,7 +224,7 @@ export const servicesList = [
     title: 'Custom Software & Engineering',
     category: 'Software Engineering',
     image: '/images/hero_command_center.jpg',
-    summary: 'Custom web, mobile, and enterprise software built for high growth — from concept-to-reality product design and multi-platform development to scalable, secure architecture tailored to your business roadmap.',
+    summary: 'Custom web, mobile, and enterprise software built for high growth, from concept-to-reality product design and multi-platform development to scalable, secure architecture tailored to your business roadmap.',
     features: ['Full-Stack Web Engineering', 'Cloud-Native Architecture', 'API Integrations', 'Digital Transformation'],
     subservices: ['Software Development', 'Digital App Development', 'API Integrations', 'Legacy Modernization']
   },
@@ -233,7 +233,7 @@ export const servicesList = [
     title: 'Pega & DevOps Infrastructure',
     category: 'Enterprise Platforms',
     image: '/images/pega_automation.jpg',
-    summary: 'PEGA-certified experts design enterprise-grade BPM and CRM workflow automation, backed by modern DevOps practices — CI/CD pipelines, Infrastructure as Code, and cloud automation — that turn software delivery into a fast, repeatable, reliable process.',
+    summary: 'PEGA-certified experts design enterprise-grade BPM and CRM workflow automation, backed by modern DevOps practices (CI/CD pipelines, Infrastructure as Code, and cloud automation) that turn software delivery into a fast, repeatable, reliable process.',
     features: ['Pega PRPC System Design', 'Automated Business Workflows', 'CI/CD Automation', 'Kubernetes & Docker Scaling'],
     subservices: ['Pega Development', 'Pega Testing', 'DevOps Strategy', 'Cloud Infrastructure Automation']
   },
@@ -242,7 +242,7 @@ export const servicesList = [
     title: 'Artificial Intelligence, RPA & Data',
     category: 'Emerging Tech',
     image: '/images/fintech_banking.jpg',
-    summary: 'AI-powered solutions, intelligent RPA bots, and end-to-end data engineering — from custom ML models and LLM chatbots to database management, analytics dashboards, and big data pipelines that unlock data-driven decision-making.',
+    summary: 'AI-powered solutions, intelligent RPA bots, and end-to-end data engineering, from custom ML models and LLM chatbots to database management, analytics dashboards, and big data pipelines that unlock data-driven decision-making.',
     features: ['Robotic Process Automation', 'Predictive Data Analytics', 'Big Data Engineering', 'Database Management'],
     subservices: ['Artificial Intelligence', 'Intelligent RPA', 'Big Data', 'Database Management', 'Data Analytics']
   }

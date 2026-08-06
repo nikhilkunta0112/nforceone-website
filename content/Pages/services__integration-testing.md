@@ -22,7 +22,7 @@ Ensure transactions, inventory, and payment systems work without glitches.
 
 #### Optimized App Performance
 
-Detect performance issues before your users do—no crashes, lags, or freezes.
+Detect performance issues before your users do: no crashes, lags, or freezes.
 
 #### Device & OS Compatibility
 

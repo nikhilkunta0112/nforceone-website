@@ -19,7 +19,7 @@ ISVs today face immense pressure to ship fast, maintain quality, and meet evolvi
 **Cloud-Native Application Development:**
 We help ISVs design and develop microservices-based, cloud-native apps using containerized architectures and serverless models ensuring scalability and performance across environments.
 **Automated QA and Regression Testing:**
-With our testing accelerators and CI/CD-integrated frameworks, we reduce time-to-release while maintaining application stability. Our QA services include functional, integration, regression, and performance testing.Our AI-powered risk models detect anomalies in transactions  and customer behavior in real-time. By leveraging behavioral analytics and pattern recognition, we reduce false positives and identify fraud before it happens—enhancing trust and reducing losses.
+With our testing accelerators and CI/CD-integrated frameworks, we reduce time-to-release while maintaining application stability. Our QA services include functional, integration, regression, and performance testing.Our AI-powered risk models detect anomalies in transactions  and customer behavior in real-time. By leveraging behavioral analytics and pattern recognition, we reduce false positives and identify fraud before it happens, enhancing trust and reducing losses.
 **Multi-Tenant SaaS Enablement:**
 We enable vendors to build and optimize true SaaS platforms supporting tenant isolation, billing, onboarding workflows, and usage analytics so they can serve multiple customers from
 a single codebase securely.

@@ -23,7 +23,7 @@ Leveraging machine learning algorithms, we help automotive businesses anticipate
 **Digital Twin and Smart Manufacturing:**
 We implement digital twin technology to create virtual replicas of automotive components and processes. By simulating real-world scenarios and integrating with Industry 4.0 solutions, our platforms help improve production line efficiency, detect defects early, and reduce material waste.
 **Customer Experience Personalization:**
-Using AI and behavioral data, we empower automotive brands to deliver tailored digital experiences from personalized infotainment and navigation recommendations to real-time roadside assistance and service offers—across in-car and mobile platforms.
+Using AI and behavioral data, we empower automotive brands to deliver tailored digital experiences from personalized infotainment and navigation recommendations to real-time roadside assistance and service offers, across in-car and mobile platforms.
 
 ## Our IT services for manufacturers
 

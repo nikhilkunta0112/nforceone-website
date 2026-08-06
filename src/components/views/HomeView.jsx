@@ -22,8 +22,10 @@ import {
 } from 'lucide-react';
 import { industriesList } from '../../data/industriesData';
 import AuditForm from '../common/AuditForm';
-import ServicesCarousel from '../common/ServicesCarousel';
-import CoreSolutionsCarousel from '../common/CoreSolutionsCarousel';
+import CaseStudySection from '../common/CaseStudySection';
+import CoreSolutionsGrid from '../common/CoreSolutionsGrid';
+import ParallaxFeatureSection from '../common/ParallaxFeatureSection';
+import ScaleAtSpeedSection from '../common/ScaleAtSpeedSection';
 
 // Core Solutions from home.md
 const homeCoreSolutions = [
@@ -33,7 +35,7 @@ const homeCoreSolutions = [
     summary: 'Comprehensive manual, automated, functional, regression, mobile, API, and cloud testing to ensure software reliability and defect-free delivery.',
     icon: ShieldCheck,
     tag: 'QA & AUTOMATION',
-    image: '/images/qa_dashboard.jpg'
+    image: '/images/Quality_Engineering.png'
   },
   {
     id: 'software-development',
@@ -41,7 +43,7 @@ const homeCoreSolutions = [
     summary: 'Custom web, mobile, microservices, and enterprise application development tailored to your business roadmap.',
     icon: Code,
     tag: 'ENGINEERING',
-    image: '/images/SoftwareDevelopment.png'
+    image: '/images/Software_Development.png'
   },
   {
     id: 'artificial-intelligence',
@@ -49,7 +51,7 @@ const homeCoreSolutions = [
     summary: 'Generative AI, LLM integration, conversational chatbots, computer vision, and predictive analytics to drive intelligent automation.',
     icon: Bot,
     tag: 'EMERGING TECH',
-    image: '/images/ai_innovation.jpg'
+    image: '/images/artificial-intelligence.jpg'
   },
   {
     id: 'pega-development',
@@ -57,7 +59,7 @@ const homeCoreSolutions = [
     summary: 'Enterprise BPM and CRM automation with certified Pega architects to streamline complex business workflows.',
     icon: Workflow,
     tag: 'ENTERPRISE BPM',
-    image: '/images/pega_automation.jpg'
+    image: '/images/Pega_Development.avif'
   },
   {
     id: 'pega-testing',
@@ -65,7 +67,7 @@ const homeCoreSolutions = [
     summary: 'End-to-end functional, performance, and regression testing for Pega applications using industry best practices.',
     icon: CheckCircle2,
     tag: 'PEGA QA',
-    image: '/images/team_collaboration.jpg'
+    image: '/images/Pega_Testing.jpg'
   },
   {
     id: 'devops',
@@ -90,6 +92,20 @@ const homeCoreSolutions = [
     icon: BarChart3,
     tag: 'ANALYTICS',
     image: '/images/DataAnalytics.png'
+  }
+];
+
+// Featured Case Study & Client ROI from home.md
+const homeCaseStudies = [
+  {
+    id: 'healthcare-telehealth',
+    client: 'Leading Healthcare & Telehealth Provider',
+    summary: 'Legacy manual testing bottlenecks were delaying bi-weekly feature rollouts and causing regression defects. NForceOne implemented automated CI/CD test pipelines using Playwright and containerized staging environments.',
+    image: '/images/hero_command_center.jpg',
+    stats: [
+      { value: '68%', label: 'Faster Release Cycles' },
+      { value: '0', label: 'P1 Production Defects Across 12 Sprints' }
+    ]
   }
 ];
 
@@ -134,6 +150,7 @@ const valuePillars = [
     id: '01',
     title: 'Cost-effectiveness',
     description: 'We offer affordable IT solutions that help you reduce costs and improve your bottom line.',
+    detail: 'From flexible engagement models to right-shored delivery teams, we structure every engagement to lower your total cost of ownership without compromising on quality or speed.',
     icon: TrendingUp,
     image: '/images/cost_effectiveness.jpg'
   },
@@ -141,6 +158,7 @@ const valuePillars = [
     id: '02',
     title: 'Innovative Technology',
     description: 'We stay up-to-date with the latest technology trends and offer innovative solutions that help you stay ahead of the competition.',
+    detail: 'Our engineers continuously evaluate emerging frameworks, AI tooling, and cloud-native patterns, so the solutions we build for you are never running on yesterday’s stack.',
     icon: Cpu,
     image: '/images/innovative_technology.jpg'
   },
@@ -148,6 +166,7 @@ const valuePillars = [
     id: '03',
     title: 'Industry Expertise',
     description: 'We specialize in serving specific industries, such as healthcare, finance, telecom, or manufacturing, and offer tailored solutions that meet your unique needs.',
+    detail: 'Deep domain knowledge means less time explaining your business and more time solving it. Our teams already understand your compliance landscape, workflows, and users.',
     icon: Award,
     image: '/images/industry_expertise.jpg'
   },
@@ -155,6 +174,7 @@ const valuePillars = [
     id: '04',
     title: 'Scalability',
     description: 'Our solutions are scalable and can grow with your business, ensuring that you get the most value out of your investment.',
+    detail: 'Architected for growth from day one, our systems flex with demand spikes and expanding user bases so you never have to rebuild the foundation to scale up.',
     icon: Layers,
     image: '/images/Scalability.png'
   }
@@ -324,14 +344,17 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
       </section>
 
       {/* 4. WHAT WE DO: Transforming Software Quality & Digital Engineering (from home.md) */}
-      <ServicesCarousel
+      <ParallaxFeatureSection
         eyebrow="WHAT WE DO"
         title="Transforming Software Quality & Digital Engineering"
         items={valuePillars}
       />
 
+      {/* 4b. SCALE AT SPEED: brand promise banner, links through to About Us */}
+      <ScaleAtSpeedSection onExplore={() => { setCurrentTab('about'); window.scrollTo(0, 0); }} />
+
       {/* 5. CORE SOLUTIONS: Asymmetric Bento Grid (from home.md) */}
-      <section className="py-24 bg-neutral-50 border-b border-neutral-200">
+      <section className="pt-10 pb-24 bg-white border-b border-neutral-200">
         <div className="max-w-[1280px] mx-auto px-6 space-y-12">
 
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
@@ -350,7 +373,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
             </button>
           </div>
 
-          <CoreSolutionsCarousel
+          <CoreSolutionsGrid
             items={homeCoreSolutions}
             onSelect={() => { setCurrentTab('services'); window.scrollTo(0, 0); }}
           />
@@ -359,43 +382,13 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
       </section>
 
       {/* 6. FEATURED CASE STUDY & CLIENT ROI: from home.md */}
-      <section className="py-24 bg-white border-b border-neutral-200">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="bg-neutral-950 text-white rounded-2xl p-10 border border-zinc-800 grid md:grid-cols-12 gap-8 items-center shadow-xl">
-            <div className="md:col-span-7 space-y-4">
-              <span className="text-xs font-bold text-red-500 uppercase tracking-[0.2em]">FEATURED CASE STUDY & CLIENT ROI</span>
-              <h3 className="text-2xl lg:text-3xl font-extrabold text-white">Leading Healthcare & Telehealth Provider</h3>
-
-              <div className="space-y-3 text-sm text-zinc-300">
-                <p><strong className="text-red-400">Challenge:</strong> Legacy manual testing bottlenecks delaying bi-weekly feature rollouts and causing regression defects.</p>
-                <p><strong className="text-red-400">NForceOne Solution:</strong> Implemented automated CI/CD test pipelines using Playwright and containerized staging environments.</p>
-              </div>
-
-              <div className="pt-2 flex items-center gap-6">
-                <div>
-                  <div className="text-3xl font-black text-red-500">68%</div>
-                  <div className="text-xs text-zinc-400">Faster Release Cycles</div>
-                </div>
-                <div className="border-l border-zinc-800 pl-6">
-                  <div className="text-3xl font-black text-white">0</div>
-                  <div className="text-xs text-zinc-400">P1 Production Defects Across 12 Sprints</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="md:col-span-5 rounded-xl overflow-hidden border border-zinc-800">
-              <img
-                src="/images/hero_command_center.jpg"
-                alt="Case Study Healthcare QA"
-                className="w-full h-64 object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <CaseStudySection
+        items={homeCaseStudies}
+        onExplore={() => { setCurrentTab('industries'); window.scrollTo(0, 0); }}
+      />
 
       {/* 7. INDUSTRIES WE SERVE: Powering Innovation Across Every Industry (from home.md) */}
-      <section className="py-24 bg-neutral-50 border-b border-neutral-200">
+      <section className="py-24 bg-white border-b border-neutral-200">
         <div className="max-w-[1280px] mx-auto px-6 space-y-12">
 
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
@@ -405,7 +398,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
                 Powering Innovation Across Every Industry
               </h2>
               <p className="text-neutral-600 text-sm max-w-2xl mt-2">
-                Our IT services empower organizations—startups, enterprises, and government bodies—to modernize infrastructure, enhance digital resilience, and scale innovation with confidence.
+                Our IT services empower organizations (startups, enterprises, and government bodies) to modernize infrastructure, enhance digital resilience, and scale innovation with confidence.
               </p>
             </div>
             <button

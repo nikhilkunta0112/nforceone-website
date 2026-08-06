@@ -19,7 +19,7 @@ cutting-edge IT services designed to enhance learner outcomes and administrative
 ## Our Solutions
 
 **Virtual Classrooms and LMS Platforms:**
-We help design and deploy cloud-native learning management systems (LMS) and virtual classrooms that support interactive learning, assessments, and content management—scalable
+We help design and deploy cloud-native learning management systems (LMS) and virtual classrooms that support interactive learning, assessments, and content management, scalable
 from K–12 to enterprise training.
 **Student Data and Performance Analytics:**
 Our analytics solutions integrate attendance, grades, engagement, and LMS usage data to provide real-time insights into student performance and course effectiveness supporting early interventions and personalized learning paths.

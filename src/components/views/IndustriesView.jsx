@@ -10,7 +10,7 @@ export default function IndustriesView({ navigateToIndustry }) {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="text-xs font-extrabold text-red-600 uppercase tracking-widest">Industry Expertise</div>
           <h1 className="text-4xl font-extrabold text-neutral-900">No Matter Your Industry, We've Got You Covered</h1>
-          <p className="text-neutral-600 text-base">NForceOne has over 10 years of experience serving the IT needs of businesses across a variety of industries — giving us the expertise to understand the specificities of your industry and develop a strategy that matches your needs.</p>
+          <p className="text-neutral-600 text-base">NForceOne has over 10 years of experience serving the IT needs of businesses across a variety of industries, giving us the expertise to understand the specificities of your industry and develop a strategy that matches your needs.</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

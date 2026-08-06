@@ -48,7 +48,7 @@ HOW WE DO ## Core Solutions
 **Impact**: **68% faster release cycles** and zero P1 production defects across 12 consecutive sprints.
 
 Industries We Serve ## Powering Innovation Across Every Industry
-Our IT services empower organizations—startups, enterprises, and government bodies—to modernize infrastructure, enhance digital resilience, and scale innovation with confidence.
+Our IT services empower organizations, startups, enterprises, and government bodies, to modernize infrastructure, enhance digital resilience, and scale innovation with confidence.
 ###### Automotive ###### Banking & Financial ###### Digital Media and Advertising ###### Education & Edutech ###### Energy & Utilities ###### Finance & Fintech ###### Insurance ###### ISV ###### Manufacturing ###### Retail & Ecom ###### Telecommunication
 
 What Our Customers Say ## Reviews

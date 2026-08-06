@@ -52,7 +52,7 @@ Gain insight into how users navigate your site and improve their experience with
 
 ### Functional Testing
 
-Ensure all site features—from forms to buttons—work correctly and deliver their intended results.
+Ensure all site features, from forms to buttons, work correctly and deliver their intended results.
 
 ### Compatibility Testing
 
