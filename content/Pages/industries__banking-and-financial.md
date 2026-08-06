@@ -20,11 +20,11 @@ In today’s digital-first economy, the banking and financial services sector mu
 We help financial institutions migrate from legacy systems to cloud-native core banking platforms, enabling real-time processing, API-first integrations, and faster time-to-market for new financial products and services.
 **Fraud Detection and Risk Analytics:**
 Our AI-powered risk models detect anomalies in transactions  and customer behavior in real-time. By leveraging behavioral analytics and pattern recognition, we reduce false positives
-and identify fraud before it happens—enhancing trust and reducing losses.
+and identify fraud before it happens, enhancing trust and reducing losses.
 **Customer 360 and Personalization Engines:**
 We build unified customer profiles by integrating data across systems (CRM, transaction, loan, etc.). This allows banks and fintechs to offer hyper-personalized financial products, targeted campaigns, and real-time support via chatbots and mobile apps.
 **Regulatory Compliance and Reporting Automation:**
-We enable seamless compliance with global standards like GDPR, PCI-DSS, and AML by implementing automated reporting workflows, audit trails, and secure data governance frameworks—reducing manual burden while ensuring full regulatory alignment.
+We enable seamless compliance with global standards like GDPR, PCI-DSS, and AML by implementing automated reporting workflows, audit trails, and secure data governance frameworks, reducing manual burden while ensuring full regulatory alignment.
 
 ## Core Banking & Financial Software Capabilities
 

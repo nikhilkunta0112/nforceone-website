@@ -13,7 +13,7 @@ We build custom software solutions tailored to your business needs, delivering s
 [Schedule a Free Consultation](#form)
 
 **Why Your Business Needs Professional Software Development**
-In today’s digital landscape, custom software is essential for streamlining operations, enhancing customer experiences, and driving long-term growth. Our development services ensure your applications are robust, scalable, and built to perform seamlessly in real-world environments — helping you maximise efficiency, reduce costs, and stay ahead of the competition.
+In today’s digital landscape, custom software is essential for streamlining operations, enhancing customer experiences, and driving long-term growth. Our development services ensure your applications are robust, scalable, and built to perform seamlessly in real-world environments, helping you maximise efficiency, reduce costs, and stay ahead of the competition.
 
 #### Seamless Functionality
 

@@ -13,7 +13,7 @@ Grow your career as we grow. Join the team that's changing IT services
 People first
 
 “We put our people first.” It’s something a lot of companies say, but not a lot of companies do. Here at NForceOne, it’s our most important core value.
-We believe when we place a high value on our team’s happiness, work/life balance, and professional development, everybody wins—clients included.
+We believe when we place a high value on our team’s happiness, work/life balance, and professional development, everybody wins, clients included.
 
 Hurry up
 

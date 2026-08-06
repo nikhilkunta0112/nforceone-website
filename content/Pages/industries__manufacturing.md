@@ -17,11 +17,11 @@ Manufacturers must embrace Industry 4.0 technologies to remain competitive strea
 ## Our Solutions
 
 **Industrial IoT and Equipment Monitoring:**
-We deploy sensor-based systems and IIoT platforms that capture machine-level data, predict maintenance needs, and reduce unplanned downtime—ensuring operational continuity and safety.
+We deploy sensor-based systems and IIoT platforms that capture machine-level data, predict maintenance needs, and reduce unplanned downtime, ensuring operational continuity and safety.
 **MES & ERP Integrations:**
 Our solutions integrate manufacturing execution systems (MES) with ERP platforms to synchronize production planning, inventory, procurement, and quality control across facilities.
 **Supply Chain Analytics and Forecasting:**
-We build analytics platforms to model supply and demand, optimize procurement cycles, and identify bottlenecks—helping manufacturers reduce excess inventory and improve on-time delivery.
+We build analytics platforms to model supply and demand, optimize procurement cycles, and identify bottlenecks, helping manufacturers reduce excess inventory and improve on-time delivery.
 **Digital Twins and Simulation Models:**
 We create digital replicas of factory environments to simulate workflows, test production changes, and evaluate outcomes accelerating continuous improvement without disrupting live
 operations.

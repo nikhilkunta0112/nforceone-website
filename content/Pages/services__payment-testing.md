@@ -8,7 +8,7 @@ Source: https://nforceone.com/services/payment-testing/
 
 # Payment Testing
 
-Your payment system shapes user trust. Our testing ensures secure, seamless transactions—across channels, billing flows, and experiences—driving confidence and business impact.
+Your payment system shapes user trust. Our testing ensures secure, seamless transactions, across channels, billing flows, and experiences, driving confidence and business impact.
 
 [Schedule a Free Consultation](#form)
 

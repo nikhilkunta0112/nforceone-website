@@ -56,7 +56,7 @@ Evaluate responsiveness, uptime, and stability under fluctuating loads and real-
 
 ### Functional Testing
 
-Verify that each IoT feature behaves as intended—across devices, triggers, and user interactions.
+Verify that each IoT feature behaves as intended, across devices, triggers, and user interactions.
 
 ### Security Testing
 

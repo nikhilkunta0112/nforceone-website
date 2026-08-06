@@ -22,7 +22,7 @@ Ensure fluid navigation, intuitive UI, and responsive behavior across screens.
 
 #### Optimized App Performance
 
-Detect performance issues before your users do—no crashes, lags, or freezes.
+Detect performance issues before your users do: no crashes, lags, or freezes.
 
 #### Device & OS Compatibility
 
@@ -44,7 +44,7 @@ Fine-tune workflows, reduce costs, and scale infrastructure as needed.
 
 ### Manual Testing
 
-Real testers explore your app from a user’s perspective—evaluating UX flows, edge cases, and usability challenges.
+Real testers explore your app from a user’s perspective, evaluating UX flows, edge cases, and usability challenges.
 
 ### Automated Testing
 

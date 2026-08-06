@@ -1,15 +1,15 @@
-# NForceOne.com — Full Site Content Inventory
+# NForceOne.com, Full Site Content Inventory
 
 **Site:** https://nforceone.com
 **Method:** Live crawl via Playwright MCP (headless Chromium), following internal links
 **Date:** 2026-07-23
 **Pages captured:** 48 (every internal page reachable from the homepage)
-**Output format:** Markdown — one file per page in `pages/`, structured for redesign
+**Output format:** Markdown, one file per page in `pages/`, structured for redesign
 
 Each page file contains: page title, URL, full heading hierarchy (H1–H6), complete body copy, buttons/CTAs, images, and a note on forms.
 
 ## Top-level (5)
-- [Home — NForceOne – Scale at Speed](pages/home.md)
+- [Home, NForceOne – Scale at Speed](pages/home.md)
 - [About](pages/about.md)
 - [Services (index)](pages/services.md)
 - [Industries (index)](pages/industries.md)
@@ -80,7 +80,7 @@ Each page file contains: page title, URL, full heading hierarchy (H1–H6), comp
 - Mismatched section headings: "Types of POS Systems We Test" on IoT and Regression pages; "Mobile App Testing Tools" heading on the AI page; "POS Testing Tools" heading on UX/Compatibility pages.
 - Duplicated boilerplate: Big Data, Digital App Development, and Management Services reuse the Web App Testing copy verbatim; Consulting Testing shows an "Automation Testing" heading; DevOps intro is payment-testing placeholder text.
 - Stub pages with little/no unique content: Intelligent RPA (hero only), Big Data (no H1/hero).
-- Industries index lists more sectors (Healthcare, Travel Logistics, Media & Publishing, Retail Tech, Public Sector) than have dedicated pages — several "Learn more" links likely 404.
+- Industries index lists more sectors (Healthcare, Travel Logistics, Media & Publishing, Retail Tech, Public Sector) than have dedicated pages, several "Learn more" links likely 404.
 - Broken contact email on Contact page: `admin@3.151.21.218` (raw IP) instead of a domain address.
-- Meta descriptions are empty on all pages — an SEO gap.
+- Meta descriptions are empty on all pages, an SEO gap.
 - Misspelling: "Compatability" on the Compatibility Testing page.

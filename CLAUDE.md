@@ -44,3 +44,4 @@ Structure:
 
 - Keep UI in `src/components/`, datasets in `src/data/` — do not bloat `App.jsx` with view logic or content.
 - Because Tailwind runs via the CDN script rather than a build step, new color/theme tokens are added by editing the inline `tailwind.config` block in `index.html`, not a config file.
+- Never use the em dash character (`—`) in any content written for this project (UI copy, JSX text, data files, comments, commit messages). Use a period, comma, colon, or hyphen instead, depending on context. See the `no-em-dashes` skill for a scan/fix tool covering existing usage.

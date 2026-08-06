@@ -3,7 +3,7 @@ export const careersData = {
     tagline: 'PEOPLE-FIRST CULTURE',
     heading: 'Grow Your Career as We Grow',
     subheading: 'Join the team that is changing IT services and enterprise software engineering.',
-    description: 'We believe that when we place a high value on our team’s happiness, work/life balance, and professional development, everybody wins—clients included.'
+    description: 'We believe that when we place a high value on our team’s happiness, work/life balance, and professional development, everybody wins, clients included.'
   },
   perks: [
     { title: 'People-First Values', desc: 'Work in an empowering culture that respects your work-life balance and growth.' },

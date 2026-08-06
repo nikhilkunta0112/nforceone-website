@@ -1,8 +1,8 @@
 import { Sparkles, ArrowRight, Star } from 'lucide-react';
 
 // Brand promise section: reuses the "Scale at Speed" tagline (see Footer) to funnel
-// visitors into the About Us page. Three-column layout — text, floating product-style
-// image, stats — with the image sitting free on the background instead of in a card.
+// visitors into the About Us page. Three-column layout (text, floating product-style
+// image, stats), with the image sitting free on the background instead of in a card.
 export default function ScaleAtSpeedSection({ onExplore }) {
   return (
     <section

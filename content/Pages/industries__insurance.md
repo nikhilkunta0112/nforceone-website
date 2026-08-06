@@ -17,13 +17,13 @@ Insurance providers must modernize legacy systems and meet rising customer expec
 ## Our Solutions
 
 **Automated Claims Processing:**
-We develop AI-powered claims workflows that use image recognition, NLP, and document parsing to assess damage, validate policy coverage, and auto-adjudicate simple claims—cutting processing time from days to minutes.
+We develop AI-powered claims workflows that use image recognition, NLP, and document parsing to assess damage, validate policy coverage, and auto-adjudicate simple claims, cutting processing time from days to minutes.
 **Underwriting and Risk Analytics:**
-By leveraging historical data, IoT inputs (e.g., telematics), and ML models, we empower underwriters with precise risk scores and pricing recommendations—reducing loss ratios and improving quote accuracy.
+By leveraging historical data, IoT inputs (e.g., telematics), and ML models, we empower underwriters with precise risk scores and pricing recommendations, reducing loss ratios and improving quote accuracy.
 **Policy Management System Modernization:**
-We migrate legacy policy admin systems to modular, API-enabled platforms that support real-time endorsements, renewals, and digital policy servicing—resulting in improved efficiency and faster time-to-market.
+We migrate legacy policy admin systems to modular, API-enabled platforms that support real-time endorsements, renewals, and digital policy servicing, resulting in improved efficiency and faster time-to-market.
 **Fraud Detection and Prevention:**
-We implement anomaly detection engines that flag suspicious patterns, identify synthetic identities, and trace fraud networks in claims and applications—saving millions in potential losses annually.
+We implement anomaly detection engines that flag suspicious patterns, identify synthetic identities, and trace fraud networks in claims and applications, saving millions in potential losses annually.
 
 ## Our IT services for manufacturers
 
