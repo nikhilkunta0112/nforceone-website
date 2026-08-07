@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Cinematic dark "featured case study" section: tag pill + headline + prose + stat row on one
 // side, a large hover-zoom image with a bottom gradient on the other, with a faint oversized
-// watermark logo in the background. A tab bar plus prev/next arrows let visitors step through
-// every entry in `items` - both stay hidden while there's only one case study, and start
-// working automatically as soon as a second one is added to the data array.
+// watermark logo in the background. A numbered breadcrumb trail (01 / 02 / 03) next to the tag
+// pill, plus prev/next arrows on the image, let visitors step through every entry in `items` -
+// both stay hidden while there's only one case study, and start working automatically as soon
+// as a second one is added to the data array.
 export default function CaseStudySection({ items, onExplore }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = items[activeIndex];
@@ -25,24 +26,6 @@ export default function CaseStudySection({ items, onExplore }) {
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30 pointer-events-none" />
 
-      {hasMultiple && (
-        <div className="relative z-10 border-b border-nforce-borderDark/80">
-          <div className="max-w-[1280px] mx-auto px-6 flex gap-8 overflow-x-auto">
-            {items.map((item, idx) => (
-              <button
-                key={item.id}
-                onClick={() => goTo(idx)}
-                className={`py-4 border-b-2 whitespace-nowrap font-bold uppercase tracking-[0.15em] text-xs transition-colors ${
-                  idx === activeIndex ? 'border-red-600 text-red-500' : 'border-transparent text-zinc-500 hover:text-zinc-300'
-                }`}
-              >
-                {String(idx + 1).padStart(2, '0')} / {item.client}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 py-20 grid md:grid-cols-12 gap-10 items-center">
         <AnimatePresence mode="wait">
           <motion.div
@@ -51,15 +34,38 @@ export default function CaseStudySection({ items, onExplore }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="md:col-span-5 space-y-5"
+            className="md:col-span-6 space-y-5"
           >
-            <span className="inline-block px-3 py-1 bg-red-600/10 text-red-500 text-xs font-bold rounded border border-red-600/20 uppercase tracking-[0.2em]">
-              Featured Case Study
-            </span>
+            <div className="flex items-center gap-4 flex-wrap">
+              <span className="inline-block px-3 py-1 bg-red-600/10 text-red-500 text-xs font-bold rounded border border-red-600/20 uppercase tracking-[0.2em]">
+                Featured Case Study
+              </span>
+
+              {hasMultiple && (
+                <nav aria-label="Case study navigation" className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.15em]">
+                  <span className="text-zinc-500">Case Study</span>
+                  {items.map((item, idx) => (
+                    <span key={item.id} className="flex items-center gap-1.5">
+                      {idx > 0 && <span className="text-zinc-700">/</span>}
+                      <button
+                        onClick={() => goTo(idx)}
+                        aria-label={`View case study ${idx + 1}: ${item.client}`}
+                        aria-current={idx === activeIndex ? 'true' : undefined}
+                        className={`transition-colors ${
+                          idx === activeIndex ? 'text-red-500' : 'text-zinc-500 hover:text-zinc-300'
+                        }`}
+                      >
+                        {String(idx + 1).padStart(2, '0')}
+                      </button>
+                    </span>
+                  ))}
+                </nav>
+              )}
+            </div>
             <h3 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
               {active.client}
             </h3>
-            <p className="text-zinc-400 text-base leading-relaxed">{active.summary}</p>
+            <p className="text-zinc-400 text-base leading-relaxed text-justify hyphens-auto">{active.summary}</p>
 
             <div className="flex items-center gap-6 pt-2">
               {active.stats.map((stat, idx) => (
@@ -69,6 +75,10 @@ export default function CaseStudySection({ items, onExplore }) {
                 </div>
               ))}
             </div>
+
+            {active.disclaimer && (
+              <p className="text-[11px] text-zinc-600 italic">{active.disclaimer}</p>
+            )}
 
             <button
               onClick={onExplore}
@@ -83,7 +93,7 @@ export default function CaseStudySection({ items, onExplore }) {
           </motion.div>
         </AnimatePresence>
 
-        <div className="md:col-span-7 relative">
+        <div className="md:col-span-6 relative">
           <AnimatePresence mode="wait">
             <motion.div
               key={active.id}
