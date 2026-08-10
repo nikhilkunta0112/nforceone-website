@@ -9,7 +9,7 @@ export default function AuditForm() {
     company: '',
     email: '',
     phone: '',
-    service: 'Quality Assurance',
+    service: '',
     message: ''
   });
 
@@ -24,7 +24,7 @@ export default function AuditForm() {
         company: '',
         email: '',
         phone: '',
-        service: 'Quality Assurance',
+        service: '',
         message: ''
       });
     }, 4000);
@@ -98,12 +98,36 @@ export default function AuditForm() {
           onChange={(e) => setFormData({...formData, service: e.target.value})}
           className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
         >
-          <option value="Quality Assurance">Quality Assurance & Test Automation</option>
-          <option value="Custom Software">Custom Software Engineering</option>
-          <option value="Pega Development">Pega PRPC Development & Testing</option>
-          <option value="Cloud DevOps">Cloud Infrastructure & DevOps</option>
-          <option value="AI & RPA">AI & Intelligent RPA Solutions</option>
-          <option value="Data Analytics">Data Analytics & Big Data</option>
+          <option value="" disabled>Select a service</option>
+          <option value="manual-testing">Manual Testing</option>
+          <option value="automation-testing">Automation Testing</option>
+          <option value="consulting-testing">Consulting Testing</option>
+          <option value="outsourcing-testing">Outsourcing Testing</option>
+          <option value="ai-testing">AI Testing</option>
+          <option value="ux-testing">UX Testing</option>
+          <option value="performance-testing">Performance Testing</option>
+          <option value="functional-testing">Functional Testing</option>
+          <option value="regression-testing">Regression Testing</option>
+          <option value="integration-testing">Integration Testing</option>
+          <option value="compatibility-testing">Compatibility Testing</option>
+          <option value="pos-testing">POS Testing</option>
+          <option value="payment-testing">Payment Testing</option>
+          <option value="iot-testing">IoT Testing</option>
+          <option value="mobile-app-testing">Mobile App Testing</option>
+          <option value="mobile-and-device-testing">Mobile & Device Testing</option>
+          <option value="web-app-testing">Web App Testing</option>
+          <option value="cloud-testing">Cloud Testing</option>
+          <option value="software-development">Software Development</option>
+          <option value="artificial-intelligence">Artificial Intelligence</option>
+          <option value="pega-development">Pega Development</option>
+          <option value="pega-testing">Pega Testing</option>
+          <option value="devops">Devops</option>
+          <option value="database-management">Database Management</option>
+          <option value="data-analytics">Data Analytics</option>
+          <option value="big-data">Big Data</option>
+          <option value="digital-app-development">Digital App Development</option>
+          <option value="intelligent-rpa">Intelligent RPA</option>
+          <option value="management-services">Management Services</option>
         </select>
       </div>
 
