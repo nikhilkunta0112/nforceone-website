@@ -33,7 +33,7 @@ const homeCoreSolutions = [
     summary: 'Comprehensive manual, automated, functional, regression, mobile, API, and cloud testing to ensure software reliability and defect-free delivery.',
     icon: ShieldCheck,
     tag: 'QA & AUTOMATION',
-    image: '/images/Quality_Engineering.png'
+    image: '/images/Quality_Engineering.jpg'
   },
   {
     id: 'software-development',
@@ -81,7 +81,7 @@ const homeCoreSolutions = [
     summary: 'Database architecture, migration, performance tuning, and 24/7 administration for high-availability systems.',
     icon: Database,
     tag: 'DATA INFRASTRUCTURE',
-    image: '/images/databasemanagement.png'
+    image: '/images/databasemanagement.jpg'
   },
   {
     id: 'data-analytics',
@@ -89,7 +89,7 @@ const homeCoreSolutions = [
     summary: 'Advanced data pipelines, business intelligence dashboards, and big data engineering for actionable insights.',
     icon: BarChart3,
     tag: 'ANALYTICS',
-    image: '/images/DataAnalytics.png'
+    image: '/images/DataAnalytics.jpg'
   }
 ];
 
@@ -99,7 +99,7 @@ const homeCaseStudies = [
     id: 'nforce-arena',
     client: 'NForce Arena: End-to-End Cricket Tournament Management',
     summary: 'Managing tournaments across organizers, players, teams, grounds, and umpires required multiple disconnected workflows, resulting in scheduling conflicts, manual coordination, and limited visibility into tournament operations. NForceOne delivered a scalable modular monolith with secure JWT authentication, multi-role access control, automated tournament workflows, fixture management, standings generation, transactional email notifications, and a cloud-native architecture ready for Azure deployment.',
-    image: '/images/nforce_arena_cricket.png',
+    image: '/images/nforce_arena_cricket.jpg',
     stats: [
       { value: '80%', label: 'Reduction in Manual Tournament Coordination*' },
       { value: '100%', label: 'Centralized Tournament Lifecycle Management' }
@@ -117,7 +117,7 @@ const heroSlides = [
     titleHighlight: 'Lightning Speed',
     titleTail: 'and Exceptional Quality',
     subtitle: "We're on a mission to revolutionize businesses through transformative technology solutions.",
-    image: '/images/hero_ai_professional.png',
+    image: '/images/hero_ai_professional.jpg',
     primaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' },
     secondaryCta: { label: 'Explore Services', tab: 'services' }
   },
@@ -127,7 +127,7 @@ const heroSlides = [
     titleHighlight: 'Automation & Software Testing',
     titleTail: 'at Enterprise Scale',
     subtitle: 'Manual and automated QA, functional and regression testing, and custom web, mobile, and enterprise application development built to ship reliably, fast.',
-    image: '/images/hero_quality_engineering.png',
+    image: '/images/hero_quality_engineering.jpg',
     primaryCta: { label: 'Explore Quality Engineering', tab: 'services' },
     secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
   },
@@ -137,7 +137,7 @@ const heroSlides = [
     titleHighlight: 'AI & Software',
     titleTail: 'Development',
     subtitle: 'Custom application development, microservices architecture, API integration, and modern full-stack solutions, engineered to scale with your business.',
-    image: '/images/hero_ai_cloud_data.png',
+    image: '/images/hero_ai_cloud_data.jpg',
     primaryCta: { label: 'Explore AI & Cloud Solutions', tab: 'services' },
     secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
   }
@@ -175,7 +175,7 @@ const valuePillars = [
     description: 'Our solutions are scalable and can grow with your business, ensuring that you get the most value out of your investment.',
     detail: 'Architected for growth from day one, our systems flex with demand spikes and expanding user bases so you never have to rebuild the foundation to scale up.',
     icon: Layers,
-    image: '/images/Scalability.png'
+    image: '/images/Scalability.jpg'
   }
 ];
 

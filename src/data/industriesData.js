@@ -13,7 +13,7 @@ export const industriesList = [
   {
     id: 'healthcare',
     name: 'Healthcare & Telemedicine',
-    image: '/images/healthcare_medicine.png',
+    image: '/images/healthcare_medicine.jpg',
     tagline: 'HIPAA-Compliant Patient Care & Digital Health Infrastructure',
     summary: 'HIPAA-compliant software development, medical IoT testing, EHR integration, and telehealth app engineering for modern healthcare providers.',
     compliance: ['HIPAA Compliance', 'HL7 & FHIR Standards', 'FDA Software Validation', 'Cybersecurity Hardening'],
@@ -22,7 +22,7 @@ export const industriesList = [
   {
     id: 'isv',
     name: 'ISV & SaaS Software Vendors',
-    image: '/images/isv_saas.png',
+    image: '/images/isv_saas.jpg',
     tagline: 'Enabling Product-First Companies to Scale with Confidence',
     summary: 'ISVs today face immense pressure to ship fast, maintain quality, and meet evolving customer needs across platforms. NForceOne acts as an engineering accelerator, helping software vendors build scalable, secure, and high-performing applications through modern DevOps, testing, and AI integrations.',
     compliance: ['Multi-Tenant Data Isolation', 'CI/CD-Integrated QA Governance', 'API Authentication & Rate-Limiting Standards', 'Third-Party Integration Security (Stripe, Salesforce, Twilio)'],
@@ -40,7 +40,7 @@ export const industriesList = [
   {
     id: 'telecom',
     name: 'Telecommunications',
-    image: '/images/telecommunications.png',
+    image: '/images/telecommunications.jpg',
     tagline: 'Empowering Connectivity, Innovation, and Customer Experience',
     summary: 'The telecommunications industry is undergoing a seismic transformation fueled by 5G, AI, and automation. NForceOne helps telecom providers modernize their infrastructure, automate customer service, and derive intelligence from vast network data, enhancing service reliability, reducing churn, and driving customer satisfaction at scale.',
     compliance: ['5G & Edge Computing Orchestration Standards', 'BSS/OSS Digital Transformation & Migration', 'High-Throughput Billing & Subscriber Data QA', 'Telemetry & Predictive Network Analytics Governance'],
@@ -58,7 +58,7 @@ export const industriesList = [
   {
     id: 'finance-fintech',
     name: 'Finance & FinTech',
-    image: '/images/finance_fintech.png',
+    image: '/images/finance_fintech.jpg',
     tagline: 'Modernizing Financial Operations',
     summary: 'In a hyper-regulated, data-driven landscape, financial institutions require resilient, scalable, and secure systems. NForceOne helps financial firms, from legacy banks to digital-first startups, navigate compliance, scale digital infrastructure, and transform customer experiences through trusted technology solutions.',
     compliance: ['AML/CTF Regulatory Compliance', 'KYC Automation Standards', 'OCR & Secure API Identity Verification', 'Data-Driven Fraud Prevention Governance'],
