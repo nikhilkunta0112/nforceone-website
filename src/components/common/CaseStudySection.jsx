@@ -106,6 +106,7 @@ export default function CaseStudySection({ items, onExplore }) {
               <img
                 src={active.image}
                 alt={active.client}
+                style={{ objectPosition: active.imagePosition || 'center' }}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
