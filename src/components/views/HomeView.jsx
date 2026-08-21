@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   CheckCircle2,
   ShieldCheck,
@@ -24,6 +25,7 @@ import CoreSolutionsGrid from '../common/CoreSolutionsGrid';
 import IndustryCardGrid from '../common/IndustryCardGrid';
 import ParallaxFeatureSection from '../common/ParallaxFeatureSection';
 import ScaleAtSpeedSection from '../common/ScaleAtSpeedSection';
+import TestimonialsSection from '../common/TestimonialsSection';
 
 // Core Solutions from home.md
 const homeCoreSolutions = [
@@ -120,6 +122,29 @@ const homeCaseStudies = [
   }
 ];
 
+// SAMPLE testimonial copy, placeholder only, swap in verified client quotes (with their
+// sign-off) before this ships to production.
+const homeTestimonials = [
+  {
+    id: 'testimonial-qa',
+    text: 'NForceOne\'s QA team caught regressions our in-house testers consistently missed. Their automated suite cut our release cycle time significantly while raising our defect-escape rate.',
+    name: 'Client Name',
+    role: 'VP of Engineering, Fintech Platform'
+  },
+  {
+    id: 'testimonial-dev',
+    text: 'We came to NForceOne needing a microservices rebuild under a tight deadline. Their development team shipped a production-ready platform without cutting corners on architecture.',
+    name: 'Client Name',
+    role: 'CTO, Enterprise SaaS Company'
+  },
+  {
+    id: 'testimonial-pega',
+    text: 'Their certified Pega architects untangled years of workflow debt and automated processes that used to take our operations team days to run manually.',
+    name: 'Client Name',
+    role: 'Director of Operations, Healthcare Provider'
+  }
+];
+
 // Hero Slider: slide 1 copy is the existing home.md hero copy;
 // slides 2-3 summarize Quality Engineering/Software Development and AI/Cloud/Data solutions.
 const heroSlides = [
@@ -211,16 +236,19 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
     <main className="flex-1 bg-white text-neutral-900">
 
       {/* 1. HERO SECTION: image slider (3 slides) with overlay copy + prev/next controls */}
-      <section className="relative w-full min-h-[85svh] sm:min-h-[85vh] flex items-center overflow-hidden bg-neutral-950 text-white border-b border-zinc-800 py-16 sm:py-20 lg:py-28">
+      <section className="relative w-full h-[85svh] sm:h-[85vh] flex items-start overflow-hidden bg-neutral-950 text-white border-b border-zinc-800 pt-24 sm:pt-28 lg:pt-32 pb-32 sm:pb-36 lg:pb-40">
 
-        {/* Slide backgrounds (crossfade, shown at full brightness) */}
+        {/* Slide backgrounds (crossfade, shown at full brightness). Overlay eases from
+            near-opaque on the left (behind the text) to a light, consistent tint on the
+            right, so the photo emerges gradually instead of via a hard-edged split. */}
         <div className="absolute inset-0">
           {heroSlides.map((s, idx) => (
             <div
               key={s.id}
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] ease-in-out ${idx === activeSlide ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[1000ms] ease-in-out ${idx === activeSlide ? 'opacity-100' : 'opacity-0'}`}
               style={{
-                backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.72) 35%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.15) 85%), url('${s.image}')`,
+                backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.82) 22%, rgba(0,0,0,0.72) 36%, rgba(0,0,0,0.55) 48%, rgba(0,0,0,0.38) 58%, rgba(0,0,0,0.24) 68%, rgba(0,0,0,0.14) 80%, rgba(0,0,0,0.08) 100%), url('${s.image}')`,
+                backgroundPosition: s.imagePosition || 'center',
               }}
               aria-hidden="true"
             ></div>
@@ -228,80 +256,108 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
         </div>
 
         {/* Scrim: darkens the text/controls zones regardless of the underlying photo,
-            so copy stays legible even over light or busy imagery. */}
+            so copy stays legible even over light or busy imagery. Combined with the
+            per-slide overlay above, this is what produces the smooth left-dark to
+            right-visible reveal without a visible seam. */}
         <div
           className="absolute inset-0 z-10"
           style={{
             background:
-              'linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.05) 85%), linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 30%)',
+              'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.5) 25%, rgba(0,0,0,0.38) 40%, rgba(0,0,0,0.22) 55%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0.02) 100%), linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 30%)',
           }}
           aria-hidden="true"
         ></div>
 
-        <div className="relative z-20 max-w-[1600px] mx-auto px-6 lg:px-12 w-full grid grid-cols-12 gap-8 items-center">
-          <div className="col-span-12 lg:col-span-6 flex flex-col items-start space-y-6">
+        <div className="relative z-20 max-w-[1280px] mx-auto px-6 w-full grid grid-cols-12 gap-8 items-center">
+          <div className="col-span-12 lg:col-span-6 relative">
+            <AnimatePresence mode="wait">
+              <motion.div key={slide.id} className="flex flex-col items-start space-y-5">
 
-            <h1 className="text-4xl sm:text-6xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] max-w-xl drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">
-              {slide.titleLead}{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-nforce-red via-red-400 to-white drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">{slide.titleHighlight}</span>{' '}
-              {slide.titleTail}
-            </h1>
+                <motion.h1
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -14 }}
+                  transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+                  className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-[1.15] max-w-xl drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]"
+                >
+                  {slide.titleLead}{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-nforce-red via-red-400 to-white drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">{slide.titleHighlight}</span>{' '}
+                  {slide.titleTail}
+                </motion.h1>
 
-            <p className="text-zinc-100 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]">
-              {slide.subtitle}
-            </p>
+                <motion.p
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -14 }}
+                  transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 0.08 }}
+                  className="text-zinc-100 text-base sm:text-lg font-normal leading-relaxed max-w-xl drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]"
+                >
+                  {slide.subtitle}
+                </motion.p>
 
-            <div className="pt-2 flex flex-wrap gap-4">
-              <button
-                onClick={() => { setCurrentTab(slide.primaryCta.tab); window.scrollTo(0, 0); }}
-                className="group relative px-8 py-4 bg-nforce-red hover:bg-nforce-red text-white font-bold text-xs uppercase tracking-widest rounded shadow-[0_10px_20px_rgba(175,16,26,0.3)] transition-all hover:-translate-y-1"
-              >
-                {slide.primaryCta.label}
-              </button>
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -14 }}
+                  transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 0.16 }}
+                  className="pt-1 flex flex-wrap gap-4"
+                >
+                  <button
+                    onClick={() => { setCurrentTab(slide.primaryCta.tab); window.scrollTo(0, 0); }}
+                    className="group relative px-8 py-4 bg-nforce-red hover:bg-nforce-red text-white font-bold text-xs uppercase tracking-widest rounded shadow-[0_10px_20px_rgba(175,16,26,0.3)] transition-all hover:-translate-y-1"
+                  >
+                    {slide.primaryCta.label}
+                  </button>
 
-              <button
-                onClick={() => { setCurrentTab(slide.secondaryCta.tab); window.scrollTo(0, 0); }}
-                className="px-8 py-4 border-2 border-zinc-400 text-zinc-200 hover:bg-white hover:text-black font-bold text-xs uppercase tracking-widest rounded transition-all"
-              >
-                {slide.secondaryCta.label}
-              </button>
-            </div>
+                  <button
+                    onClick={() => { setCurrentTab(slide.secondaryCta.tab); window.scrollTo(0, 0); }}
+                    className="px-8 py-4 border-2 border-zinc-400 text-zinc-200 hover:bg-white hover:text-black font-bold text-xs uppercase tracking-widest rounded transition-all"
+                  >
+                    {slide.secondaryCta.label}
+                  </button>
+                </motion.div>
 
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
 
-        {/* Slider controls: prev/next + dot indicators */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-between px-4 sm:px-10">
-          <button
-            onClick={() => goToSlide(activeSlide - 1)}
-            aria-label="Previous slide"
-            className="flex items-center gap-2 px-4 sm:px-5 py-4 text-xs font-bold uppercase tracking-widest text-zinc-100 hover:text-white transition-colors drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
-          >
-            <span aria-hidden="true">&#8592;</span>
-            <span className="hidden sm:inline">Previous</span>
-          </button>
+        {/* Slider controls: prev/next + dot indicators, lifted off the viewport edge with
+            its own breathing room below the CTA row. Shares the navbar/hero-content
+            container so Previous/Next line up with the logo and heading edges. */}
+        <div className="absolute bottom-6 sm:bottom-8 lg:bottom-10 left-0 right-0 z-20">
+          <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
+            <button
+              onClick={() => goToSlide(activeSlide - 1)}
+              aria-label="Previous slide"
+              className="flex items-center gap-2 -ml-4 sm:-ml-5 px-4 sm:px-5 py-3 text-xs font-bold uppercase tracking-widest text-zinc-300 hover:text-white transition-colors drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
+            >
+              <span aria-hidden="true">&#8592;</span>
+              <span className="hidden sm:inline">Previous</span>
+            </button>
 
-          <div className="flex items-center gap-1 pb-4">
-            {heroSlides.map((s, idx) => (
-              <button
-                key={s.id}
-                onClick={() => goToSlide(idx)}
-                aria-label={`Go to slide ${idx + 1}`}
-                className="group p-2.5 flex items-center justify-center"
-              >
-                <span className={`block h-1.5 rounded-full transition-all shadow-[0_1px_4px_rgba(0,0,0,0.9)] ${idx === activeSlide ? 'w-8 bg-nforce-red' : 'w-1.5 bg-white/70 group-hover:bg-white'}`}></span>
-              </button>
-            ))}
+            <div className="flex items-center gap-1">
+              {heroSlides.map((s, idx) => (
+                <button
+                  key={s.id}
+                  onClick={() => goToSlide(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className="group p-2.5 flex items-center justify-center"
+                >
+                  <span className={`block h-1.5 rounded-full transition-all shadow-[0_1px_4px_rgba(0,0,0,0.9)] ${idx === activeSlide ? 'w-8 bg-nforce-red' : 'w-1.5 bg-white/70 group-hover:bg-white'}`}></span>
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => goToSlide(activeSlide + 1)}
+              aria-label="Next slide"
+              className="flex items-center gap-2 -mr-4 sm:-mr-5 px-4 sm:px-5 py-3 text-xs font-bold uppercase tracking-widest text-zinc-300 hover:text-white transition-colors drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
+            >
+              <span className="hidden sm:inline">Next</span>
+              <span aria-hidden="true">&#8594;</span>
+            </button>
           </div>
-
-          <button
-            onClick={() => goToSlide(activeSlide + 1)}
-            aria-label="Next slide"
-            className="flex items-center gap-2 px-4 sm:px-5 py-4 text-xs font-bold uppercase tracking-widest text-zinc-100 hover:text-white transition-colors drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
-          >
-            <span className="hidden sm:inline">Next</span>
-            <span aria-hidden="true">&#8594;</span>
-          </button>
         </div>
       </section>
 
@@ -404,6 +460,9 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
 
         </div>
       </section>
+
+      {/* 8. TESTIMONIALS */}
+      <TestimonialsSection items={homeTestimonials} />
 
       {/* 9. PARTNER WITH US & HOW IT WORKS: from home.md */}
       <section className="py-24 bg-neutral-950 text-white">
