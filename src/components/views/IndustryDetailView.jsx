@@ -12,9 +12,9 @@ export default function IndustryDetailView({ selectedIndustry, setCurrentTab }) 
   return (
     <main className="flex-1 py-16 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-8 space-y-12">
-        <button 
+        <button
           onClick={() => handleNav('industries')}
-          className="text-xs font-bold text-red-600 hover:underline flex items-center gap-1"
+          className="-m-2 p-2 text-xs font-bold text-red-600 hover:underline flex items-center gap-1"
         >
           &larr; Back to All Industries
         </button>

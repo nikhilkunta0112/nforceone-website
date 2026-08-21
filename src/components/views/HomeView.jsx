@@ -211,7 +211,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
     <main className="flex-1 bg-white text-neutral-900">
 
       {/* 1. HERO SECTION: image slider (3 slides) with overlay copy + prev/next controls */}
-      <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-neutral-950 text-white border-b border-zinc-800 py-20 lg:py-28">
+      <section className="relative w-full min-h-[85svh] sm:min-h-[85vh] flex items-center overflow-hidden bg-neutral-950 text-white border-b border-zinc-800 py-16 sm:py-20 lg:py-28">
 
         {/* Slide backgrounds (crossfade, shown at full brightness) */}
         <div className="absolute inset-0">
@@ -281,14 +281,16 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
             <span className="hidden sm:inline">Previous</span>
           </button>
 
-          <div className="flex items-center gap-2 pb-4">
+          <div className="flex items-center gap-1 pb-4">
             {heroSlides.map((s, idx) => (
               <button
                 key={s.id}
                 onClick={() => goToSlide(idx)}
                 aria-label={`Go to slide ${idx + 1}`}
-                className={`h-1.5 rounded-full transition-all shadow-[0_1px_4px_rgba(0,0,0,0.9)] ${idx === activeSlide ? 'w-8 bg-red-600' : 'w-1.5 bg-white/70 hover:bg-white'}`}
-              ></button>
+                className="group p-2.5 flex items-center justify-center"
+              >
+                <span className={`block h-1.5 rounded-full transition-all shadow-[0_1px_4px_rgba(0,0,0,0.9)] ${idx === activeSlide ? 'w-8 bg-red-600' : 'w-1.5 bg-white/70 group-hover:bg-white'}`}></span>
+              </button>
             ))}
           </div>
 
@@ -406,7 +408,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
       {/* 9. PARTNER WITH US & HOW IT WORKS: from home.md */}
       <section className="py-24 bg-neutral-950 text-white">
         <div className="max-w-[1280px] mx-auto px-6">
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-10 grid lg:grid-cols-12 gap-12 items-center shadow-2xl">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 sm:p-10 grid lg:grid-cols-12 gap-12 items-center shadow-2xl">
 
             <div className="lg:col-span-6 space-y-6">
               <span className="text-xs font-bold text-red-500 uppercase tracking-[0.2em]">CONTACT US</span>

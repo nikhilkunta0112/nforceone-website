@@ -51,7 +51,7 @@ export default function CaseStudySection({ items, onExplore }) {
                         onClick={() => goTo(idx)}
                         aria-label={`View case study ${idx + 1}: ${item.client}`}
                         aria-current={idx === activeIndex ? 'true' : undefined}
-                        className={`transition-colors ${
+                        className={`py-2 -my-2 transition-colors ${
                           idx === activeIndex ? 'text-red-500' : 'text-zinc-500 hover:text-zinc-300'
                         }`}
                       >
@@ -67,11 +67,11 @@ export default function CaseStudySection({ items, onExplore }) {
             </h3>
             <p className="text-zinc-400 text-base leading-relaxed text-justify hyphens-auto">{active.summary}</p>
 
-            <div className="flex items-center gap-6 pt-2">
+            <div className="flex flex-wrap items-start gap-x-6 gap-y-4 pt-2">
               {active.stats.map((stat, idx) => (
-                <div key={idx} className={idx > 0 ? 'border-l border-zinc-700 pl-6' : ''}>
+                <div key={idx} className={idx > 0 ? 'sm:border-l sm:border-zinc-700 sm:pl-6' : ''}>
                   <div className="text-3xl font-black text-red-500">{stat.value}</div>
-                  <div className="text-xs text-zinc-500 mt-1 max-w-[140px]">{stat.label}</div>
+                  <div className="text-xs text-zinc-500 mt-1 max-w-[200px] sm:max-w-[140px]">{stat.label}</div>
                 </div>
               ))}
             </div>

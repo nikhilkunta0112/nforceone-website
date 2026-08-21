@@ -124,7 +124,7 @@ export default function CareersFaqView() {
         </div>
 
         {/* FAQ Section */}
-        <div className="space-y-8 bg-zinc-900/40 border border-zinc-800 p-8 rounded-3xl">
+        <div className="space-y-8 bg-zinc-900/40 border border-zinc-800 p-5 sm:p-8 rounded-3xl">
           <div className="space-y-2 text-center">
             <h2 className="text-3xl font-bold text-white">Frequently Asked Questions</h2>
             <p className="text-xs text-zinc-400">Everything you need to know about partnering with NForceOne.</p>

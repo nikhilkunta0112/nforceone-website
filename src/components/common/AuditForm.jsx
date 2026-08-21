@@ -51,7 +51,7 @@ export default function AuditForm() {
             placeholder="John"
             value={formData.firstName}
             onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
+            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
           />
         </div>
         <div>
@@ -62,7 +62,7 @@ export default function AuditForm() {
             placeholder="Doe"
             value={formData.lastName}
             onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
+            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
           />
         </div>
       </div>
@@ -76,7 +76,7 @@ export default function AuditForm() {
             placeholder="john@company.com"
             value={formData.email}
             onChange={(e) => setFormData({...formData, email: e.target.value})}
-            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
+            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
           />
         </div>
         <div>
@@ -86,7 +86,7 @@ export default function AuditForm() {
             placeholder="+1 (555) 000-0000"
             value={formData.phone}
             onChange={(e) => setFormData({...formData, phone: e.target.value})}
-            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
+            className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600"
           />
         </div>
       </div>
@@ -139,7 +139,7 @@ export default function AuditForm() {
           placeholder="Tell us about your project, current tech stack, or QA challenges..."
           value={formData.message}
           onChange={(e) => setFormData({...formData, message: e.target.value})}
-          className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600 resize-none"
+          className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-2.5 text-base sm:text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-red-600 resize-none"
         ></textarea>
       </div>
 

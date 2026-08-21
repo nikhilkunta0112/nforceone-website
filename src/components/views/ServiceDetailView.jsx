@@ -13,9 +13,9 @@ export default function ServiceDetailView({ selectedService, setCurrentTab }) {
     <main className="flex-1 py-16 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-8 space-y-12">
         
-        <button 
+        <button
           onClick={() => handleNav('services')}
-          className="text-xs font-bold text-red-600 hover:underline flex items-center gap-1"
+          className="-m-2 p-2 text-xs font-bold text-red-600 hover:underline flex items-center gap-1"
         >
           &larr; Back to All Services
         </button>
@@ -57,7 +57,7 @@ export default function ServiceDetailView({ selectedService, setCurrentTab }) {
           </div>
         </div>
 
-        <div className="bg-black text-white rounded-2xl p-8 flex flex-wrap items-center justify-between gap-6 border border-neutral-800">
+        <div className="bg-black text-white rounded-2xl p-6 sm:p-8 flex flex-wrap items-center justify-between gap-6 border border-neutral-800">
           <div>
             <h3 className="text-2xl font-bold">Ready to Implement {selectedService.title}?</h3>
             <p className="text-neutral-300 text-sm mt-1">Talk with an NForceOne technical lead to start your engagement.</p>

@@ -324,9 +324,10 @@ export default function Navbar({
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button 
+        <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 rounded-lg text-white hover:bg-zinc-900"
+          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          className="lg:hidden p-2.5 rounded-lg text-white hover:bg-zinc-900"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -376,7 +377,7 @@ export default function Navbar({
                                   <button
                                     key={iIdx}
                                     onClick={() => handleSelectServiceItem(subItem)}
-                                    className="text-left py-1 text-zinc-300 hover:text-red-400 text-xs flex items-center gap-2"
+                                    className="text-left py-2 text-zinc-300 hover:text-red-400 text-xs flex items-center gap-2"
                                   >
                                     <SubIcon className="w-3.5 h-3.5 text-red-500 shrink-0" />
                                     <span>{subItem.name}</span>
@@ -397,7 +398,7 @@ export default function Navbar({
                       <button
                         key={sIdx}
                         onClick={() => handleSelectServiceItem(srv)}
-                        className="text-left py-1.5 text-zinc-300 font-medium hover:text-red-400 flex items-center gap-2.5 w-full"
+                        className="text-left py-2 text-zinc-300 font-medium hover:text-red-400 flex items-center gap-2.5 w-full"
                       >
                         <ItemIcon className="w-4 h-4 text-red-500 shrink-0" />
                         <span>{srv.name}</span>
@@ -424,7 +425,7 @@ export default function Navbar({
                     <button
                       key={ind.id}
                       onClick={() => { navigateToIndustry(ind); setMobileMenuOpen(false); }}
-                      className="text-left py-1 text-zinc-300 hover:text-red-400 flex items-center gap-2 text-xs"
+                      className="text-left py-2 text-zinc-300 hover:text-red-400 flex items-center gap-2 text-xs"
                     >
                       <Building2 className="w-3.5 h-3.5 text-red-500 shrink-0" />
                       <span>{ind.name}</span>

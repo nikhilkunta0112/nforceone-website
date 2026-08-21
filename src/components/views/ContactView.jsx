@@ -24,7 +24,7 @@ export default function ContactView() {
         {/* Global Offices Grid */}
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {contactData.offices.map((office, idx) => (
-            <div key={idx} className="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl space-y-6 relative overflow-hidden group hover:border-red-500/50 transition-all">
+            <div key={idx} className="bg-zinc-900 border border-zinc-800 p-6 sm:p-8 rounded-3xl space-y-6 relative overflow-hidden group hover:border-red-500/50 transition-all">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
                   <span className="text-xs font-bold text-red-500 uppercase tracking-widest">{office.badge}</span>
@@ -58,7 +58,7 @@ export default function ContactView() {
         </div>
 
         {/* How it Works / Consultation Steps */}
-        <div className="bg-zinc-900/50 border border-zinc-800 p-8 rounded-3xl space-y-8 max-w-5xl mx-auto">
+        <div className="bg-zinc-900/50 border border-zinc-800 p-5 sm:p-8 rounded-3xl space-y-8 max-w-5xl mx-auto">
           <div className="text-center space-y-2">
             <h2 className="text-2xl font-bold text-white">How Our Discovery Process Works</h2>
             <p className="text-xs text-zinc-400">Three simple steps to transform your software engineering capabilities.</p>
@@ -76,7 +76,7 @@ export default function ContactView() {
         </div>
 
         {/* Form Container */}
-        <div className="max-w-4xl mx-auto bg-zinc-900 p-8 sm:p-10 rounded-3xl border border-zinc-800 shadow-2xl space-y-6">
+        <div className="max-w-4xl mx-auto bg-zinc-900 p-5 sm:p-10 rounded-3xl border border-zinc-800 shadow-2xl space-y-6">
           <div className="space-y-2 text-center">
             <h2 className="text-2xl font-bold text-white">Schedule a Free Technical Audit</h2>
             <p className="text-xs text-zinc-400">Fill out the details below and our team will get back to you within 24 hours.</p>
