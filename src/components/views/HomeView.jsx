@@ -236,7 +236,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
     <main className="flex-1 bg-white text-neutral-900">
 
       {/* 1. HERO SECTION: image slider (3 slides) with overlay copy + prev/next controls */}
-      <section className="relative w-full h-[85svh] sm:h-[85vh] flex items-start overflow-hidden bg-neutral-950 text-white border-b border-zinc-800 pt-24 sm:pt-28 lg:pt-32 pb-32 sm:pb-36 lg:pb-40">
+      <section className="relative w-full h-[85svh] sm:h-[85vh] flex items-start overflow-hidden bg-neutral-950 text-white border-b border-zinc-800 pt-12 sm:pt-16 lg:pt-20 pb-32 sm:pb-36 lg:pb-40">
 
         {/* Slide backgrounds (crossfade, shown at full brightness). Overlay eases from
             near-opaque on the left (behind the text) to a light, consistent tint on the
@@ -271,7 +271,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
         <div className="relative z-20 max-w-[1280px] mx-auto px-6 w-full grid grid-cols-12 gap-8 items-center">
           <div className="col-span-12 lg:col-span-6 relative">
             <AnimatePresence mode="wait">
-              <motion.div key={slide.id} className="flex flex-col items-start space-y-5">
+              <motion.div key={slide.id} className="flex flex-col items-start space-y-7">
 
                 <motion.h1
                   initial={{ opacity: 0, y: 14 }}
@@ -300,7 +300,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -14 }}
                   transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 0.16 }}
-                  className="pt-1 flex flex-wrap gap-4"
+                  className="pt-1 flex flex-col items-start gap-4"
                 >
                   <button
                     onClick={() => { setCurrentTab(slide.primaryCta.tab); window.scrollTo(0, 0); }}
