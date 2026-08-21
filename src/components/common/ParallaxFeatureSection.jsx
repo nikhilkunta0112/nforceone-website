@@ -6,7 +6,7 @@ export default function ParallaxFeatureSection({ eyebrow, title, subtitle, items
     <section className="bg-white text-neutral-900 border-b border-neutral-200 pt-12 pb-16">
       <div className="max-w-[1280px] mx-auto px-6 text-left">
         <div>
-          <span className="text-xs font-bold text-red-600 uppercase tracking-[0.2em]">{eyebrow}</span>
+          <span className="text-xs font-bold text-nforce-red uppercase tracking-[0.2em]">{eyebrow}</span>
           <h2 className="text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight mt-2 max-w-2xl">{title}</h2>
           {subtitle && <p className="text-neutral-600 text-sm md:text-base max-w-2xl mt-4">{subtitle}</p>}
         </div>
@@ -26,7 +26,7 @@ export default function ParallaxFeatureSection({ eyebrow, title, subtitle, items
                 className="feature-card rounded-2xl p-8 bg-nforce-cardDark border border-nforce-borderDark flex flex-col min-h-[320px]"
               >
                 <div className="feature-card-content flex flex-col h-full">
-                  {Icon && <Icon className="feature-icon w-8 h-8 text-red-500 mb-6" />}
+                  {Icon && <Icon className="feature-icon w-8 h-8 text-nforce-red mb-6" />}
                   <h3 className="text-xl font-extrabold text-white tracking-tight mb-3">
                     {item.title}
                   </h3>

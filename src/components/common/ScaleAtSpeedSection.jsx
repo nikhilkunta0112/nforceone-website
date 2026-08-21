@@ -36,14 +36,14 @@ export default function ScaleAtSpeedSection({ onExplore }) {
           <div className="flex flex-wrap gap-4 pt-2">
             <button
               onClick={onExplore}
-              className="group px-8 py-4 bg-white hover:bg-red-50 text-red-700 font-bold text-xs uppercase tracking-widest rounded shadow-md transition-all hover:-translate-y-1 inline-flex items-center gap-2"
+              className="group px-8 py-4 bg-white hover:bg-red-50 text-nforce-red font-bold text-xs uppercase tracking-widest rounded shadow-md transition-all hover:-translate-y-1 inline-flex items-center gap-2"
             >
               Know More
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
             <button
               onClick={onExplore}
-              className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-red-700 font-bold text-xs uppercase tracking-widest rounded transition-all"
+              className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-nforce-red font-bold text-xs uppercase tracking-widest rounded transition-all"
             >
               Our Story
             </button>

@@ -15,7 +15,7 @@ export default function ServiceDetailView({ selectedService, setCurrentTab }) {
         
         <button
           onClick={() => handleNav('services')}
-          className="-m-2 p-2 text-xs font-bold text-red-600 hover:underline flex items-center gap-1"
+          className="-m-2 p-2 text-xs font-bold text-nforce-red hover:underline flex items-center gap-1"
         >
           &larr; Back to All Services
         </button>
@@ -38,7 +38,7 @@ export default function ServiceDetailView({ selectedService, setCurrentTab }) {
             <div className="space-y-2">
               {selectedService.features.map((ft, i) => (
                 <div key={i} className="flex items-center gap-2.5 text-sm font-semibold text-neutral-800">
-                  <CheckCircle2 className="w-4 h-4 text-red-600 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-nforce-red shrink-0" />
                   <span>{ft}</span>
                 </div>
               ))}
@@ -64,7 +64,7 @@ export default function ServiceDetailView({ selectedService, setCurrentTab }) {
           </div>
           <button 
             onClick={() => handleNav('contact')}
-            className="bg-red-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-red-700 transition-colors shadow-md"
+            className="bg-nforce-red text-white font-bold px-6 py-3 rounded-lg hover:bg-nforce-red transition-colors shadow-md"
           >
             Schedule Consultation &rarr;
           </button>

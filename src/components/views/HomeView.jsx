@@ -199,11 +199,11 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
   const slide = heroSlides[activeSlide];
   const goToSlide = (idx) => setActiveSlide((idx + heroSlides.length) % heroSlides.length);
 
-  // Auto-scroll the hero slider every 3s, looping continuously.
+  // Auto-scroll the hero slider every 4s, looping continuously.
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 3000);
+    }, 4000);
     return () => clearInterval(timer);
   }, []);
 
@@ -243,7 +243,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
 
             <h1 className="text-4xl sm:text-6xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] max-w-xl drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">
               {slide.titleLead}{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-400 to-white drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">{slide.titleHighlight}</span>{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-nforce-red via-red-400 to-white drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]">{slide.titleHighlight}</span>{' '}
               {slide.titleTail}
             </h1>
 
@@ -254,7 +254,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
             <div className="pt-2 flex flex-wrap gap-4">
               <button
                 onClick={() => { setCurrentTab(slide.primaryCta.tab); window.scrollTo(0, 0); }}
-                className="group relative px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-widest rounded shadow-[0_10px_20px_rgba(175,16,26,0.3)] transition-all hover:-translate-y-1"
+                className="group relative px-8 py-4 bg-nforce-red hover:bg-nforce-red text-white font-bold text-xs uppercase tracking-widest rounded shadow-[0_10px_20px_rgba(175,16,26,0.3)] transition-all hover:-translate-y-1"
               >
                 {slide.primaryCta.label}
               </button>
@@ -289,7 +289,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
                 aria-label={`Go to slide ${idx + 1}`}
                 className="group p-2.5 flex items-center justify-center"
               >
-                <span className={`block h-1.5 rounded-full transition-all shadow-[0_1px_4px_rgba(0,0,0,0.9)] ${idx === activeSlide ? 'w-8 bg-red-600' : 'w-1.5 bg-white/70 group-hover:bg-white'}`}></span>
+                <span className={`block h-1.5 rounded-full transition-all shadow-[0_1px_4px_rgba(0,0,0,0.9)] ${idx === activeSlide ? 'w-8 bg-nforce-red' : 'w-1.5 bg-white/70 group-hover:bg-white'}`}></span>
               </button>
             ))}
           </div>
@@ -306,7 +306,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
       </section>
 
       {/* 2. METRIC BAR: Impact & Proven Enterprise Numbers from home.md */}
-      <section className="bg-red-700 py-12 text-white border-b border-red-800">
+      <section className="bg-nforce-red py-12 text-white border-b border-red-800">
         <div className="max-w-[1280px] mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
 
@@ -350,17 +350,17 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
 
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
             <div>
-              <span className="text-xs font-bold text-red-600 uppercase tracking-[0.2em]">HOW WE DO</span>
+              <span className="text-xs font-bold text-nforce-red uppercase tracking-[0.2em]">HOW WE DO</span>
               <h2 className="text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight mt-2">
                 Core Solutions
               </h2>
             </div>
             <button
               onClick={() => { setCurrentTab('services'); window.scrollTo(0, 0); }}
-              className="text-xs font-bold text-neutral-800 border-b-2 border-red-600 pb-1 hover:text-red-600 transition-colors uppercase tracking-wider flex items-center gap-1"
+              className="text-xs font-bold text-neutral-800 border-b-2 border-nforce-red pb-1 hover:text-nforce-red transition-colors uppercase tracking-wider flex items-center gap-1"
             >
               <span>VIEW ALL SOLUTIONS</span>
-              <ChevronRight className="w-4 h-4 text-red-600" />
+              <ChevronRight className="w-4 h-4 text-nforce-red" />
             </button>
           </div>
 
@@ -384,7 +384,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
 
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
             <div>
-              <div className="text-xs font-bold text-red-600 uppercase tracking-[0.2em]">INDUSTRIES WE SERVE</div>
+              <div className="text-xs font-bold text-nforce-red uppercase tracking-[0.2em]">INDUSTRIES WE SERVE</div>
               <h2 className="text-3xl lg:text-4xl font-extrabold text-neutral-900 tracking-tight mt-2">
                 Powering Innovation Across Every Industry
               </h2>
@@ -394,7 +394,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
             </div>
             <button
               onClick={() => { setCurrentTab('industries'); window.scrollTo(0, 0); }}
-              className="text-xs font-bold text-neutral-800 border-b-2 border-red-600 pb-1 hover:text-red-600 transition-colors uppercase tracking-wider"
+              className="text-xs font-bold text-neutral-800 border-b-2 border-nforce-red pb-1 hover:text-nforce-red transition-colors uppercase tracking-wider"
             >
               VIEW ALL INDUSTRIES
             </button>
@@ -411,7 +411,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 sm:p-10 grid lg:grid-cols-12 gap-12 items-center shadow-2xl">
 
             <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-bold text-red-500 uppercase tracking-[0.2em]">CONTACT US</span>
+              <span className="text-xs font-bold text-nforce-red uppercase tracking-[0.2em]">CONTACT US</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
                 Partner with Us to Build and Scale with Confidence
               </h2>
@@ -423,15 +423,15 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
                 <div className="text-xs font-bold text-red-400 uppercase tracking-wider">How It Works:</div>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-red-600 text-white font-bold text-xs flex items-center justify-center shrink-0">1</div>
+                    <div className="w-6 h-6 rounded-full bg-nforce-red text-white font-bold text-xs flex items-center justify-center shrink-0">1</div>
                     <p className="text-xs text-zinc-300">We schedule a discovery call at your convenience</p>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-red-600 text-white font-bold text-xs flex items-center justify-center shrink-0">2</div>
+                    <div className="w-6 h-6 rounded-full bg-nforce-red text-white font-bold text-xs flex items-center justify-center shrink-0">2</div>
                     <p className="text-xs text-zinc-300">We assess your goals, tech landscape, and business workflows</p>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-red-600 text-white font-bold text-xs flex items-center justify-center shrink-0">3</div>
+                    <div className="w-6 h-6 rounded-full bg-nforce-red text-white font-bold text-xs flex items-center justify-center shrink-0">3</div>
                     <p className="text-xs text-zinc-300">We deliver a tailored solution proposal and execution roadmap</p>
                   </div>
                 </div>
@@ -439,11 +439,11 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
 
               <div className="space-y-2 text-xs text-zinc-400 pt-4 border-t border-zinc-800">
                 <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-red-500 shrink-0" />
+                  <Mail className="w-4 h-4 text-nforce-red shrink-0" />
                   <span>admin@nforceone.com</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Globe className="w-4 h-4 text-red-500 shrink-0" />
+                  <Globe className="w-4 h-4 text-nforce-red shrink-0" />
                   <span>Hyderabad, India · Plano / Dallas, USA</span>
                 </div>
               </div>

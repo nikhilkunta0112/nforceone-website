@@ -18,9 +18,9 @@
           extend: {
             colors: {
               nforce: {
-                red: '#E60000',
-                redHover: '#CC0000',
-                redDark: '#990000',
+                red: '#910000',
+                redHover: '#910000',
+                redDark: '#910000',
                 black: '#0A0A0A',
                 darkSlate: '#121212',
                 cardDark: '#171717',
@@ -43,8 +43,8 @@
       }
       .card-hover:hover {
         transform: translateY(-2px);
-        box-shadow: 0 12px 24px -10px rgba(230, 0, 0, 0.12);
-        border-color: rgba(230, 0, 0, 0.3);
+        box-shadow: 0 12px 24px -10px rgba(145, 0, 0, 0.12);
+        border-color: rgba(145, 0, 0, 0.3);
       }
       @media (prefers-reduced-motion: reduce) {
         .card-hover:hover {
@@ -91,14 +91,14 @@
       }
       .feature-card:hover {
         transform: scale(1.02) translateY(-6px);
-        box-shadow: 0 20px 40px -15px rgba(230, 0, 0, 0.35);
+        box-shadow: 0 20px 40px -15px rgba(145, 0, 0, 0.35);
       }
       .feature-card::before {
         content: '';
         position: absolute;
         inset: 0;
         z-index: 0;
-        background: linear-gradient(135deg, #E60000 0%, #990000 100%);
+        background: linear-gradient(135deg, #910000 0%, #910000 100%);
         opacity: 0.95;
         transition: clip-path 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
       }

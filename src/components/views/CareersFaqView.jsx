@@ -31,7 +31,7 @@ export default function CareersFaqView() {
         
         {/* Careers Hero */}
         <div className="text-center space-y-6 max-w-4xl mx-auto">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-red-600/10 border border-red-500/20 text-red-500 text-xs font-bold uppercase tracking-widest">
+          <div className="inline-block px-4 py-1.5 rounded-full bg-nforce-red/10 border border-nforce-red/20 text-nforce-red text-xs font-bold uppercase tracking-widest">
             {careersData.hero.tagline}
           </div>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
@@ -47,7 +47,7 @@ export default function CareersFaqView() {
           {careersData.perks.map((perk, idx) => (
             <div key={idx} className="bg-zinc-900/60 border border-zinc-800 p-6 rounded-2xl space-y-2">
               <div className="text-base font-bold text-white flex items-center space-x-2">
-                <Sparkles className="w-4 h-4 text-red-500 shrink-0" />
+                <Sparkles className="w-4 h-4 text-nforce-red shrink-0" />
                 <span>{perk.title}</span>
               </div>
               <p className="text-xs text-zinc-400 leading-relaxed">{perk.desc}</p>
@@ -64,7 +64,7 @@ export default function CareersFaqView() {
             </div>
             <a 
               href="mailto:admin@nforceone.com" 
-              className="inline-flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-red-600/20"
+              className="inline-flex items-center space-x-2 bg-nforce-red hover:bg-nforce-red text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-nforce-red/20"
             >
               <Mail className="w-4 h-4" />
               <span>Send Resume (admin@nforceone.com)</span>
@@ -76,15 +76,15 @@ export default function CareersFaqView() {
               <div 
                 key={job.id} 
                 className={`bg-zinc-900/80 border rounded-2xl p-6 transition-all ${
-                  selectedJob === job.id ? 'border-red-500 bg-zinc-900' : 'border-zinc-800 hover:border-zinc-700'
+                  selectedJob === job.id ? 'border-nforce-red bg-zinc-900' : 'border-zinc-800 hover:border-zinc-700'
                 }`}
               >
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="space-y-2">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-xs font-bold text-red-500 bg-red-500/10 px-2.5 py-1 rounded-md">{job.department}</span>
-                      <span className="text-xs text-zinc-400 flex items-center space-x-1"><MapPin className="w-3 h-3 text-red-500" /><span>{job.location}</span></span>
-                      <span className="text-xs text-zinc-400 flex items-center space-x-1"><Clock className="w-3 h-3 text-red-500" /><span>{job.type} • {job.experience}</span></span>
+                      <span className="text-xs font-bold text-nforce-red bg-nforce-red/10 px-2.5 py-1 rounded-md">{job.department}</span>
+                      <span className="text-xs text-zinc-400 flex items-center space-x-1"><MapPin className="w-3 h-3 text-nforce-red" /><span>{job.location}</span></span>
+                      <span className="text-xs text-zinc-400 flex items-center space-x-1"><Clock className="w-3 h-3 text-nforce-red" /><span>{job.type} • {job.experience}</span></span>
                     </div>
                     <h3 className="text-xl font-bold text-white">{job.title}</h3>
                     <p className="text-xs text-zinc-400 leading-relaxed max-w-3xl">{job.overview}</p>
@@ -105,14 +105,14 @@ export default function CareersFaqView() {
                     <ul className="grid sm:grid-cols-2 gap-2">
                       {job.requirements.map((req, rIdx) => (
                         <li key={rIdx} className="text-xs text-zinc-300 flex items-start space-x-2">
-                          <CheckCircle className="w-3.5 h-3.5 text-red-500 shrink-0 mt-0.5" />
+                          <CheckCircle className="w-3.5 h-3.5 text-nforce-red shrink-0 mt-0.5" />
                           <span>{req}</span>
                         </li>
                       ))}
                     </ul>
                     <div className="pt-2 flex items-center space-x-3 text-xs text-zinc-400">
                       <span>Apply by emailing your CV to:</span>
-                      <a href={`mailto:${job.applyEmail}?subject=Application for ${job.title}`} className="text-red-500 font-bold hover:underline">
+                      <a href={`mailto:${job.applyEmail}?subject=Application for ${job.title}`} className="text-nforce-red font-bold hover:underline">
                         {job.applyEmail}
                       </a>
                     </div>
@@ -141,7 +141,7 @@ export default function CareersFaqView() {
                   className="w-full p-5 text-left flex items-center justify-between font-bold text-white text-sm hover:text-red-400 transition-colors"
                 >
                   <span>{faq.q}</span>
-                  {openFaq === idx ? <ChevronUp className="w-4 h-4 text-red-500" /> : <ChevronDown className="w-4 h-4 text-zinc-400" />}
+                  {openFaq === idx ? <ChevronUp className="w-4 h-4 text-nforce-red" /> : <ChevronDown className="w-4 h-4 text-zinc-400" />}
                 </button>
                 {openFaq === idx && (
                   <div className="px-5 pb-5 text-xs text-zinc-400 leading-relaxed border-t border-zinc-800/60 pt-3">

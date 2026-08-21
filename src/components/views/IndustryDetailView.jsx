@@ -14,13 +14,13 @@ export default function IndustryDetailView({ selectedIndustry, setCurrentTab }) 
       <div className="max-w-5xl mx-auto px-4 sm:px-8 space-y-12">
         <button
           onClick={() => handleNav('industries')}
-          className="-m-2 p-2 text-xs font-bold text-red-600 hover:underline flex items-center gap-1"
+          className="-m-2 p-2 text-xs font-bold text-nforce-red hover:underline flex items-center gap-1"
         >
           &larr; Back to All Industries
         </button>
 
         <div className="space-y-4">
-          <div className="text-xs font-bold text-red-600 uppercase tracking-widest">{selectedIndustry.tagline}</div>
+          <div className="text-xs font-bold text-nforce-red uppercase tracking-widest">{selectedIndustry.tagline}</div>
           <h1 className="text-4xl font-extrabold text-neutral-900">{selectedIndustry.name}</h1>
           <p className="text-xl text-neutral-600 leading-relaxed">{selectedIndustry.summary}</p>
         </div>
@@ -35,7 +35,7 @@ export default function IndustryDetailView({ selectedIndustry, setCurrentTab }) 
             <div className="space-y-2">
               {selectedIndustry.compliance.map((c, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm font-semibold text-neutral-800">
-                  <ShieldCheck className="w-4 h-4 text-red-600 shrink-0" />
+                  <ShieldCheck className="w-4 h-4 text-nforce-red shrink-0" />
                   <span>{c}</span>
                 </div>
               ))}
@@ -47,7 +47,7 @@ export default function IndustryDetailView({ selectedIndustry, setCurrentTab }) 
             <div className="space-y-2">
               {selectedIndustry.solutions.map((s, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm font-semibold text-neutral-800">
-                  <CheckCircle2 className="w-4 h-4 text-red-600 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-nforce-red shrink-0" />
                   <span>{s}</span>
                 </div>
               ))}

@@ -39,14 +39,14 @@ export default function AboutView() {
         </div>
 
         {/* Ambient Dark Gradient Glows (decorative) */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/15 blur-[140px] rounded-full pointer-events-none z-0" aria-hidden="true" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-nforce-red/15 blur-[140px] rounded-full pointer-events-none z-0" aria-hidden="true" />
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-red-900/15 blur-[100px] rounded-full pointer-events-none z-0" aria-hidden="true" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 relative z-10">
           
           {/* Hero Heading & Tagline */}
           <div className="text-center space-y-6 max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-600/10 border border-red-500/30 text-red-500 text-xs font-extrabold uppercase tracking-widest shadow-sm backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-nforce-red/10 border border-nforce-red/30 text-nforce-red text-xs font-extrabold uppercase tracking-widest shadow-sm backdrop-blur-md">
               <Sparkles className="w-3.5 h-3.5" />
               <span>{aboutData.hero.tagline}</span>
             </div>
@@ -60,7 +60,7 @@ export default function AboutView() {
             </p>
             
             <div className="p-6 sm:p-8 bg-zinc-900/80 border border-zinc-800/90 rounded-2xl text-zinc-300 text-sm sm:text-base leading-relaxed text-left shadow-2xl backdrop-blur-md relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-red-600" />
+              <div className="absolute top-0 left-0 w-1.5 h-full bg-nforce-red" />
               {aboutData.hero.story}
             </div>
           </div>
@@ -72,7 +72,7 @@ export default function AboutView() {
                 key={idx}
                 className="bg-zinc-900/90 border border-zinc-800/90 p-6 rounded-2xl text-center space-y-2 hover:bg-zinc-900 shadow-xl group backdrop-blur-md card-hover"
               >
-                <div className="text-3xl sm:text-4xl font-black text-red-500 motion-safe:group-hover:scale-105 transition-transform">
+                <div className="text-3xl sm:text-4xl font-black text-nforce-red motion-safe:group-hover:scale-105 transition-transform">
                   {stat.value}
                 </div>
                 <div className="text-xs uppercase tracking-wider text-zinc-400 font-semibold">
@@ -95,7 +95,7 @@ export default function AboutView() {
         {/* 4 Core Values Section */}
         <div className="space-y-10">
           <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <div className="text-xs font-extrabold text-red-600 uppercase tracking-widest">
+            <div className="text-xs font-extrabold text-nforce-red uppercase tracking-widest">
               Core Principles
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 tracking-tight">
@@ -114,10 +114,10 @@ export default function AboutView() {
                   key={idx}
                   className="bg-neutral-50 border border-neutral-200/90 p-6 rounded-2xl space-y-4 hover:bg-white group card-hover"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-red-600/10 border border-red-500/20 flex items-center justify-center text-red-600 motion-safe:group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-nforce-red/10 border border-nforce-red/20 flex items-center justify-center text-nforce-red motion-safe:group-hover:scale-110 transition-transform">
                     <IconComp className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-neutral-900 group-hover:text-red-600 transition-colors">
+                  <h3 className="text-xl font-bold text-neutral-900 group-hover:text-nforce-red transition-colors">
                     {val.name}
                   </h3>
                   <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
@@ -132,7 +132,7 @@ export default function AboutView() {
         {/* Key Milestones & Success Stories Section */}
         <div className="space-y-10">
           <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <div className="text-xs font-extrabold text-red-600 uppercase tracking-widest">
+            <div className="text-xs font-extrabold text-nforce-red uppercase tracking-widest">
               Proven Track Record
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 tracking-tight">
@@ -149,7 +149,7 @@ export default function AboutView() {
                 key={idx}
                 className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-2xl space-y-4 shadow-sm card-hover"
               >
-                <div className="inline-block text-xs font-extrabold text-red-600 bg-red-50 border border-red-200/60 px-3 py-1 rounded-md">
+                <div className="inline-block text-xs font-extrabold text-nforce-red bg-red-50 border border-red-200/60 px-3 py-1 rounded-md">
                   {m.year} Milestone
                 </div>
                 <h3 className="text-lg font-bold text-neutral-900 leading-snug">
@@ -165,10 +165,10 @@ export default function AboutView() {
 
         {/* Enterprise Capabilities Checklist Callout */}
         <div className="bg-gradient-to-br from-neutral-950 via-neutral-900 to-black text-white border border-zinc-800 p-8 sm:p-12 rounded-3xl space-y-8 shadow-2xl relative overflow-hidden">
-          <div className="absolute -right-16 -top-16 w-64 h-64 bg-red-600/10 blur-[80px] rounded-full pointer-events-none" aria-hidden="true" />
+          <div className="absolute -right-16 -top-16 w-64 h-64 bg-nforce-red/10 blur-[80px] rounded-full pointer-events-none" aria-hidden="true" />
           
           <div className="space-y-2 max-w-3xl">
-            <div className="text-xs font-extrabold text-red-500 uppercase tracking-widest">
+            <div className="text-xs font-extrabold text-nforce-red uppercase tracking-widest">
               Comprehensive Delivery
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
@@ -182,7 +182,7 @@ export default function AboutView() {
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 pt-2">
             {aboutData.capabilities.map((cap, idx) => (
               <div key={idx} className="flex items-start space-x-3 text-xs sm:text-sm text-zinc-200 bg-zinc-900/60 border border-zinc-800 p-3 rounded-xl">
-                <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-nforce-red shrink-0 mt-0.5" />
                 <span className="font-medium">{cap}</span>
               </div>
             ))}

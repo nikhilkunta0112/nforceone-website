@@ -177,7 +177,7 @@ export default function Navbar({
           {/* 1. Home */}
           <button 
             onClick={() => handleNavClick('home')}
-            className={`text-xs font-bold tracking-widest uppercase transition-colors ${currentTab === 'home' ? 'text-red-500 border-b-2 border-red-500 py-1' : 'text-zinc-300 hover:text-red-400'}`}
+            className={`text-xs font-bold tracking-widest uppercase transition-colors ${currentTab === 'home' ? 'text-nforce-red border-b-2 border-nforce-red py-1' : 'text-zinc-300 hover:text-red-400'}`}
           >
             Home
           </button>
@@ -185,7 +185,7 @@ export default function Navbar({
           {/* 2. About Us */}
           <button 
             onClick={() => handleNavClick('about')}
-            className={`text-xs font-bold tracking-widest uppercase transition-colors ${currentTab === 'about' ? 'text-red-500 border-b-2 border-red-500 py-1' : 'text-zinc-300 hover:text-red-400'}`}
+            className={`text-xs font-bold tracking-widest uppercase transition-colors ${currentTab === 'about' ? 'text-nforce-red border-b-2 border-nforce-red py-1' : 'text-zinc-300 hover:text-red-400'}`}
           >
             About Us
           </button>
@@ -194,7 +194,7 @@ export default function Navbar({
           <div className="relative group">
             <button 
               onClick={() => handleNavClick('services')}
-              className={`text-xs font-bold tracking-widest uppercase flex items-center gap-1 py-6 transition-colors ${currentTab.startsWith('service') ? 'text-red-500 border-b-2 border-red-500' : 'text-zinc-300 hover:text-red-400'}`}
+              className={`text-xs font-bold tracking-widest uppercase flex items-center gap-1 py-6 transition-colors ${currentTab.startsWith('service') ? 'text-nforce-red border-b-2 border-nforce-red' : 'text-zinc-300 hover:text-red-400'}`}
             >
               <span>Services</span>
               <ChevronDown className="w-4 h-4 text-zinc-400 group-hover:text-red-400 transition-transform group-hover:rotate-180" />
@@ -214,7 +214,7 @@ export default function Navbar({
                         className="w-full text-left px-4 py-2.5 text-xs font-bold text-zinc-200 hover:bg-zinc-800 hover:text-red-400 flex items-center justify-between transition-colors"
                       >
                         <div className="flex items-center gap-3">
-                          <div className="w-7 h-7 rounded-md bg-red-600/10 text-red-500 border border-red-500/20 flex items-center justify-center shrink-0">
+                          <div className="w-7 h-7 rounded-md bg-nforce-red/10 text-nforce-red border border-nforce-red/20 flex items-center justify-center shrink-0">
                             <ItemIcon className="w-4 h-4" />
                           </div>
                           <span>{item.name}</span>
@@ -227,7 +227,7 @@ export default function Navbar({
                         <div className="grid grid-cols-3 gap-5">
                           {item.subCategories.map((subCat, sIdx) => (
                             <div key={sIdx} className="space-y-2.5">
-                              <div className="text-[11px] font-bold text-red-500 border-b border-zinc-800 pb-1.5 uppercase tracking-wider">
+                              <div className="text-[11px] font-bold text-nforce-red border-b border-zinc-800 pb-1.5 uppercase tracking-wider">
                                 {subCat.title}
                               </div>
                               <div className="space-y-1">
@@ -239,7 +239,7 @@ export default function Navbar({
                                       onClick={() => handleSelectServiceItem(subItem)}
                                       className="w-full text-left text-xs font-medium text-zinc-300 hover:text-red-400 hover:bg-zinc-800 py-1.5 px-2 rounded-md transition-colors flex items-center gap-2 group/sub"
                                     >
-                                      <SubIcon className="w-3.5 h-3.5 text-red-500 shrink-0 group-hover/sub:scale-110 transition-transform" />
+                                      <SubIcon className="w-3.5 h-3.5 text-nforce-red shrink-0 group-hover/sub:scale-110 transition-transform" />
                                       <span className="line-clamp-1">{subItem.name}</span>
                                     </button>
                                   );
@@ -259,7 +259,7 @@ export default function Navbar({
                     onClick={() => handleSelectServiceItem(item)}
                     className="w-full text-left px-4 py-2.5 text-xs font-bold text-zinc-200 hover:bg-zinc-800 hover:text-red-400 transition-colors flex items-center gap-3 group/single"
                   >
-                    <div className="w-7 h-7 rounded-md bg-zinc-800 group-hover/single:bg-red-600/10 text-zinc-400 group-hover/single:text-red-500 flex items-center justify-center shrink-0 transition-colors">
+                    <div className="w-7 h-7 rounded-md bg-zinc-800 group-hover/single:bg-nforce-red/10 text-zinc-400 group-hover/single:text-nforce-red flex items-center justify-center shrink-0 transition-colors">
                       <ItemIcon className="w-4 h-4" />
                     </div>
                     <span>{item.name}</span>
@@ -274,21 +274,21 @@ export default function Navbar({
           <div className="relative group">
             <button 
               onClick={() => handleNavClick('industries')}
-              className={`text-xs font-bold tracking-widest uppercase flex items-center gap-1 py-6 transition-colors ${currentTab.startsWith('industry') ? 'text-red-500 border-b-2 border-red-500' : 'text-zinc-300 hover:text-red-400'}`}
+              className={`text-xs font-bold tracking-widest uppercase flex items-center gap-1 py-6 transition-colors ${currentTab.startsWith('industry') ? 'text-nforce-red border-b-2 border-nforce-red' : 'text-zinc-300 hover:text-red-400'}`}
             >
               <span>Industries</span>
               <ChevronDown className="w-4 h-4 text-zinc-400 group-hover:text-red-400 transition-transform group-hover:rotate-180" />
             </button>
 
             <div className="absolute top-full left-0 w-80 bg-zinc-900 border border-zinc-800 shadow-xl rounded-xl p-4 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all duration-200 z-50">
-              <div className="text-xs font-bold text-red-500 uppercase tracking-wider mb-3 px-3">Industry Solutions</div>
+              <div className="text-xs font-bold text-nforce-red uppercase tracking-wider mb-3 px-3">Industry Solutions</div>
               {industriesList.map(ind => (
                 <button 
                   key={ind.id}
                   onClick={() => navigateToIndustry(ind)}
                   className="w-full text-left p-2.5 rounded-lg hover:bg-zinc-800 transition-colors flex items-center gap-3 group/item"
                 >
-                  <Building2 className="w-4 h-4 text-red-500 shrink-0" />
+                  <Building2 className="w-4 h-4 text-nforce-red shrink-0" />
                   <span className="text-xs font-bold text-zinc-200 group-hover/item:text-red-400 transition-colors">{ind.name}</span>
                 </button>
               ))}
@@ -298,7 +298,7 @@ export default function Navbar({
           {/* 5. Careers */}
           <button 
             onClick={() => handleNavClick('careers')}
-            className={`text-xs font-bold tracking-widest uppercase transition-colors ${currentTab === 'careers' ? 'text-red-500 border-b-2 border-red-500 py-1' : 'text-zinc-300 hover:text-red-400'}`}
+            className={`text-xs font-bold tracking-widest uppercase transition-colors ${currentTab === 'careers' ? 'text-nforce-red border-b-2 border-nforce-red py-1' : 'text-zinc-300 hover:text-red-400'}`}
           >
             Careers
           </button>
@@ -306,7 +306,7 @@ export default function Navbar({
           {/* 6. Contact Us */}
           <button 
             onClick={() => handleNavClick('contact')}
-            className={`text-xs font-bold tracking-widest uppercase transition-colors ${currentTab === 'contact' ? 'text-red-500 border-b-2 border-red-500 py-1' : 'text-zinc-300 hover:text-red-400'}`}
+            className={`text-xs font-bold tracking-widest uppercase transition-colors ${currentTab === 'contact' ? 'text-nforce-red border-b-2 border-nforce-red py-1' : 'text-zinc-300 hover:text-red-400'}`}
           >
             Contact Us
           </button>
@@ -316,7 +316,7 @@ export default function Navbar({
         <div className="hidden lg:flex items-center gap-4">
           <button 
             onClick={() => handleNavClick('contact')}
-            className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-widest px-6 py-3 rounded btn-hover shadow-lg shadow-red-600/30 flex items-center gap-2"
+            className="bg-nforce-red hover:bg-nforce-red text-white font-bold text-xs uppercase tracking-widest px-6 py-3 rounded btn-hover shadow-lg shadow-nforce-red/30 flex items-center gap-2"
           >
             <span>Contact Us</span>
             <ArrowRight className="w-4 h-4" />
@@ -337,17 +337,17 @@ export default function Navbar({
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 z-40 bg-neutral-950 text-white pt-24 px-6 overflow-y-auto">
           <div className="flex flex-col gap-4 text-base font-bold text-white pb-12">
-            <button onClick={() => handleNavClick('home')} className="text-left py-2 border-b border-zinc-800 hover:text-red-500">Home</button>
-            <button onClick={() => handleNavClick('about')} className="text-left py-2 border-b border-zinc-800 hover:text-red-500">About Us</button>
+            <button onClick={() => handleNavClick('home')} className="text-left py-2 border-b border-zinc-800 hover:text-nforce-red">Home</button>
+            <button onClick={() => handleNavClick('about')} className="text-left py-2 border-b border-zinc-800 hover:text-nforce-red">About Us</button>
 
             {/* Mobile Services Accordion */}
             <div>
               <button 
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                className="w-full flex items-center justify-between py-2 border-b border-zinc-800 hover:text-red-500 text-left"
+                className="w-full flex items-center justify-between py-2 border-b border-zinc-800 hover:text-nforce-red text-left"
               >
                 <span>Services</span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'rotate-180 text-red-500' : ''}`} />
+                <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'rotate-180 text-nforce-red' : ''}`} />
               </button>
 
               {mobileServicesOpen && (
@@ -356,20 +356,20 @@ export default function Navbar({
                   <div className="border-b border-zinc-800 pb-2">
                     <button
                       onClick={() => setMobileQaSubOpen(!mobileQaSubOpen)}
-                      className="w-full flex items-center justify-between font-bold text-white hover:text-red-500 py-1"
+                      className="w-full flex items-center justify-between font-bold text-white hover:text-nforce-red py-1"
                     >
                       <div className="flex items-center gap-2">
-                        <ShieldCheck className="w-4 h-4 text-red-500" />
+                        <ShieldCheck className="w-4 h-4 text-nforce-red" />
                         <span>Quality Assurance –</span>
                       </div>
-                      <ChevronDown className={`w-3.5 h-3.5 transition-transform ${mobileQaSubOpen ? 'rotate-180 text-red-500' : ''}`} />
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform ${mobileQaSubOpen ? 'rotate-180 text-nforce-red' : ''}`} />
                     </button>
 
                     {mobileQaSubOpen && (
                       <div className="pl-3 pt-2 space-y-3">
                         {navbarServicesStructure[0].subCategories.map((subCat, sIdx) => (
                           <div key={sIdx} className="space-y-1">
-                            <div className="font-bold text-[11px] text-red-500 uppercase">{subCat.title}</div>
+                            <div className="font-bold text-[11px] text-nforce-red uppercase">{subCat.title}</div>
                             <div className="grid grid-cols-1 gap-1 pl-2">
                               {subCat.items.map((subItem, iIdx) => {
                                 const SubIcon = iconMap[subItem.id] || CheckCircle2;
@@ -379,7 +379,7 @@ export default function Navbar({
                                     onClick={() => handleSelectServiceItem(subItem)}
                                     className="text-left py-2 text-zinc-300 hover:text-red-400 text-xs flex items-center gap-2"
                                   >
-                                    <SubIcon className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                                    <SubIcon className="w-3.5 h-3.5 text-nforce-red shrink-0" />
                                     <span>{subItem.name}</span>
                                   </button>
                                 );
@@ -400,7 +400,7 @@ export default function Navbar({
                         onClick={() => handleSelectServiceItem(srv)}
                         className="text-left py-2 text-zinc-300 font-medium hover:text-red-400 flex items-center gap-2.5 w-full"
                       >
-                        <ItemIcon className="w-4 h-4 text-red-500 shrink-0" />
+                        <ItemIcon className="w-4 h-4 text-nforce-red shrink-0" />
                         <span>{srv.name}</span>
                       </button>
                     );
@@ -413,10 +413,10 @@ export default function Navbar({
             <div>
               <button 
                 onClick={() => setMobileIndustriesOpen(!mobileIndustriesOpen)}
-                className="w-full flex items-center justify-between py-2 border-b border-zinc-800 hover:text-red-500 text-left"
+                className="w-full flex items-center justify-between py-2 border-b border-zinc-800 hover:text-nforce-red text-left"
               >
                 <span>Industries</span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${mobileIndustriesOpen ? 'rotate-180 text-red-500' : ''}`} />
+                <ChevronDown className={`w-4 h-4 transition-transform ${mobileIndustriesOpen ? 'rotate-180 text-nforce-red' : ''}`} />
               </button>
 
               {mobileIndustriesOpen && (
@@ -427,7 +427,7 @@ export default function Navbar({
                       onClick={() => { navigateToIndustry(ind); setMobileMenuOpen(false); }}
                       className="text-left py-2 text-zinc-300 hover:text-red-400 flex items-center gap-2 text-xs"
                     >
-                      <Building2 className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                      <Building2 className="w-3.5 h-3.5 text-nforce-red shrink-0" />
                       <span>{ind.name}</span>
                     </button>
                   ))}
@@ -435,10 +435,10 @@ export default function Navbar({
               )}
             </div>
 
-            <button onClick={() => handleNavClick('careers')} className="text-left py-2 border-b border-zinc-800 hover:text-red-500">Careers</button>
-            <button onClick={() => handleNavClick('contact')} className="text-left py-2 border-b border-zinc-800 hover:text-red-500">Contact Us</button>
+            <button onClick={() => handleNavClick('careers')} className="text-left py-2 border-b border-zinc-800 hover:text-nforce-red">Careers</button>
+            <button onClick={() => handleNavClick('contact')} className="text-left py-2 border-b border-zinc-800 hover:text-nforce-red">Contact Us</button>
 
-            <button onClick={() => handleNavClick('contact')} className="mt-4 w-full bg-red-600 hover:bg-red-700 text-white py-3.5 rounded text-center font-bold uppercase tracking-widest text-xs shadow-md">
+            <button onClick={() => handleNavClick('contact')} className="mt-4 w-full bg-nforce-red hover:bg-nforce-red text-white py-3.5 rounded text-center font-bold uppercase tracking-widest text-xs shadow-md">
               Contact Us
             </button>
           </div>

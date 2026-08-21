@@ -37,7 +37,7 @@ export default function CaseStudySection({ items, onExplore }) {
             className="md:col-span-6 space-y-5"
           >
             <div className="flex items-center gap-4 flex-wrap">
-              <span className="inline-block px-3 py-1 bg-red-600/10 text-red-500 text-xs font-bold rounded border border-red-600/20 uppercase tracking-[0.2em]">
+              <span className="inline-block px-3 py-1 bg-nforce-red/10 text-nforce-red text-xs font-bold rounded border border-nforce-red/20 uppercase tracking-[0.2em]">
                 Featured Case Study
               </span>
 
@@ -52,7 +52,7 @@ export default function CaseStudySection({ items, onExplore }) {
                         aria-label={`View case study ${idx + 1}: ${item.client}`}
                         aria-current={idx === activeIndex ? 'true' : undefined}
                         className={`py-2 -my-2 transition-colors ${
-                          idx === activeIndex ? 'text-red-500' : 'text-zinc-500 hover:text-zinc-300'
+                          idx === activeIndex ? 'text-nforce-red' : 'text-zinc-500 hover:text-zinc-300'
                         }`}
                       >
                         {String(idx + 1).padStart(2, '0')}
@@ -70,7 +70,7 @@ export default function CaseStudySection({ items, onExplore }) {
             <div className="flex flex-wrap items-start gap-x-6 gap-y-4 pt-2">
               {active.stats.map((stat, idx) => (
                 <div key={idx} className={idx > 0 ? 'sm:border-l sm:border-zinc-700 sm:pl-6' : ''}>
-                  <div className="text-3xl font-black text-red-500">{stat.value}</div>
+                  <div className="text-3xl font-black text-nforce-red">{stat.value}</div>
                   <div className="text-xs text-zinc-500 mt-1 max-w-[200px] sm:max-w-[140px]">{stat.label}</div>
                 </div>
               ))}
@@ -85,10 +85,10 @@ export default function CaseStudySection({ items, onExplore }) {
               className="group inline-flex items-center gap-2 text-white text-sm font-bold uppercase tracking-wide pt-2"
             >
               <span className="relative overflow-hidden">
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-red-500">View Case Study</span>
-                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-red-600 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-nforce-red">View Case Study</span>
+                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-nforce-red origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
               </span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-red-500" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-nforce-red" />
             </button>
           </motion.div>
         </AnimatePresence>
@@ -118,14 +118,14 @@ export default function CaseStudySection({ items, onExplore }) {
               <button
                 onClick={() => goTo(activeIndex - 1)}
                 aria-label="Previous case study"
-                className="w-9 h-9 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-red-600 hover:border-red-600 transition-colors"
+                className="w-9 h-9 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-nforce-red hover:border-nforce-red transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 onClick={() => goTo(activeIndex + 1)}
                 aria-label="Next case study"
-                className="w-9 h-9 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-red-600 hover:border-red-600 transition-colors"
+                className="w-9 h-9 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-nforce-red hover:border-nforce-red transition-colors"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>

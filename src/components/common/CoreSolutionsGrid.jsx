@@ -12,7 +12,7 @@ function SolutionCard({ item, isHero, onSelect }) {
   return (
     <button
       onClick={onSelect}
-      className={`group relative block w-full overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 ${
+      className={`group relative block w-full overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nforce-red ${
         isHero ? 'h-[320px] lg:h-full lg:min-h-[560px]' : 'h-[220px] lg:h-[262px]'
       }`}
     >

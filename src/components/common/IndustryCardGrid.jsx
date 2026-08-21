@@ -10,7 +10,7 @@ export default function IndustryCardGrid({ items, onSelect }) {
         <button
           key={item.id}
           onClick={() => onSelect(item)}
-          className="group flex flex-col text-left bg-white border border-neutral-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600"
+          className="group flex flex-col text-left bg-white border border-neutral-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nforce-red"
         >
           <h3 className="text-lg font-bold text-neutral-900 leading-snug underline-offset-4 decoration-2 group-hover:underline">
             {item.name}
@@ -20,7 +20,7 @@ export default function IndustryCardGrid({ items, onSelect }) {
             {item.summary}
           </p>
 
-          <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-red-600 mt-4">
+          <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-nforce-red mt-4">
             <span>Know More</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
           </div>
