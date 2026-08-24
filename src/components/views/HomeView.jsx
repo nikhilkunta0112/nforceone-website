@@ -198,11 +198,11 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
   const slide = heroSlides[activeSlide];
   const goToSlide = (idx) => setActiveSlide((idx + heroSlides.length) % heroSlides.length);
 
-  // Auto-scroll the hero slider every 4s, looping continuously.
+  // Auto-scroll the hero slider every 8s, looping continuously.
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 4000);
+    }, 8000);
     return () => clearInterval(timer);
   }, []);
 

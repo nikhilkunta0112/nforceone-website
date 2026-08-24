@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Quote, Star } from 'lucide-react';
 
-// Client testimonial carousel: single-slide-at-a-time, dot-navigated, autoplay every 5s
+// Client testimonial carousel: single-slide-at-a-time, dot-navigated, autoplay every 8s
 // (pauses while a visitor is interacting with the dots), styled to match the dark
 // CaseStudySection/PartnerWithUs sections it sits between on the homepage.
 export default function TestimonialsSection({ items }) {
@@ -11,7 +11,7 @@ export default function TestimonialsSection({ items }) {
     if (items.length <= 1) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % items.length);
-    }, 5000);
+    }, 8000);
     return () => clearInterval(timer);
   }, [items.length]);
 
