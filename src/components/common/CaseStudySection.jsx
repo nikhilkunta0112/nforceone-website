@@ -64,7 +64,7 @@ export default function CaseStudySection({ items, onExplore }) {
             <h3 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
               {active.client}
             </h3>
-            <p className="text-zinc-400 text-base leading-relaxed text-justify hyphens-auto">{active.summary}</p>
+            <p className="text-zinc-400 text-base leading-relaxed text-justify hyphens-auto">{active.challenge} {active.solution}</p>
 
             <div className="flex flex-wrap items-start gap-x-6 gap-y-4 pt-2">
               {active.stats.map((stat, idx) => (

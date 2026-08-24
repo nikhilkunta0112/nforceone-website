@@ -102,6 +102,7 @@ export default function App() {
         <CaseStudyDetailView
           selectedCaseStudy={selectedCaseStudy}
           setCurrentTab={setCurrentTab}
+          navigateToCaseStudy={navigateToCaseStudy}
         />
       )}
 
