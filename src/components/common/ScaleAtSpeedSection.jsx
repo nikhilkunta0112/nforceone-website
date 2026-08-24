@@ -52,9 +52,9 @@ export default function ScaleAtSpeedSection({ onExplore }) {
 
         <div className="lg:col-span-4 flex justify-center lg:self-end">
           <img
-            src="/images/about_laptop_mockup.png"
+            src="/images/team_collaboration.jpg"
             alt="NForceOne team collaborating on a project"
-            className="w-full max-w-sm lg:max-w-md h-auto object-contain"
+            className="w-full max-w-sm lg:max-w-md h-auto object-contain rounded-2xl"
             style={{ filter: 'drop-shadow(0 25px 35px rgba(0,0,0,0.4))' }}
           />
         </div>

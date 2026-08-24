@@ -10,11 +10,13 @@ import IndustryDetailView from './components/views/IndustryDetailView';
 import AboutView from './components/views/AboutView';
 import CareersFaqView from './components/views/CareersFaqView';
 import ContactView from './components/views/ContactView';
+import CaseStudyDetailView from './components/views/CaseStudyDetailView';
 
 export default function App() {
-  const [currentTab, setCurrentTab] = useState('home'); // home, services, service-detail, industries, industry-detail, about, careers, contact
+  const [currentTab, setCurrentTab] = useState('home'); // home, services, service-detail, industries, industry-detail, about, careers, contact, case-study-detail
   const [selectedService, setSelectedService] = useState(null);
   const [selectedIndustry, setSelectedIndustry] = useState(null);
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navigateToService = (service) => {
@@ -26,6 +28,12 @@ export default function App() {
   const navigateToIndustry = (industry) => {
     setSelectedIndustry(industry);
     setCurrentTab('industry-detail');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateToCaseStudy = (caseStudy) => {
+    setSelectedCaseStudy(caseStudy);
+    setCurrentTab('case-study-detail');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -44,10 +52,11 @@ export default function App() {
 
       {/* View Router / Display */}
       {currentTab === 'home' && (
-        <HomeView 
+        <HomeView
           setCurrentTab={setCurrentTab}
           navigateToService={navigateToService}
           navigateToIndustry={navigateToIndustry}
+          navigateToCaseStudy={navigateToCaseStudy}
         />
       )}
 
@@ -78,7 +87,7 @@ export default function App() {
       )}
 
       {currentTab === 'about' && (
-        <AboutView />
+        <AboutView setCurrentTab={setCurrentTab} />
       )}
 
       {currentTab === 'careers' && (
@@ -87,6 +96,13 @@ export default function App() {
 
       {currentTab === 'contact' && (
         <ContactView />
+      )}
+
+      {currentTab === 'case-study-detail' && (
+        <CaseStudyDetailView
+          selectedCaseStudy={selectedCaseStudy}
+          setCurrentTab={setCurrentTab}
+        />
       )}
 
       {/* Enterprise Footer */}

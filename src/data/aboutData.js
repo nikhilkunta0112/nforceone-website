@@ -13,17 +13,14 @@ export const aboutData = {
   ],
   milestones: [
     {
-      year: '2024',
       title: 'Atomic - AI-Driven Outreach',
       description: 'Supercharged Atomic’s outreach efforts with our cutting-edge AI-driven system. Handled all outbound communications to scale potential client connections seamlessly.'
     },
     {
-      year: '2024',
-      title: 'Intripid - AI Travel Planner',
-      description: 'Engineered an intelligent AI-powered itinerary recommendation and travel planning platform for seamless booking workflows.'
+      title: 'Metronet - End-to-End QA',
+      description: 'Delivered end-to-end quality assurance across Metronet’s software lifecycle, managing and executing dozens of parallel enterprise projects.'
     },
     {
-      year: '2025',
       title: 'Consolidated Communication - E2E QA',
       description: 'Delivered consolidated communication and quality assurance across all stages of the software lifecycle, managing and executing dozens of parallel enterprise projects.'
     }
@@ -50,6 +47,16 @@ export const aboutData = {
       description: 'We leverage collective experience and diverse technical insights to make informed decisions that benefit all stakeholders for long-term success.'
     }
   ],
+  team: {
+    heading: 'A Team Built on Experience',
+    description: "We're continuing to expand our presence across India and the US, uniting a vibrant team of over 100 professionals with deep expertise in service delivery and technical excellence. Together, we're building a fast-growing, future-ready organization.",
+    cta: { label: 'Join the Team', tab: 'careers' }
+  },
+  culture: {
+    heading: 'Better Together',
+    description: "Work is important, but so is play. We engage with our partners in ways that solve critical problems and leave a smile on your face, because life is too short not to enjoy the work you do.",
+    cta: { label: 'Get in Touch', tab: 'contact' }
+  },
   pillars: [
     { title: 'User Focused', desc: 'Putting end-user experience at the heart of architecture and design.' },
     { title: 'Quality Focused', desc: 'Rigorous zero-defect testing standards across web, mobile, and cloud.' },

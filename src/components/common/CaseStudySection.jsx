@@ -3,11 +3,10 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Cinematic dark "featured case study" section: tag pill + headline + prose + stat row on one
-// side, a large hover-zoom image with a bottom gradient on the other, with a faint oversized
-// watermark logo in the background. A numbered breadcrumb trail (01 / 02 / 03) next to the tag
-// pill, plus prev/next arrows on the image, let visitors step through every entry in `items` -
-// both stay hidden while there's only one case study, and start working automatically as soon
-// as a second one is added to the data array.
+// side, a large hover-zoom image with a bottom gradient on the other. A numbered breadcrumb
+// trail (01 / 02 / 03) next to the tag pill, plus prev/next arrows on the image, let visitors
+// step through every entry in `items` - both stay hidden while there's only one case study,
+// and start working automatically as soon as a second one is added to the data array.
 export default function CaseStudySection({ items, onExplore }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = items[activeIndex];
@@ -81,7 +80,7 @@ export default function CaseStudySection({ items, onExplore }) {
             )}
 
             <button
-              onClick={onExplore}
+              onClick={() => onExplore(active)}
               className="group inline-flex items-center gap-2 text-white text-sm font-bold uppercase tracking-wide pt-2"
             >
               <span className="relative overflow-hidden">
