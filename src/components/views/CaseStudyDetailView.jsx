@@ -10,6 +10,13 @@ export default function CaseStudyDetailView({ selectedCaseStudy, setCurrentTab, 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleBackToHome = () => {
+    setCurrentTab('home');
+    setTimeout(() => {
+      document.getElementById('featured-case-study')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   const otherCaseStudies = caseStudiesList.filter((cs) => cs.id !== selectedCaseStudy.id);
 
   return (
@@ -17,7 +24,7 @@ export default function CaseStudyDetailView({ selectedCaseStudy, setCurrentTab, 
       <div className="max-w-5xl mx-auto px-4 sm:px-8 space-y-12">
 
         <button
-          onClick={() => handleNav('home')}
+          onClick={handleBackToHome}
           className="-m-2 p-2 text-xs font-bold text-nforce-red hover:underline flex items-center gap-1"
         >
           &larr; Back to Home

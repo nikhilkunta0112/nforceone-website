@@ -16,6 +16,7 @@ export default function CaseStudySection({ items, onExplore }) {
 
   return (
     <section
+      id="featured-case-study"
       className="relative overflow-hidden border-b border-nforce-borderDark"
       style={{
         backgroundImage: "url('/images/case_study_bg.png')",
