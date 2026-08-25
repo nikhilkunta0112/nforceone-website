@@ -101,7 +101,7 @@ export default function AboutView({ setCurrentTab }) {
         </div>
       </section>
 
-      {/* 
+      {/*
         ================================================================
         CLEAN WHITE BACKGROUND FOR THE REST OF THE PAGE
         ================================================================
@@ -109,6 +109,7 @@ export default function AboutView({ setCurrentTab }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-20 bg-white">
 
         {/* Team & Culture Section */}
+
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-neutral-50 border border-neutral-200/90 p-8 rounded-2xl space-y-4">
             <div className="w-12 h-12 rounded-xl bg-nforce-red/10 border border-nforce-red/20 flex items-center justify-center text-nforce-red">
@@ -178,16 +179,26 @@ export default function AboutView({ setCurrentTab }) {
           </div>
         </div>
 
-        {/* Key Milestones & Success Stories Section */}
-        <div className="space-y-10">
+      </div>
+
+      {/*
+        ================================================================
+        FULL-BLEED DARK BAND: Success Stories (visual rhythm break
+        between the light Core Values and Pillars sections)
+        ================================================================
+      */}
+      <section className="w-full bg-neutral-950 py-16 sm:py-24 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-nforce-red/10 blur-[100px] rounded-full pointer-events-none" aria-hidden="true" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 relative z-10">
           <div className="text-center space-y-3 max-w-2xl mx-auto">
             <div className="text-xs font-extrabold text-nforce-red uppercase tracking-widest">
               Proven Track Record
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               Our Recent Success Stories
             </h2>
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed">
+            <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
               Proven impact delivering enterprise scale, automation, and AI innovation.
             </p>
           </div>
@@ -196,18 +207,21 @@ export default function AboutView({ setCurrentTab }) {
             {aboutData.milestones.map((m, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-2xl space-y-4 shadow-sm card-hover"
+                className="bg-zinc-900/80 border border-zinc-800 p-6 sm:p-7 rounded-2xl space-y-4 card-hover"
               >
-                <h3 className="text-lg font-bold text-neutral-900 leading-snug">
+                <h3 className="text-lg font-bold text-white leading-snug">
                   {m.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
                   {m.description}
                 </p>
               </div>
             ))}
           </div>
         </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-20 bg-white">
 
         {/* Why Choose Us: Core Pillars Section */}
         <div className="space-y-10">

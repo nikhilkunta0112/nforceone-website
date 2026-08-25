@@ -17,12 +17,12 @@ export const aboutData = {
       description: 'Supercharged Atomic’s outreach efforts with our cutting-edge AI-driven system. Handled all outbound communications to scale potential client connections seamlessly.'
     },
     {
-      title: 'Metronet - End-to-End QA',
-      description: 'Delivered end-to-end quality assurance across Metronet’s software lifecycle, managing and executing dozens of parallel enterprise projects.'
+      title: 'Metronet - Fiber Network Expansion',
+      description: 'Delivered a 100% fiber-optic network connecting homes and businesses across underserved, fast-growing communities, eliminating lag and downtime to support heavy remote work and streaming demand.'
     },
     {
-      title: 'Consolidated Communication - E2E QA',
-      description: 'Delivered consolidated communication and quality assurance across all stages of the software lifecycle, managing and executing dozens of parallel enterprise projects.'
+      title: 'Consolidated Communications - Fidium Fiber Rollout',
+      description: 'Unified residential, business, and wholesale service lines under the Fidium Fiber brand, deploying multi-gigabit fiber networks to communities and data centers nationwide.'
     }
   ],
   coreValues: [
