@@ -16,21 +16,23 @@ export default function IndustryCardGrid({ items, onSelect }) {
             {item.name}
           </h3>
 
-          <p className="text-sm text-neutral-600 leading-relaxed mt-2 line-clamp-4 flex-1">
+          <p className="text-sm text-neutral-600 leading-relaxed mt-2 line-clamp-4">
             {item.summary}
           </p>
 
-          <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-nforce-red mt-4">
-            <span>Know More</span>
-            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-          </div>
+          <div className="mt-auto">
+            <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-nforce-red mt-4">
+              <span>Know More</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+            </div>
 
-          <div className="mt-5 rounded-xl overflow-hidden h-40">
-            <img
-              src={item.image}
-              alt={item.name}
-              className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-            />
+            <div className="mt-5 rounded-xl overflow-hidden h-40">
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              />
+            </div>
           </div>
         </button>
       ))}

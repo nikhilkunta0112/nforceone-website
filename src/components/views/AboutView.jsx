@@ -1,12 +1,16 @@
 import React from 'react';
 import { aboutData } from '../../data/aboutData';
-import { 
-  TrendingUp, 
-  ShieldCheck, 
-  Zap, 
-  Award, 
-  CheckCircle2, 
-  Sparkles
+import {
+  TrendingUp,
+  ShieldCheck,
+  Zap,
+  Award,
+  CheckCircle2,
+  Sparkles,
+  Target,
+  Lightbulb,
+  Users,
+  ArrowRight
 } from 'lucide-react';
 
 const iconMap = {
@@ -16,7 +20,19 @@ const iconMap = {
   Award: Award
 };
 
-export default function AboutView() {
+const pillarIconMap = {
+  'User Focused': Target,
+  'Quality Focused': CheckCircle2,
+  'Agility Focused': Zap,
+  'Innovation Focused': Lightbulb
+};
+
+export default function AboutView({ setCurrentTab }) {
+  const handleNav = (tab) => {
+    setCurrentTab(tab);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <main className="flex-1 bg-white text-neutral-900 antialiased">
       
@@ -85,13 +101,47 @@ export default function AboutView() {
         </div>
       </section>
 
-      {/* 
+      {/*
         ================================================================
         CLEAN WHITE BACKGROUND FOR THE REST OF THE PAGE
         ================================================================
       */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-20 bg-white">
-        
+
+        {/* Team & Culture Section */}
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-neutral-50 border border-neutral-200/90 p-8 rounded-2xl space-y-4">
+            <div className="w-12 h-12 rounded-xl bg-nforce-red/10 border border-nforce-red/20 flex items-center justify-center text-nforce-red">
+              <Users className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-bold text-neutral-900">{aboutData.team.heading}</h3>
+            <p className="text-sm text-neutral-600 leading-relaxed">{aboutData.team.description}</p>
+            <button
+              onClick={() => handleNav(aboutData.team.cta.tab)}
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-nforce-red hover:text-nforce-redHover transition-colors"
+            >
+              <span>{aboutData.team.cta.label}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="bg-neutral-50 border border-neutral-200/90 p-8 rounded-2xl space-y-4">
+            <div className="w-12 h-12 rounded-xl bg-nforce-red/10 border border-nforce-red/20 flex items-center justify-center text-nforce-red">
+              <Sparkles className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-bold text-neutral-900">{aboutData.culture.heading}</h3>
+            <p className="text-sm text-neutral-600 leading-relaxed">{aboutData.culture.description}</p>
+            <button
+              onClick={() => handleNav(aboutData.culture.cta.tab)}
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-nforce-red hover:text-nforce-redHover transition-colors"
+            >
+              <span>{aboutData.culture.cta.label}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
         {/* 4 Core Values Section */}
         <div className="space-y-10">
           <div className="text-center space-y-3 max-w-2xl mx-auto">
@@ -129,16 +179,26 @@ export default function AboutView() {
           </div>
         </div>
 
-        {/* Key Milestones & Success Stories Section */}
-        <div className="space-y-10">
+      </div>
+
+      {/*
+        ================================================================
+        FULL-BLEED DARK BAND: Success Stories (visual rhythm break
+        between the light Core Values and Pillars sections)
+        ================================================================
+      */}
+      <section className="w-full bg-neutral-950 py-16 sm:py-24 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-nforce-red/10 blur-[100px] rounded-full pointer-events-none" aria-hidden="true" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 relative z-10">
           <div className="text-center space-y-3 max-w-2xl mx-auto">
             <div className="text-xs font-extrabold text-nforce-red uppercase tracking-widest">
               Proven Track Record
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               Our Recent Success Stories
             </h2>
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed">
+            <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
               Proven impact delivering enterprise scale, automation, and AI innovation.
             </p>
           </div>
@@ -147,19 +207,56 @@ export default function AboutView() {
             {aboutData.milestones.map((m, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-2xl space-y-4 shadow-sm card-hover"
+                className="bg-zinc-900/80 border border-zinc-800 p-6 sm:p-7 rounded-2xl space-y-4 card-hover"
               >
-                <div className="inline-block text-xs font-extrabold text-nforce-red bg-red-50 border border-red-200/60 px-3 py-1 rounded-md">
-                  {m.year} Milestone
-                </div>
-                <h3 className="text-lg font-bold text-neutral-900 leading-snug">
+                <h3 className="text-lg font-bold text-white leading-snug">
                   {m.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
                   {m.description}
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-20 bg-white">
+
+        {/* Why Choose Us: Core Pillars Section */}
+        <div className="space-y-10">
+          <div className="text-center space-y-3 max-w-2xl mx-auto">
+            <div className="text-xs font-extrabold text-nforce-red uppercase tracking-widest">
+              Why Choose Us
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-neutral-900 tracking-tight">
+              Built on Four Guiding Pillars
+            </h2>
+            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed">
+              The principles that shape how we design, build, and deliver every engagement.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {aboutData.pillars.map((pillar, idx) => {
+              const PillarIcon = pillarIconMap[pillar.title] || Sparkles;
+              return (
+                <div
+                  key={idx}
+                  className="bg-neutral-50 border border-neutral-200/90 p-6 rounded-2xl space-y-4 hover:bg-white group card-hover"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-nforce-red/10 border border-nforce-red/20 flex items-center justify-center text-nforce-red motion-safe:group-hover:scale-110 transition-transform">
+                    <PillarIcon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-neutral-900 group-hover:text-nforce-red transition-colors">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
+                    {pillar.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -187,6 +284,20 @@ export default function AboutView() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Closing CTA Banner */}
+        <div className="bg-black text-white rounded-2xl p-6 sm:p-8 flex flex-wrap items-center justify-between gap-6 border border-neutral-800">
+          <div>
+            <h3 className="text-2xl font-bold">Ready to Partner with NForceOne?</h3>
+            <p className="text-neutral-300 text-sm mt-1">Talk with our team to scope your next engagement.</p>
+          </div>
+          <button
+            onClick={() => handleNav('contact')}
+            className="bg-nforce-red text-white font-bold px-6 py-3 rounded-lg hover:bg-nforce-redHover transition-colors shadow-md"
+          >
+            Schedule Consultation &rarr;
+          </button>
         </div>
 
       </div>
