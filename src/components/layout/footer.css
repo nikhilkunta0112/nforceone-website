@@ -76,10 +76,11 @@
   display: flex;
   justify-content: space-between;
   gap: 64px;
-  width: min(1280px, calc(100% - 112px));
+  width: 100%;
+  max-width: 1280px;
   min-height: 460px;
   margin-inline: auto;
-  padding: 76px 0;
+  padding: 76px 24px;
 }
 
 /* Brand Column */
@@ -286,8 +287,7 @@
   .site-footer-inner {
     flex-direction: column;
     gap: 58px;
-    width: calc(100% - 64px);
-    padding: 64px 0;
+    padding: 64px 24px;
   }
   .site-footer-brand {
     max-width: 100%;
@@ -310,8 +310,7 @@
     letter-spacing: -0.07em;
   }
   .site-footer-inner {
-    width: calc(100% - 40px);
-    padding: 52px 0 48px;
+    padding: 52px 24px 48px;
   }
   .site-footer-brand {
     min-height: 250px;

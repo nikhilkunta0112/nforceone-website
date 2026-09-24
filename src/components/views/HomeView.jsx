@@ -128,7 +128,7 @@ const heroSlides = [
     titleHighlight: 'Lightning Speed',
     titleTail: 'and Exceptional Quality',
     subtitle: "We're on a mission to revolutionize businesses through transformative technology solutions.",
-    image: '/images/hero_ai_professional.jpg',
+    image: '/images/hero_night_skyline.png',
     primaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' },
     secondaryCta: { label: 'Explore Services', tab: 'services' }
   },
@@ -139,6 +139,7 @@ const heroSlides = [
     titleTail: 'at Enterprise Scale',
     subtitle: 'Manual and automated QA, functional and regression testing, and custom web, mobile, and enterprise application development built to ship reliably, fast.',
     image: '/images/hero_quality_engineering.jpg',
+    imagePosition: 'right center',
     primaryCta: { label: 'Explore Quality Engineering', tab: 'services' },
     secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
   },
