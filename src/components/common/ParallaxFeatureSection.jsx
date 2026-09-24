@@ -26,7 +26,23 @@ export default function ParallaxFeatureSection({ eyebrow, title, subtitle, items
                 className="feature-card rounded-2xl p-8 bg-nforce-cardDark border border-nforce-borderDark flex flex-col min-h-[320px]"
               >
                 <div className="feature-card-content flex flex-col h-full">
-                  {Icon && <Icon className="feature-icon w-8 h-8 text-nforce-red mb-6" />}
+                  {index === 0 ? (
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="feature-icon feature-arrow-icon w-8 h-8 text-nforce-red mb-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  ) : (
+                    Icon && <Icon className="feature-icon w-8 h-8 text-nforce-red mb-6" />
+                  )}
                   <h3 className="text-xl font-extrabold text-white tracking-tight mb-3">
                     {item.title}
                   </h3>

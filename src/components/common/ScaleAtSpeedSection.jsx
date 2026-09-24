@@ -1,4 +1,4 @@
-import { Sparkles, ArrowRight, Star } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 
 // Brand promise section: reuses the "Scale at Speed" tagline (see Footer) to funnel
 // visitors into the About Us page. Three-column layout (text, floating product-style
@@ -8,18 +8,13 @@ export default function ScaleAtSpeedSection({ onExplore }) {
     <section
       className="relative overflow-hidden border-b border-red-900 py-[3px] text-white"
       style={{
-        backgroundImage: "url('/images/scale_at_speed_bg.png')",
+        backgroundImage: "url('/images/scale_at_speed_bg_dark.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
       <div className="relative z-10 max-w-[1280px] mx-auto px-6 grid lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-5 space-y-5 text-left">
-          <span className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-red-100 text-xs font-bold uppercase tracking-wide px-4 py-1.5 rounded-full">
-            <Sparkles className="w-3.5 h-3.5" />
-            Our Promise
-          </span>
-
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
             <span className="text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
               Scale at Speed<sup className="text-base align-super">™</sup>

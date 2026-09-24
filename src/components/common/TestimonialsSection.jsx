@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Quote, Star } from 'lucide-react';
+import { Quote } from 'lucide-react';
 
 // Client testimonial carousel: single-slide-at-a-time, dot-navigated, autoplay every 5s
 // (pauses while a visitor is interacting with the dots), styled to match the dark
@@ -31,10 +31,7 @@ export default function TestimonialsSection({ items }) {
       style={{ background: 'linear-gradient(to bottom, #000000 0%, #000000 45%, #200000 70%, #3A0000 100%)' }}
     >
       <div className="max-w-[900px] mx-auto px-6 text-center">
-        <span className="inline-block px-3 py-1 bg-nforce-red/10 text-nforce-red text-xs font-bold rounded border border-nforce-red/20 uppercase tracking-[0.2em]">
-          Testimonials
-        </span>
-        <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight mt-4">
+        <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight">
           Trusted by the Teams We Scale
         </h2>
         <p className="text-zinc-400 text-sm max-w-xl mx-auto mt-3">
@@ -48,12 +45,6 @@ export default function TestimonialsSection({ items }) {
           <p className="text-lg lg:text-2xl font-medium leading-relaxed text-zinc-100 max-w-3xl">
             &ldquo;{active.text}&rdquo;
           </p>
-
-          <div className="flex items-center gap-1 mt-6">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 fill-nforce-red text-nforce-red" />
-            ))}
-          </div>
 
           <div className="flex items-center gap-3 mt-6">
             <div className="w-12 h-12 rounded-full bg-nforce-red/15 border border-nforce-red/30 flex items-center justify-center text-nforce-red font-bold text-sm shrink-0">
