@@ -10,8 +10,8 @@ export const caseStudiesList = [
     ],
     challenge: 'Indian fashion brands often rely on disconnected tools like Excel, WhatsApp, and email to manage production, creating delays, communication gaps, and limited visibility across the supply chain.',
     solution: 'Modozo brings the entire workflow into one platform, enabling brands to create and share techpacks, collaborate with stakeholders, connect with verified vendors, place orders, track production, and manage quality control in one streamlined process.',
-    image: '/images/modozo_case_study.jpg',
-    imagePosition: 'center 15%',
+    image: '/images/modozo_case_study.png',
+    imagePosition: 'center center',
     stats: [
       { value: '70%', label: 'Reduction in Manual Processes*' },
       { value: '80%', label: 'Improved Team Collaboration*' }
