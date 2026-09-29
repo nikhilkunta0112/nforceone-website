@@ -128,7 +128,7 @@ const heroSlides = [
     titleHighlight: 'Lightning Speed',
     titleTail: 'and Exceptional Quality',
     subtitle: "We're on a mission to revolutionize businesses through transformative technology solutions.",
-    image: '/images/hero_night_skyline.png',
+    image: '/images/hero_ai_professional.png',
     primaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' },
     secondaryCta: { label: 'Explore Services', tab: 'services' }
   },
