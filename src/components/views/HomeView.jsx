@@ -138,21 +138,11 @@ const heroSlides = [
     titleHighlight: 'Automation & Software Testing',
     titleTail: 'at Enterprise Scale',
     subtitle: 'Manual and automated QA, functional and regression testing, and custom web, mobile, and enterprise application development built to ship reliably, fast.',
-    image: '/images/hero_quality_engineering.jpg',
+    image: '/images/27e5144a-6b76-4961-a8b7-bccb5e24047c.png',
     imagePosition: 'right center',
     primaryCta: { label: 'Explore Quality Engineering', tab: 'services' },
     secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
   },
-  {
-    id: 'ai-cloud-data',
-    titleLead: 'Accelerating Success with',
-    titleHighlight: 'AI & Software',
-    titleTail: 'Development',
-    subtitle: 'Custom application development, microservices architecture, API integration, and modern full-stack solutions, engineered to scale with your business.',
-    image: '/images/hero_ai_cloud_data.jpg',
-    primaryCta: { label: 'Explore AI & Cloud Solutions', tab: 'services' },
-    secondaryCta: { label: 'Schedule a Free Consultation', tab: 'contact' }
-  }
 ];
 
 // Value Pillars from home.md
@@ -222,7 +212,7 @@ export default function HomeView({ setCurrentTab, navigateToService, navigateToI
               key={s.id}
               className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[1000ms] ease-in-out ${idx === activeSlide ? 'opacity-100' : 'opacity-0'}`}
               style={{
-                backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.82) 22%, rgba(0,0,0,0.72) 36%, rgba(0,0,0,0.55) 48%, rgba(0,0,0,0.38) 58%, rgba(0,0,0,0.24) 68%, rgba(0,0,0,0.14) 80%, rgba(0,0,0,0.08) 100%), url('${s.image}')`,
+                backgroundImage: `${s.overlay || 'linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.82) 22%, rgba(0,0,0,0.72) 36%, rgba(0,0,0,0.55) 48%, rgba(0,0,0,0.38) 58%, rgba(0,0,0,0.24) 68%, rgba(0,0,0,0.14) 80%, rgba(0,0,0,0.08) 100%)'}, url('${s.image}')`,
                 backgroundPosition: s.imagePosition || 'center',
               }}
               aria-hidden="true"

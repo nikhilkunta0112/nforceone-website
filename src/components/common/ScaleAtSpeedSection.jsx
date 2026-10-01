@@ -6,7 +6,7 @@ import { ArrowRight, Star } from 'lucide-react';
 export default function ScaleAtSpeedSection({ onExplore }) {
   return (
     <section
-      className="relative overflow-hidden border-b border-red-900 py-[3px] text-white"
+      className="relative overflow-hidden border-b border-red-900 py-14 sm:py-20 lg:py-24 text-white"
       style={{
         backgroundImage: "url('/images/scale_at_speed_bg_dark.png')",
         backgroundSize: 'cover',
